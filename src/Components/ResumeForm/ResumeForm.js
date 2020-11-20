@@ -21,7 +21,7 @@ const ResumeForm = () => {
                         <input dir="rtl"></input>
                     </div>
                 </div>
-W
+
                 <div className="row-inputs">
                     <div className="input-box">
                         <label>מייל</label>
