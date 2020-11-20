@@ -1,6 +1,9 @@
+import './app.css'
+import ResumeCreator from './Pages/ResumeCreator'
+
 function App() {
   return (
-    <h1>Korot haim</h1>
+    <ResumeCreator/>
   );
 }
 
