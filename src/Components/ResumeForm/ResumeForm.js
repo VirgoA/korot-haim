@@ -1,4 +1,4 @@
-import BasicForm from "../BasicForm";
+import BasicInput from "../BasicInput";
 import "./resumeForm.css";
 
 import React, { Component } from "react";
@@ -38,20 +38,16 @@ export default class ResumeForm extends Component {
   render() {
     return (
       <form>
-        {/* 
-                      We should probably split each section of the form to be its own component,
-                      it will make it easier to add and remove sections as we go.
-                  */}
         <h3>פרטים אישיים</h3>
         <div className="form-section">
           <div className="row-inputs">
-            <BasicForm name={"שם משפחה"} func={this.setLastName} />
-            <BasicForm name={"שם פרטי"} func={this.setName} />
+            <BasicInput name={"שם משפחה"} handleState={this.setLastName} />
+            <BasicInput name={"שם פרטי"} handleState={this.setName} />
           </div>
 
           <div className="row-inputs">
-            <BasicForm name={"מייל"} func={this.setEmail} />
-            <BasicForm name={"טלפון"} func={this.setPhoneNumber} />
+            <BasicInput name={"מייל"} handleState={this.setEmail} />
+            <BasicInput name={"טלפון"} handleState={this.setPhoneNumber} />
           </div>
         </div>
       </form>

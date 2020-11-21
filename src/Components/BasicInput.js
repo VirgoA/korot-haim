@@ -1,19 +1,19 @@
 import React from "react";
 
-function BasicForm(props) {
+function BasicInput(props) {
   return (
     <div className="input-box">
       <label>{props.name}</label>
       <input
         type="text"
-        name="name"
+        name={props.name}
         dir="rtl"
         onChange={(e) => {
-          props.func(e.target.value);
+          props.handleState(e.target.value);
         }}
       />
     </div>
   );
 }
 
-export default BasicForm;
+export default BasicInput;
