@@ -1,14 +1,15 @@
 import BasicInput from "../BasicInput";
 import "./resumeForm.css";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
+import SummaryForm from "../SummaryForm/SummaryForm";
 
 const ResumeForm = () => {
-
-  const [name, setName] = useState()
-  const [laseName, setLastName] = useState()
-  const [email, setEmail] = useState()
-  const [phoneNumber, setPhoneNumber] = useState()
+  const [name, setName] = useState();
+  const [laseName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [professionalSummary, setProfessionalSummary] = useState("");
 
   return (
     <form>
@@ -23,9 +24,11 @@ const ResumeForm = () => {
           <BasicInput name={"מייל"} handleState={setEmail} />
           <BasicInput name={"טלפון"} handleState={setPhoneNumber} />
         </div>
+
+        <SummaryForm handleState={setProfessionalSummary} />
       </div>
     </form>
   );
-}
+};
 
-export default ResumeForm
+export default ResumeForm;
