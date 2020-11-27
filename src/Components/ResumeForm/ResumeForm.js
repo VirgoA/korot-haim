@@ -3,6 +3,7 @@ import "./resumeForm.css";
 
 import React, { useState } from "react";
 import SummaryForm from "../SummaryForm/SummaryForm";
+import EmploymentForm from "../EmploymentHistory/EmploymentForm";
 
 const ResumeForm = () => {
   const [name, setName] = useState();
@@ -10,6 +11,7 @@ const ResumeForm = () => {
   const [email, setEmail] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [professionalSummary, setProfessionalSummary] = useState("");
+  const [experience, setExperience] = useState([]);
 
   return (
     <form>
@@ -26,6 +28,11 @@ const ResumeForm = () => {
         </div>
 
         <SummaryForm handleState={setProfessionalSummary} />
+
+        <EmploymentForm
+          handleState={setExperience}
+          pastExperience={experience}
+        />
       </div>
     </form>
   );
