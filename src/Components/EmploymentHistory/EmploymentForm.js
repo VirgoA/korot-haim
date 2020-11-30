@@ -1,26 +1,12 @@
 import React, { useState } from "react";
-import BasicInput from "../BasicInput";
+import BasicInput from "../Utils/BasicInput";
+import CaptureForm from "../Utils/CaptureForm";
+import SwitchButton from "../Utils/SwitchButton";
 import "./employmentForm.css";
-
-class jobObject {
-  constructor(
-    name,
-    company,
-    startDate,
-    endDate
-    //summary
-  ) {
-    this.name = name;
-    this.company = company;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    //this.summary = summary;
-  }
-}
 
 function AddEmploymentForm(props) {
   const [company, setCompany] = useState();
-  const [job, setJob] = useState();
+  const [title, setJob] = useState();
 
   const [startDate, setstartDate] = useState();
   const [endDate, setendDate] = useState();
@@ -42,30 +28,14 @@ function AddEmploymentForm(props) {
       </div>
       <button
         type="button"
-        // onClick={() => {
-        //   props.handleState(
-        //     ...props.pastExperience,
-        //     new jobObject(job, company, startDate, endDate)
-        //   );
-        // }}
-      >
-        הוספה
-      </button>
-    </div>
-  );
-}
-
-function AddEmploymentButton(props) {
-  return (
-    <div className="AddEmployment">
-      <button
-        type="button"
         onClick={() => {
-          props.onChangeHandler(!props.currentShowStatus);
-          console.log("showing form", !props.currentShowStatus);
+          props.handleState([
+            ...props.pastExperience,
+            { title, company, startDate, endDate },
+          ]);
         }}
       >
-        תוסיף תעסוקה +
+        הוספה
       </button>
     </div>
   );
@@ -77,11 +47,36 @@ function EmploymentForm(props) {
     <div>
       <h1>ניסיון תעסוקתי</h1>
       <p>
-        תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותעריכים בחלק זה. תציינו את
+        תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותאריכים בחלק זה. תציינו את
         התפקידים האחרונים שלכם קודם
       </p>
 
-      {props.pastExperience !== [] ? <p>{props.pastExperience}</p> : null}
+      {props.pastExperience.length !== 0 ? (
+        <div>
+          <h1>רשימת ניסיון</h1>
+          {props.pastExperience.map((item, i) => {
+            return (
+              <div key={i}>
+                <p>תפקיד: {item.title}</p>
+                <p>חברה: {item.company}</p>
+                <p>תאריך התחלה: {item.startDate}</p>
+                <p>תאריך סיום: {item.endDate}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    let newArr = props.pastExperience.filter((item, index) => {
+                      return index !== i;
+                    });
+                    props.handleState(newArr);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
 
       {showForm === true ? (
         <AddEmploymentForm
@@ -93,9 +88,11 @@ function EmploymentForm(props) {
       {
         //button for displaying the form
       }
-      <AddEmploymentButton
-        onChangeHandler={setShowForm}
-        currentShowStatus={showForm}
+
+      <SwitchButton
+        btnText="הוסף תעסוקה +"
+        currentState={showForm}
+        switchStateFunc={setShowForm}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import BasicInput from "../BasicInput";
+import BasicInput from "../Utils/BasicInput";
 import "./resumeForm.css";
 
 import React, { useState } from "react";
