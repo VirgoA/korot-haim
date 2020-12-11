@@ -1,9 +1,9 @@
-import BasicInput from "../Utils/BasicInput";
+import BasicInput from "../common/BasicInput";
 import "./resumeForm.css";
 
 import React, { useState } from "react";
-import SummaryForm from "../SummaryForm/SummaryForm";
-import EmploymentForm from "../EmploymentHistory/EmploymentForm";
+import SummaryForm from "./sections/SummarySection";
+import EmploymentForm from "./sections/EmploymentSection";
 
 const ResumeForm = () => {
   const [name, setName] = useState();

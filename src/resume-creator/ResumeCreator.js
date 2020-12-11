@@ -1,5 +1,5 @@
 import './resumeCreator.css'
-import ResumeForm from '../Components/ResumeForm/ResumeForm'
+import ResumeForm from './ResumeForm'
 
 const ResumeCreator = () => {
     return (
