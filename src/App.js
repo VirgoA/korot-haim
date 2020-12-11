@@ -1,5 +1,5 @@
 import './app.css'
-import ResumeCreator from './Pages/ResumeCreator'
+import ResumeCreator from './features/resume-creator/ResumeCreator'
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import BasicInput from "../../common/BasicInput";
-import SwitchButton from "../../common/SwitchButton";
-import "./employmentForm.css";
+import BasicInput from "../../../common/BasicInput";
+import SwitchButton from "../../../common/SwitchButton";
+import "./employmentSection.css";
 
 function AddEmploymentForm(props) {
   const [company, setCompany] = useState();
