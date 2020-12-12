@@ -13,6 +13,7 @@ const formSlice = createSlice({
     reducers: {
         setName: (state, action) => {
             state.name = action.payload
+            console.log(state);
         },
         setLastName: (state, action) => {
             state.lastName = action.payload

@@ -4,14 +4,21 @@ import "./resumeForm.css";
 import React, { useState } from "react";
 import SummaryForm from "./sections/SummarySection";
 import EmploymentForm from "./sections/EmploymentSection";
+import {useSelector, useDispatch} from 'react-redux';
+import formSlice from './state/formSlice';
 
 const ResumeForm = () => {
-  const [name, setName] = useState();
-  const [laseName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [professionalSummary, setProfessionalSummary] = useState("");
-  const [experience, setExperience] = useState([]);
+
+  const {
+    setName,
+    setLastName,
+    setEmail,
+    setPhoneNumber,
+    setProfessionalSummary,
+    addExperience
+  } = formSlice.actions
+
+  const experience = useSelector(state => state.experience)
 
   return (
     <form>
@@ -30,7 +37,7 @@ const ResumeForm = () => {
         <SummaryForm handleState={setProfessionalSummary} />
 
         <EmploymentForm
-          handleState={setExperience}
+          handleState={addExperience}
           pastExperience={experience}
         />
       </div>
