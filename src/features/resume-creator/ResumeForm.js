@@ -2,12 +2,14 @@ import BasicInput from "../../common/BasicInput";
 import "./resumeForm.css";
 
 import React, { useState } from "react";
-import SummaryForm from "./sections/SummarySection";
-import EmploymentForm from "./sections/EmploymentSection";
+import SummarySection from "./sections/SummarySection";
+import EmploymentSection from "./sections/EmploymentSection";
 import {useSelector, useDispatch} from 'react-redux';
 import formSlice from './state/formSlice';
 
 const ResumeForm = () => {
+
+  const dispatch = useDispatch();
 
   const {
     setName,
@@ -18,27 +20,28 @@ const ResumeForm = () => {
     addExperience
   } = formSlice.actions
 
-  const experience = useSelector(state => state.experience)
+  const {experience} = useSelector(state => state.form)
+  console.log(useSelector(state => state))
 
   return (
     <form>
       <h3>פרטים אישיים</h3>
       <div className="form-section">
         <div className="row-inputs">
-          <BasicInput name={"שם משפחה"} handleState={setLastName} />
-          <BasicInput name={"שם פרטי"} handleState={setName} />
+          <BasicInput name={"שם משפחה"} handleState={(inputValue)=>dispatch(setLastName(inputValue))} />
+          <BasicInput name={"שם פרטי"} handleState={(inputValue)=>dispatch(setName(inputValue))} />
         </div>
 
         <div className="row-inputs">
-          <BasicInput name={"מייל"} handleState={setEmail} />
-          <BasicInput name={"טלפון"} handleState={setPhoneNumber} />
+          <BasicInput name={"מייל"} handleState={(inputValue)=>dispatch(setEmail(inputValue))} />
+          <BasicInput name={"טלפון"} handleState={(inputValue)=>dispatch(setPhoneNumber(inputValue))} />
         </div>
 
-        <SummaryForm handleState={setProfessionalSummary} />
+        <SummarySection handleState={(inputValue)=>dispatch(setProfessionalSummary(inputValue))} />
 
-        <EmploymentForm
-          handleState={addExperience}
-          pastExperience={experience}
+        <EmploymentSection
+          handleState={(newExpirience)=>dispatch(addExperience(newExpirience))}
+          experience={experience}
         />
       </div>
     </form>

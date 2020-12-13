@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
 import "./employmentSection.css";
+import {useDispatch} from 'react-redux'
 
 function AddEmploymentForm(props) {
+  const dispatch = useDispatch();
+
   const [company, setCompany] = useState();
   const [title, setJob] = useState();
 
@@ -28,10 +31,7 @@ function AddEmploymentForm(props) {
       <button
         type="button"
         onClick={() => {
-          props.handleState([
-            ...props.pastExperience,
-            { title, company, startDate, endDate },
-          ]);
+          props.handleState({ title, company, startDate, endDate });
         }}
       >
         הוספה
@@ -50,10 +50,10 @@ function EmploymentForm(props) {
         התפקידים האחרונים שלכם קודם
       </p>
 
-      {props.pastExperience.length !== 0 ? (
+      {props.experience.length !== 0 ? (
         <div>
           <h1>רשימת ניסיון</h1>
-          {props.pastExperience.map((item, i) => {
+          {props.experience.map((item, i) => {
             return (
               <div key={i}>
                 <p>תפקיד: {item.title}</p>
@@ -63,7 +63,7 @@ function EmploymentForm(props) {
                 <button
                   type="button"
                   onClick={() => {
-                    let newArr = props.pastExperience.filter((item, index) => {
+                    let newArr = props.experience.filter((item, index) => {
                       return index !== i;
                     });
                     props.handleState(newArr);
@@ -80,7 +80,6 @@ function EmploymentForm(props) {
       {showForm === true ? (
         <AddEmploymentForm
           handleState={props.handleState}
-          pastExperience={props.pastExperience}
         />
       ) : null}
 
