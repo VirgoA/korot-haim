@@ -9,6 +9,7 @@ const formSlice = createSlice({
     phoneNumber: "",
     professionalSummary: "",
     experience: [],
+    education: [],
   },
   reducers: {
     setName: (state, action) => {
@@ -31,6 +32,15 @@ const formSlice = createSlice({
     },
     removeExperience: (state, action) => {
       state.experience = state.experience.filter((item, index) => {
+        return index !== action.payload;
+      });
+    },
+
+    addEducation: (state, action) => {
+      state.education = [...state.education, action.payload];
+    },
+    removeEducation: (state, action) => {
+      state.education = state.education.filter((item, index) => {
         return index !== action.payload;
       });
     },
