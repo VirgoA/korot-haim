@@ -7,17 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import formSlice from "./state/formSlice";
 import PersonalInfoSection from "./sections/PersonalInfoSection";
 import EducationSection from "./sections/EducationSection";
+import LinkSection from "./sections/LinkSection";
 
 const ResumeForm = () => {
   const dispatch = useDispatch();
 
-  const {
-    setProfessionalSummary,
-    addExperience,
-    removeExperience,
-  } = formSlice.actions;
+  const { setProfessionalSummary } = formSlice.actions;
 
-  const { experience, education } = useSelector((state) => state.form);
+  const { experience, education, links } = useSelector((state) => state.form);
   console.log(useSelector((state) => state));
 
   return (
@@ -30,13 +27,11 @@ const ResumeForm = () => {
           reducer={setProfessionalSummary}
         />
 
-        <EmploymentSection
-          dispatcher={dispatch}
-          reducers={[addExperience, removeExperience]}
-          experience={experience}
-        />
+        <EmploymentSection dispatcher={dispatch} experience={experience} />
 
         <EducationSection dispatcher={dispatch} education={education} />
+
+        <LinkSection dispatcher={dispatch} links={links} />
       </div>
     </form>
   );

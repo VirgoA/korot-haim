@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
+import formSlice from "../state/formSlice";
+
 import "./employmentSection.css";
+
+const { addExperience, removeExperience } = formSlice.actions;
 
 function AddEmploymentForm(props) {
   const [company, setCompany] = useState();
@@ -39,7 +43,6 @@ function AddEmploymentForm(props) {
 
 function EmploymentForm(props) {
   const [showForm, setShowForm] = useState(false);
-  const [addExperience, removeExperience] = props.reducers;
 
   return (
     <div>
