@@ -10,7 +10,11 @@ import PersonalInfoSection from "./sections/PersonalInfoSection";
 const ResumeForm = () => {
   const dispatch = useDispatch();
 
-  const { setProfessionalSummary, addExperience } = formSlice.actions;
+  const {
+    setProfessionalSummary,
+    addExperience,
+    removeExperience,
+  } = formSlice.actions;
 
   const { experience } = useSelector((state) => state.form);
   console.log(useSelector((state) => state));
@@ -21,15 +25,13 @@ const ResumeForm = () => {
         <PersonalInfoSection dispatcher={dispatch} />
 
         <SummarySection
-          handleState={(inputValue) =>
-            dispatch(setProfessionalSummary(inputValue))
-          }
+          dispatcher={dispatch}
+          reducer={setProfessionalSummary}
         />
 
         <EmploymentSection
-          handleState={(newExpirience) =>
-            dispatch(addExperience(newExpirience))
-          }
+          dispatcher={dispatch}
+          reducers={[addExperience, removeExperience]}
           experience={experience}
         />
       </div>

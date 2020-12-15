@@ -11,7 +11,7 @@ function SummaryForm(props) {
         cols="70"
         rows="6"
         onChange={(e) => {
-          props.handleState(e.target.value);
+          props.dispatcher(props.reducer(e.target.value));
         }}
       ></textarea>
     </div>

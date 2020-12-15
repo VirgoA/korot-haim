@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
 import "./employmentSection.css";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 
 function AddEmploymentForm(props) {
   const dispatch = useDispatch();
@@ -42,6 +42,8 @@ function AddEmploymentForm(props) {
 
 function EmploymentForm(props) {
   const [showForm, setShowForm] = useState(false);
+  const [addExperience, removeExperience] = props.reducers;
+
   return (
     <div>
       <h1>ניסיון תעסוקתי</h1>
@@ -63,10 +65,7 @@ function EmploymentForm(props) {
                 <button
                   type="button"
                   onClick={() => {
-                    let newArr = props.experience.filter((item, index) => {
-                      return index !== i;
-                    });
-                    props.handleState(newArr);
+                    props.dispatcher(removeExperience(i));
                   }}
                 >
                   Delete
@@ -79,7 +78,9 @@ function EmploymentForm(props) {
 
       {showForm === true ? (
         <AddEmploymentForm
-          handleState={props.handleState}
+          handleState={(newExpirience) =>
+            props.dispatcher(addExperience(newExpirience))
+          }
         />
       ) : null}
 
