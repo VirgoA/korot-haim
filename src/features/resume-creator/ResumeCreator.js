@@ -4,10 +4,10 @@ import ResumeForm from './ResumeForm'
 const ResumeCreator = () => {
     return (
         <div className="container">
-            <div className="preview-section">
+            <div className="resume-preview">
                 <h1>פה יוצג הקורות חיים</h1>
             </div>
-            <div className="control-section">
+            <div className="resume-control">
                 <h1>קורות חיים</h1>
                 <ResumeForm/>
             </div>
