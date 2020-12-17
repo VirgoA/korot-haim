@@ -1,18 +1,19 @@
 import React from "react";
+import { Button } from "@material-ui/core";
 
 function SwitchButton(props) {
   return (
     <div>
-      <button
-        type="button"
+      <Button 
+        color="primary"
         onClick={() => {
           props.switchStateFunc(!props.currentState);
         }}
       >
         {props.btnText}
-      </button>
+      </Button>
     </div>
-  );
+  )
 }
 
 export default SwitchButton;
