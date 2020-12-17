@@ -1,6 +1,7 @@
 import React from "react";
+import { TextField } from '@material-ui/core';
 
-function BasicInput(props) {
+function oldBasicInput(props) {
   return (
     <div className="input-box">
       <label>{props.name}</label>
@@ -14,6 +15,21 @@ function BasicInput(props) {
       />
     </div>
   );
+}
+
+function BasicInput(props){
+  return (
+    <TextField 
+      variant="outlined" 
+      style={{marginLeft: 16}}
+      m={2} 
+      p={2} 
+      label={props.name} 
+      onChange={(e)=>{
+        props.handleState(e.target.value)
+      }}
+    />
+  )
 }
 
 export default BasicInput;
