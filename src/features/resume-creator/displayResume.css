@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../../fonts/Rubik-Regular.ttf") format("truetype");
+}
+
+.k-pdf-export p {
+  border: 2px dashed #111111;
+  padding: 10px;
+  font-family: "Rubik";
+  direction: rtl;
+}
