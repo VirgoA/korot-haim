@@ -1,0 +1,114 @@
+@font-face {
+  font-family: "VarelaRound";
+  src: url("../../../fonts/VarelaRound-Regular.ttf") format("truetype");
+}
+
+.resume-body {
+  display: flex;
+  flex-direction: column;
+}
+.resume-body p {
+  font-family: "VarelaRound";
+}
+
+.cv-header {
+  margin-top: 10px;
+  align-content: center;
+  text-align: center;
+}
+
+.cv-header p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.cv-header span {
+  padding: 4px;
+}
+
+.full-name {
+  font-size: 36px;
+}
+
+#personal-name {
+  font-weight: lighter;
+}
+
+#last-name {
+}
+
+.cv-body {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.cv-education {
+}
+
+#education-title {
+  margin-top: 0px;
+  font-size: 26px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 0px;
+}
+
+.edu-item {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.edu-item p {
+  padding-left: 6px;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.edu-degree-name {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.edu-dates {
+}
+
+.edu-school-name {
+  margin-bottom: 6px;
+}
+
+#experience-title {
+  margin-top: 12px;
+  font-size: 26px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 0px;
+}
+
+.exp-item {
+  padding-left: 15px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.exp-item p {
+  padding-left: 6px;
+  font-size: 20px;
+}
+
+.exp-company-name {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.exp-job-title {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+#links-title {
+  margin-top: 12px;
+  font-size: 26px;
+  border-bottom: 1px solid #000;
+  margin-bottom: 0px;
+}

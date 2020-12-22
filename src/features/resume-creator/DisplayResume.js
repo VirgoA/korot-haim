@@ -13,8 +13,9 @@ function DisplayResume(props) {
   return (
     <div>
       <PDFExport
-        paperSize={"Letter"}
+        paperSize={"A4"}
         fileName="_____.pdf"
+        scale={0.9}
         title=""
         subject=""
         keywords=""
@@ -23,7 +24,7 @@ function DisplayResume(props) {
         <div
           style={{
             height: 792,
-            width: 612,
+            width: 670,
             padding: "none",
             backgroundColor: "white",
             boxShadow: "5px 5px 5px black",
@@ -39,8 +40,9 @@ function DisplayResume(props) {
       <button
         onClick={exportPDF}
         style={{
-          marginTop: "12px",
+          width: "300px",
           margin: "auto",
+          marginTop: "24px",
           display: "block",
           alignContent: "center",
           fontSize: "30px",
