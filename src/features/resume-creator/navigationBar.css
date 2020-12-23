@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #2196f3;
+}
+
+.nav-menu a {
+  margin: 10px;
+}
+
+.nav-btn {
+  padding: 13px 23px;
+  border: 2px solid #2196f3;
+  color: #2196f3;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: bolder;
+  border-radius: 4px;
+}

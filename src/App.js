@@ -1,9 +1,13 @@
-import './app.css'
-import ResumeCreator from './features/resume-creator/ResumeCreator'
+import "./app.css";
+import NavigationBar from "./features/resume-creator/NavigationBar";
+import ResumeCreator from "./features/resume-creator/ResumeCreator";
 
 function App() {
   return (
-    <ResumeCreator/>
+    <div>
+      <NavigationBar />
+      <ResumeCreator />
+    </div>
   );
 }
 
