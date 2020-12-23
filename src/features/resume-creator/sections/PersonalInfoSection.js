@@ -16,11 +16,11 @@ function PersonalInfoSection(props) {
       <h3>פרטים אישיים</h3>
       <div>
         <div className="row-inputs">
+          <BasicInput name={"שם פרטי"} handleState={dispatchFunc(setName)} />
           <BasicInput
             name={"שם משפחה"}
             handleState={dispatchFunc(setLastName)}
           />
-          <BasicInput name={"שם פרטי"} handleState={dispatchFunc(setName)} />
         </div>
 
         <div className="row-inputs">
