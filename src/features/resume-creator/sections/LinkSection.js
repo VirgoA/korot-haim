@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
+import { Button } from '@material-ui/core';
 import "./sections.css";
 
 const { addLink, removeLink } = formSlice.actions;
@@ -63,14 +64,15 @@ function AddLinkForm(props) {
         <BasicInput name="הקישור" handleState={setLink} />
       </div>
 
-      <button
-        type="button"
+      <Button
+        variant="outlined"
+        color="primary"
         onClick={() => {
           props.handleState({ link, labelName });
         }}
       >
         הוספה
-      </button>
+      </Button>
     </div>
   );
 }

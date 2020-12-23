@@ -3,6 +3,7 @@ import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
+import { Button } from '@material-ui/core';
 import "./sections.css";
 
 const { addEducation, removeEducation } = formSlice.actions;
@@ -78,14 +79,15 @@ function AddEducationForm(props) {
       <div className="row-inputs">
         <TextArea/>
       </div>
-      <button
-        type="button"
+      <Button
+        variant="outlined"
+        color="primary"
         onClick={() => {
           props.handleState({ degree, schoolName, startDate, endDate });
         }}
       >
         הוספה
-      </button>
+      </Button>
     </div>
   );
 }

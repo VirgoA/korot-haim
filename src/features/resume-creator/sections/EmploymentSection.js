@@ -3,6 +3,8 @@ import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
+import { Button } from '@material-ui/core';
+
 
 import "./sections.css";
 
@@ -81,14 +83,15 @@ function AddEmploymentForm(props) {
       <div className="row-inputs">
         <TextArea/>
       </div>
-      <button
-        type="button"
+      <Button
+        variant="outlined"
+        color="primary"
         onClick={() => {
           props.handleState({ title, company, startDate, endDate });
         }}
       >
         הוספה
-      </button>
+      </Button>
     </div>
   );
 }
