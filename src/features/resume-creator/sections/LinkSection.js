@@ -6,31 +6,6 @@ import "./employmentSection.css";
 
 const { addLink, removeLink } = formSlice.actions;
 
-function AddLinkForm(props) {
-  const [labelName, setLabelName] = useState();
-  const [link, setLink] = useState();
-
-  //const [summary, setSummary] = useState();
-
-  return (
-    <div className="employment-form">
-      <div className="row-inputs">
-        <BasicInput name="שם הקישור" handleState={setLabelName} />
-        <BasicInput name="הקישור" handleState={setLink} />
-      </div>
-
-      <button
-        type="button"
-        onClick={() => {
-          props.handleState({ link, labelName });
-        }}
-      >
-        הוספה
-      </button>
-    </div>
-  );
-}
-
 function LinkSection(props) {
   const [showForm, setShowForm] = useState(false);
 
@@ -38,7 +13,19 @@ function LinkSection(props) {
     <div>
       <h1>קישורים</h1>
       <p>נוסף קישורים שונים לקורות החיים</p>
+      
+      <SwitchButton
+        btnText="הוסף קישור +"
+        currentState={showForm}
+        switchStateFunc={setShowForm}
+      />
 
+      {showForm === true ? (
+        <AddLinkForm
+          handleState={(newLink) => props.dispatcher(addLink(newLink))}
+        />
+      ) : null}
+      
       {props.links.length !== 0 ? (
         <div>
           <h1>רשימת קישורים</h1>
@@ -61,21 +48,29 @@ function LinkSection(props) {
         </div>
       ) : null}
 
-      {showForm === true ? (
-        <AddLinkForm
-          handleState={(newLink) => props.dispatcher(addLink(newLink))}
-        />
-      ) : null}
+    </div>
+  );
+}
 
-      {
-        //button for displaying the form
-      }
+function AddLinkForm(props) {
+  const [labelName, setLabelName] = useState();
+  const [link, setLink] = useState();
 
-      <SwitchButton
-        btnText="הוסף קישור +"
-        currentState={showForm}
-        switchStateFunc={setShowForm}
-      />
+  return (
+    <div className="employment-form">
+      <div className="row-inputs">
+        <BasicInput name="שם הקישור" handleState={setLabelName} />
+        <BasicInput name="הקישור" handleState={setLink} />
+      </div>
+
+      <button
+        type="button"
+        onClick={() => {
+          props.handleState({ link, labelName });
+        }}
+      >
+        הוספה
+      </button>
     </div>
   );
 }

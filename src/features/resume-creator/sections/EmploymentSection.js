@@ -1,56 +1,14 @@
 import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
+import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
-import { TextField } from '@material-ui/core';
 
 import "./employmentSection.css";
 
 const { addExperience, removeExperience } = formSlice.actions;
 
-function AddEmploymentForm(props) {
-  const [company, setCompany] = useState();
-  const [title, setJob] = useState();
-
-  const [startDate, setstartDate] = useState();
-  const [endDate, setendDate] = useState();
-
-  //const [summary, setSummary] = useState();
-
-  return (
-    <div className="employment-form">
-      <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" handleState={setCompany} />
-        <BasicInput name="שם תפקיד" handleState={setJob} />
-      </div>
-      <div className="row-inputs">
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
-        <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
-      </div>
-      <div className="row-inputs">
-        {/* <textarea dir="rtl" name="paragraph_text" cols="70" rows="3"></textarea> */}
-        <TextField 
-          variant="filled" 
-          label="פירוט" 
-          multiline 
-          style={{
-            width: "100%"
-          }}
-        />
-      </div>
-      <button
-        type="button"
-        onClick={() => {
-          props.handleState({ title, company, startDate, endDate });
-        }}
-      >
-        הוספה
-      </button>
-    </div>
-  );
-}
-
-function EmploymentForm(props) {
+function EmploymentSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -103,4 +61,36 @@ function EmploymentForm(props) {
   );
 }
 
-export default EmploymentForm;
+function AddEmploymentForm(props) {
+  const [company, setCompany] = useState();
+  const [title, setJob] = useState();
+
+  const [startDate, setstartDate] = useState();
+  const [endDate, setendDate] = useState();
+
+  return (
+    <div className="employment-form">
+      <div className="row-inputs">
+        <BasicInput name="חברה/מעסיק" handleState={setCompany} />
+        <BasicInput name="שם תפקיד" handleState={setJob} />
+      </div>
+      <div className="row-inputs">
+        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
+        <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
+      </div>
+      <div className="row-inputs">
+        <TextArea/>
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          props.handleState({ title, company, startDate, endDate });
+        }}
+      >
+        הוספה
+      </button>
+    </div>
+  );
+}
+
+export default EmploymentSection;

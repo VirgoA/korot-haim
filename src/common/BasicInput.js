@@ -21,9 +21,10 @@ function BasicInput(props){
   return (
     <TextField 
       variant="outlined" 
-      style={{marginLeft: 16}}
-      m={2} 
-      p={2} 
+      style={{
+        flex: 1
+      }}
+      flexGrow={1} 
       label={props.name} 
       onChange={(e)=>{
         props.handleState(e.target.value)
