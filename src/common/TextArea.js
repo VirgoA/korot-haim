@@ -1,6 +1,6 @@
 import { TextField } from '@material-ui/core';
 
-const TextArea = () => {
+const TextArea = (props) => {
     return (
         <TextField 
             variant="filled" 
@@ -8,8 +8,11 @@ const TextArea = () => {
             multiline 
             rows={3}
             style={{
-            flex: 1,
-        }}
+                flex: 1
+            }}
+            // onChange={(e)=>{
+            //     props.handleState(e.target.value)
+            // }}
         />
     )
 }
