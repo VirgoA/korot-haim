@@ -10,7 +10,7 @@ function LinkSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
+    <div className="form-section">
       <h1>קישורים</h1>
       <p>נוסף קישורים שונים לקורות החיים</p>
       

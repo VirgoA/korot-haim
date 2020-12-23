@@ -11,7 +11,7 @@ function EducationSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
+    <div className="form-section">
       <h1>השכלה</h1>
       <p>בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים</p>
 

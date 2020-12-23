@@ -12,9 +12,9 @@ function PersonalInfoSection(props) {
   };
 
   return (
-    <div>
+    <div className="form-section">
       <h3>פרטים אישיים</h3>
-      <div className="form-section">
+      <div>
         <div className="row-inputs">
           <BasicInput
             name={"שם משפחה"}

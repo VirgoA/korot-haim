@@ -12,7 +12,7 @@ function EmploymentSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
+    <div className="form-section">
       <h1>ניסיון תעסוקתי</h1>
       <p>
         תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותאריכים בחלק זה. תציינו את
