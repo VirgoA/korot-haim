@@ -5,11 +5,11 @@ const ResumeCreator = () => {
     return (
         <div className="container">
             <div className="resume-control">
-                <h1>קורות חיים</h1>
+                {/* <div>קורות חיים</div> */}
                 <ResumeForm/>
             </div>
             <div className="resume-preview">
-                <h1>פה יוצג הקורות חיים</h1>
+                {/* <h1>פה יוצג הקורות חיים</h1> */}
             </div>
         </div>    
     )

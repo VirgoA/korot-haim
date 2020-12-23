@@ -13,7 +13,7 @@ function PersonalInfoSection(props) {
 
   return (
     <div className="form-section">
-      <h3>פרטים אישיים</h3>
+      <span className="title">פרטים אישיים</span>
       <div>
         <div className="row-inputs">
           <BasicInput name={"שם פרטי"} handleState={dispatchFunc(setName)} />

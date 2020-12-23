@@ -4,8 +4,8 @@ import TextArea from "../../../common/TextArea"
 function SummarySection(props) {
   return (
     <div className="form-section">
-      <h1>סיכום מקצועי</h1>
-      <p>תרשמו 2-3 משפטים ברורים לגבי הניסיון הכללי שלכם</p>
+      <span className="title">סיכום מקצועי</span>
+      <span className="description">תרשמו 2-3 משפטים ברורים לגבי הניסיון הכללי שלכם</span>
       <div className="row-inputs">
         <TextArea
           onChange={(e) => {

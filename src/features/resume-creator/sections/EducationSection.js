@@ -3,7 +3,7 @@ import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
-import "./employmentSection.css";
+import "./sections.css";
 
 const { addEducation, removeEducation } = formSlice.actions;
 
@@ -12,8 +12,8 @@ function EducationSection(props) {
 
   return (
     <div className="form-section">
-      <h1>השכלה</h1>
-      <p>בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים</p>
+      <span className="title">השכלה</span>
+      <span className="description">בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים</span>
 
       <SwitchButton
         btnText="הוסף לימודים +"
@@ -66,7 +66,7 @@ function AddEducationForm(props) {
   const [endDate, setendDate] = useState();
 
   return (
-    <div className="employment-form">
+    <div className="addForm">
       <div className="row-inputs">
         <BasicInput name="שם המוסד" handleState={setschoolName} />
         <BasicInput name="תיאור ההשכלה" handleState={setDegree} />

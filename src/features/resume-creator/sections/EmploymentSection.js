@@ -4,7 +4,7 @@ import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
 
-import "./employmentSection.css";
+import "./sections.css";
 
 const { addExperience, removeExperience } = formSlice.actions;
 
@@ -13,11 +13,11 @@ function EmploymentSection(props) {
 
   return (
     <div className="form-section">
-      <h1>ניסיון תעסוקתי</h1>
-      <p>
+      <span className="title">ניסיון תעסוקתי</span>
+      <span className="description">
         תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותאריכים בחלק זה. תציינו את
         התפקידים האחרונים שלכם קודם
-      </p>
+      </span>
 
       <SwitchButton
         btnText="הוסף תעסוקה +"
@@ -69,7 +69,7 @@ function AddEmploymentForm(props) {
   const [endDate, setendDate] = useState();
 
   return (
-    <div className="employment-form">
+    <div className="addForm">
       <div className="row-inputs">
         <BasicInput name="חברה/מעסיק" handleState={setCompany} />
         <BasicInput name="שם תפקיד" handleState={setJob} />

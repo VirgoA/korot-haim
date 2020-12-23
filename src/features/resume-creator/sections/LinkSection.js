@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
-import "./employmentSection.css";
+import "./sections.css";
 
 const { addLink, removeLink } = formSlice.actions;
 
@@ -11,8 +11,8 @@ function LinkSection(props) {
 
   return (
     <div className="form-section">
-      <h1>קישורים</h1>
-      <p>נוסף קישורים שונים לקורות החיים</p>
+      <span className="title">קישורים</span>
+      <span className="description">נוסף קישורים שונים לקורות החיים</span>
       
       <SwitchButton
         btnText="הוסף קישור +"
@@ -57,7 +57,7 @@ function AddLinkForm(props) {
   const [link, setLink] = useState();
 
   return (
-    <div className="employment-form">
+    <div className="addForm">
       <div className="row-inputs">
         <BasicInput name="שם הקישור" handleState={setLabelName} />
         <BasicInput name="הקישור" handleState={setLink} />
