@@ -1,11 +1,14 @@
 .container{
     display: flex;
     justify-content: space-between;
+    height: 100%;
 }
 
 .resume-control{
     flex: 1;
     padding: 48px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .title{
