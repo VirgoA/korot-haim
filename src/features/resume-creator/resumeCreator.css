@@ -9,21 +9,24 @@
     padding: 48px;
     overflow-y: scroll;
     scrollbar-width: none;
+    max-width: 800px;
+    background-color: #14171d;
 }
 
 .title{
     font-size: 22px;
     margin-bottom: 12px;
     font-weight: 600;
+    color: #fff;
 }
 
 .description{
-    color:rgb(152, 161, 179);
+    color:#cdc5ce;
     margin-bottom: 2px;
 }
 
 .resume-preview{
     flex: 1;
     padding: 48px;
-    background-color: lightblue;
+    background-color: #000;
 }

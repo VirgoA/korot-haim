@@ -9,7 +9,10 @@ import RTL from './utils/rtl';
 
 
 const theme = createMuiTheme({
-  direction: 'rtl'
+  direction: 'rtl',
+  palette: {
+    type: 'dark',
+  },
 });
 
 ReactDOM.render(
