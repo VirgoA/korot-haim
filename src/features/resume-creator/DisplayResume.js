@@ -1,44 +1,48 @@
 import React, { useState } from "react";
-import { PDFExport } from "@progress/kendo-react-pdf";
 import ResumeOne from "./templates/ResumeOne";
 import "./displayResume.css";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 function DisplayResume(props) {
-  const [resume, setResume] = useState();
+  // const [resume, setResume] = useState();
 
-  const exportPDF = () => {
-    resume.save();
+  // const exportPDF = () => {
+  //   resume.save();
+  // };
+  const doc = new jsPDF();
+  const captureResume = () => {
+    html2canvas(document.querySelector("#resume-capture")).then((canvas) => {
+      //document.body.appendChild(canvas); // if you want see your screenshot in body.
+      const imgData = canvas.toDataURL("image/png");
+
+      //document.write('<img src="' + imgData + '"/>');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, "PNG", 0, 0);
+      pdf.save("download.pdf");
+    });
   };
 
   return (
     <div>
-      <PDFExport
-        paperSize={"A4"}
-        fileName="_____.pdf"
-        scale={0.9}
-        title=""
-        subject=""
-        keywords=""
-        ref={(r) => setResume(r)}
+      <div
+        id="resume-capture"
+        style={{
+          height: 792,
+          width: 636,
+          padding: "none",
+          backgroundColor: "white",
+          boxShadow: "5px 5px 5px black",
+          margin: "auto",
+          overflowX: "hidden",
+          overflowY: "hidden",
+        }}
       >
-        <div
-          style={{
-            height: 792,
-            width: 670,
-            padding: "none",
-            backgroundColor: "white",
-            boxShadow: "5px 5px 5px black",
-            margin: "auto",
-            overflowX: "hidden",
-            overflowY: "hidden",
-          }}
-        >
-          <ResumeOne />
-        </div>
-      </PDFExport>
+        <ResumeOne />
+      </div>
 
       <button
-        onClick={exportPDF}
+        onClick={captureResume}
         style={{
           width: "300px",
           margin: "auto",

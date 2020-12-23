@@ -33,6 +33,7 @@ function AddEmploymentForm(props) {
         type="button"
         onClick={() => {
           props.handleState({ title, company, startDate, endDate });
+          props.setButton(false);
         }}
       >
         הוספה
@@ -78,6 +79,7 @@ function EmploymentForm(props) {
 
       {showForm === true ? (
         <AddEmploymentForm
+          setButton={setShowForm}
           handleState={(newExpirience) =>
             props.dispatcher(addExperience(newExpirience))
           }

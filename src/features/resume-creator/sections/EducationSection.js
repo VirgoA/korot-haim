@@ -32,6 +32,7 @@ function AddEducationForm(props) {
         type="button"
         onClick={() => {
           props.handleState({ degree, schoolName, startDate, endDate });
+          props.setButton(false);
         }}
       >
         הוספה
@@ -74,6 +75,7 @@ function EducationSection(props) {
 
       {showForm === true ? (
         <AddEducationForm
+          setButton={setShowForm}
           handleState={(newEducation) =>
             props.dispatcher(addEducation(newEducation))
           }
