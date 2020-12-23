@@ -1,7 +1,7 @@
 import React from "react";
 import TextArea from "../../../common/TextArea"
 
-function SummaryForm(props) {
+function SummarySection(props) {
   return (
     <div>
       <h1>סיכום מקצועי</h1>
@@ -17,4 +17,4 @@ function SummaryForm(props) {
   );
 }
 
-export default SummaryForm;
+export default SummarySection;
