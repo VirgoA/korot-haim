@@ -1,7 +1,10 @@
+p{
+    color:rgb(152, 161, 179)
+}
+
 .container{
     display: flex;
     justify-content: space-between;
-    height: 100vh;
 }
 
 .resume-control{

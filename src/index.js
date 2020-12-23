@@ -9,8 +9,7 @@ import RTL from './utils/rtl';
 
 
 const theme = createMuiTheme({
-  direction: 'rtl',
-  spacing: 8
+  direction: 'rtl'
 });
 
 ReactDOM.render(

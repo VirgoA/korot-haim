@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
+import { TextField } from '@material-ui/core';
 
 import "./employmentSection.css";
 
@@ -27,7 +28,15 @@ function AddEmploymentForm(props) {
         <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
       </div>
       <div className="row-inputs">
-        <textarea dir="rtl" name="paragraph_text" cols="70" rows="3"></textarea>
+        {/* <textarea dir="rtl" name="paragraph_text" cols="70" rows="3"></textarea> */}
+        <TextField 
+          variant="filled" 
+          label="פירוט" 
+          multiline 
+          style={{
+            width: "100%"
+          }}
+        />
       </div>
       <button
         type="button"
@@ -52,6 +61,20 @@ function EmploymentForm(props) {
         התפקידים האחרונים שלכם קודם
       </p>
 
+      <SwitchButton
+        btnText="הוסף תעסוקה +"
+        currentState={showForm}
+        switchStateFunc={setShowForm}
+      />
+
+      {showForm === true ? (
+        <AddEmploymentForm
+          handleState={(newExpirience) =>
+            props.dispatcher(addExperience(newExpirience))
+          }
+        />
+      ) : null}
+
       {props.experience.length !== 0 ? (
         <div>
           <h1>רשימת ניסיון</h1>
@@ -74,25 +97,8 @@ function EmploymentForm(props) {
             );
           })}
         </div>
-      ) : null}
+      ) : null} 
 
-      {showForm === true ? (
-        <AddEmploymentForm
-          handleState={(newExpirience) =>
-            props.dispatcher(addExperience(newExpirience))
-          }
-        />
-      ) : null}
-
-      {
-        //button for displaying the form
-      }
-
-      <SwitchButton
-        btnText="הוסף תעסוקה +"
-        currentState={showForm}
-        switchStateFunc={setShowForm}
-      />
     </div>
   );
 }
