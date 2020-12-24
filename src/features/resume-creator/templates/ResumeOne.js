@@ -31,8 +31,17 @@ function ResumeOne(props) {
       </div>
 
       <div class="cv-body">
+        <div className="cv-summary">
+          {professionalSummary !== "" ? (
+            <p className="section-title">תמצית</p>
+          ) : null}
+          {professionalSummary !== "" ? <p>{professionalSummary}</p> : null}
+        </div>
+
         <div className="cv-education">
-          {education.length != 0 ? <p id="education-title">השכלה</p> : null}
+          {education.length != 0 ? (
+            <p className="section-title">השכלה</p>
+          ) : null}
           {education.map((item) => {
             return (
               <div class="edu-item">
@@ -53,25 +62,31 @@ function ResumeOne(props) {
         </div>
 
         <div className="cv-experience">
-          {experience.length != 0 ? <p id="experience-title">ניסיון</p> : null}
+          {experience.length != 0 ? (
+            <p className="section-title">ניסיון</p>
+          ) : null}
           {experience.map((item) => {
             return (
               <div class="exp-item">
                 <div>
-                  <p class="exp-company-name">{item.company}</p>
-                  <p class="exp-job-title">{item.title}</p>
+                  <b>
+                    <a class="exp-job-title">{item.title}</a>
+                  </b>
+                  <a> | </a>
+                  <a class="exp-company-name">{item.company}</a>
                 </div>
                 <div>
-                  <p class="exp-dates">
+                  <a class="exp-dates">
                     {item.startDate} - {item.endDate}
-                  </p>
+                  </a>
                 </div>
               </div>
             );
           })}
         </div>
-        <div className="cv-skills">
-          <p id="links-title">קישורים</p>
+
+        {/* <div className="cv-skills">
+          <p className="section-title">קישורים</p>
           {links.map((item) => {
             return (
               <div class="link-item">
@@ -87,65 +102,10 @@ function ResumeOne(props) {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );
-  // return (
-  //   <div>
-  //     <p style={{ fontSize: "24px" }}>
-  //       {name === "" ? "שם" : name} {lastName === "" ? "משפחה" : lastName}
-  //     </p>
-  //     <div>
-  // <p>{phoneNumber === "" ? "05X-XXXX-XXX" : phoneNumber}</p>
-  // <p>{email === "" ? "your@email.com" : email}</p>
-  //     </div>
-
-  //     <div>
-  //       <p>{professionalSummary}</p>
-  //     </div>
-
-  //     <div>
-  //       <p>ניסיון</p>
-  // {experience.map((item) => {
-  //   return (
-  //     <div>
-  //       <p>{item.title}</p>
-  //       <p>{item.company}</p>
-  //       <p>{item.startDate}</p>
-  //       <p>{item.endDate}</p>
-  //     </div>
-  //   );
-  // })}
-  //     </div>
-
-  //     <div>
-  //       <p>השכלה</p>
-  // {education.map((item) => {
-  //   return (
-  //     <div>
-  //       <p>{item.degree}</p>
-  //       <p>{item.schoolName}</p>
-  //       <p>{item.startDate}</p>
-  //       <p>{item.endDate}</p>
-  //     </div>
-  //   );
-  // })}
-  //     </div>
-
-  //     <div>
-  // <p>קישורים</p>
-  // {links.map((item) => {
-  //   return (
-  //     <div>
-  //       <p>{item.labelName}</p>
-  //       <p>{item.link}</p>
-  //     </div>
-  //   );
-  // })}
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default ResumeOne;
