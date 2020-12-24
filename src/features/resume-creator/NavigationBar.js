@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from '@material-ui/core';
+
 import "./navigationBar.css";
 
 function NavigationBar(props) {
@@ -8,13 +10,22 @@ function NavigationBar(props) {
         <a>KorotHaim.com</a>
       </div>
       <div className="nav-menu">
-        <a>FAQ</a>
-        <a>About</a>
-        <a>Contact</a>
+        <a>צור קשר</a>
+        <a>שאלות נפוצות</a>
+        <a>עלינו</a>
       </div>
-      <div className="nav-btn">
-        <a>הכן קורות חיים</a>
-      </div>
+      <Button
+        variant="contained"
+        size="large"
+        color="primary"
+        style={{
+          fontSize:"22px"
+        }}
+        onClick={() => {
+        }}
+      >
+        הכן קורות חיים
+      </Button>
     </div>
   );
 }

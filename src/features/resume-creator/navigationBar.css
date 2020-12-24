@@ -4,7 +4,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #2196f3;
+  /* border-bottom: 1px solid rgb(230, 235, 244); */
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
   background-color: #fff;
   z-index: 100;
   position: sticky;
@@ -12,14 +13,11 @@
 
 .nav-menu a {
   margin: 10px;
+  border: none;
+  transition: all 0.1s;
 }
 
-.nav-btn {
-  padding: 13px 23px;
-  border: 2px solid #2196f3;
-  color: #2196f3;
-  background-color: transparent;
-  font-size: 18px;
-  font-weight: bolder;
-  border-radius: 4px;
+.nav-menu a:hover{
+  cursor: pointer;
+  border-bottom: 2px solid #1e88e5;
 }

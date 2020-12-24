@@ -99,11 +99,11 @@
   justify-content: space-between;
 }
 
-.exp-item p,
+/* .exp-item p,
 a {
   padding-left: 6px;
   font-size: 20px;
-}
+} */
 
 .exp-company-name {
   margin-top: 6px;
