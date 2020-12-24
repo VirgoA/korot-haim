@@ -1,16 +1,29 @@
 .container{
     display: flex;
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
 }
 
 .resume-control{
     flex: 1;
     padding: 48px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-width: 800px;
+}
+
+.title{
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.description{
+    margin-bottom: 2px;
 }
 
 .resume-preview{
     flex: 1;
     padding: 48px;
-    background-color: lightblue;
+    background: #1e88e5;
 }

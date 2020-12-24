@@ -2,43 +2,31 @@ import React, { useState } from "react";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
-import "./employmentSection.css";
+import { Button } from '@material-ui/core';
+import "./sections.css";
 
 const { addLink, removeLink } = formSlice.actions;
-
-function AddLinkForm(props) {
-  const [labelName, setLabelName] = useState();
-  const [link, setLink] = useState();
-
-  //const [summary, setSummary] = useState();
-
-  return (
-    <div className="employment-form">
-      <div className="row-inputs">
-        <BasicInput name="שם הקישור" handleState={setLabelName} />
-        <BasicInput name="הקישור" handleState={setLink} />
-      </div>
-
-      <button
-        type="button"
-        onClick={() => {
-          props.handleState({ link, labelName });
-        }}
-      >
-        הוספה
-      </button>
-    </div>
-  );
-}
 
 function LinkSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
-      <h1>קישורים</h1>
-      <p>נוסף קישורים שונים לקורות החיים</p>
+    <div className="form-section">
+      <span className="title">קישורים</span>
+      <span className="description">נוסף קישורים שונים לקורות החיים</span>
+      
+      <SwitchButton
+        btnText="הוסף קישור +"
+        currentState={showForm}
+        switchStateFunc={setShowForm}
+      />
 
+      {showForm === true ? (
+        <AddLinkForm
+          handleState={(newLink) => props.dispatcher(addLink(newLink))}
+        />
+      ) : null}
+      
       {props.links.length !== 0 ? (
         <div>
           <h1>רשימת קישורים</h1>
@@ -61,21 +49,30 @@ function LinkSection(props) {
         </div>
       ) : null}
 
-      {showForm === true ? (
-        <AddLinkForm
-          handleState={(newLink) => props.dispatcher(addLink(newLink))}
-        />
-      ) : null}
+    </div>
+  );
+}
 
-      {
-        //button for displaying the form
-      }
+function AddLinkForm(props) {
+  const [labelName, setLabelName] = useState();
+  const [link, setLink] = useState();
 
-      <SwitchButton
-        btnText="הוסף קישור +"
-        currentState={showForm}
-        switchStateFunc={setShowForm}
-      />
+  return (
+    <div className="addForm">
+      <div className="row-inputs">
+        <BasicInput name="שם הקישור" handleState={setLabelName} />
+        <BasicInput name="הקישור" handleState={setLink} />
+      </div>
+
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          props.handleState({ link, labelName });
+        }}
+      >
+        הוספה
+      </Button>
     </div>
   );
 }

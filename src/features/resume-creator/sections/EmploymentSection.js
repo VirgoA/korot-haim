@@ -1,57 +1,40 @@
 import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
+import TextArea from "../../../common/TextArea"
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
+import { Button } from '@material-ui/core';
 
-import "./employmentSection.css";
+
+import "./sections.css";
 
 const { addExperience, removeExperience } = formSlice.actions;
 
-function AddEmploymentForm(props) {
-  const [company, setCompany] = useState();
-  const [title, setJob] = useState();
-
-  const [startDate, setstartDate] = useState();
-  const [endDate, setendDate] = useState();
-
-  //const [summary, setSummary] = useState();
-
-  return (
-    <div className="employment-form">
-      <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" handleState={setCompany} />
-        <BasicInput name="שם תפקיד" handleState={setJob} />
-      </div>
-      <div className="row-inputs">
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
-        <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
-      </div>
-      <div className="row-inputs">
-        <textarea dir="rtl" name="paragraph_text" cols="70" rows="3"></textarea>
-      </div>
-      <button
-        type="button"
-        onClick={() => {
-          props.handleState({ title, company, startDate, endDate });
-          props.setButton(false);
-        }}
-      >
-        הוספה
-      </button>
-    </div>
-  );
-}
-
-function EmploymentForm(props) {
+function EmploymentSection(props) {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div>
-      <h1>ניסיון תעסוקתי</h1>
-      <p>
+    <div className="form-section">
+      <span className="title">ניסיון תעסוקתי</span>
+      <span className="description">
         תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותאריכים בחלק זה. תציינו את
         התפקידים האחרונים שלכם קודם
-      </p>
+      </span>
+
+      <SwitchButton
+        btnText="הוסף תעסוקה +"
+        currentState={showForm}
+        switchStateFunc={setShowForm}
+      />
+
+      {showForm === true ? (
+        <AddEmploymentForm
+          setButton={setShowForm}
+          handleState={(newExpirience) =>
+            props.dispatcher(addExperience(newExpirience))
+          }
+        />
+      ) : null}
 
       {props.experience.length !== 0 ? (
         <div>
@@ -75,28 +58,43 @@ function EmploymentForm(props) {
             );
           })}
         </div>
-      ) : null}
-
-      {showForm === true ? (
-        <AddEmploymentForm
-          setButton={setShowForm}
-          handleState={(newExpirience) =>
-            props.dispatcher(addExperience(newExpirience))
-          }
-        />
-      ) : null}
-
-      {
-        //button for displaying the form
-      }
-
-      <SwitchButton
-        btnText="הוסף תעסוקה +"
-        currentState={showForm}
-        switchStateFunc={setShowForm}
-      />
+      ) : null} 
     </div>
   );
 }
 
-export default EmploymentForm;
+function AddEmploymentForm(props) {
+  const [company, setCompany] = useState();
+  const [title, setJob] = useState();
+
+  const [startDate, setstartDate] = useState();
+  const [endDate, setendDate] = useState();
+
+  return (
+    <div className="addForm">
+      <div className="row-inputs">
+        <BasicInput name="חברה/מעסיק" handleState={setCompany} />
+        <BasicInput name="שם תפקיד" handleState={setJob} />
+      </div>
+      <div className="row-inputs">
+        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
+        <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
+      </div>
+      <div className="row-inputs">
+        <TextArea/>
+      </div>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          props.handleState({ title, company, startDate, endDate });
+          props.setButton(false);
+        }}
+      >
+        הוספה
+      </Button>
+    </div>
+  );
+}
+
+export default EmploymentSection;
