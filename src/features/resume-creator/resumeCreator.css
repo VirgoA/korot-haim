@@ -9,6 +9,7 @@
     padding: 48px;
     overflow-y: scroll;
     scrollbar-width: none;
+    height: 100%;
     max-width: 800px;
 }
 
@@ -26,4 +27,5 @@
     flex: 1;
     padding: 48px;
     background: #1e88e5;
+    max-height: 100vh;
 }

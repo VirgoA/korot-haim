@@ -4,7 +4,7 @@ import ResumeCreator from "./features/resume-creator/ResumeCreator";
 
 function App() {
   return (
-    <div>
+    <div className="app-container">
       <NavigationBar />
       <ResumeCreator />
     </div>

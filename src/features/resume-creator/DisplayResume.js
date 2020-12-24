@@ -28,8 +28,10 @@ function DisplayResume(props) {
       <div
         id="resume-capture"
         style={{
-          height: 792,
-          width: 636,
+          // height: 792,
+          height: 528,
+          // width: 636,
+          width: 424,
           padding: "none",
           backgroundColor: "white",
           boxShadow: "5px 5px 5px black",

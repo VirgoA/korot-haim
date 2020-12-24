@@ -4,17 +4,22 @@
 
 html{
     font-size: 16px;
+    height: 100%;
 }
 
 body{
     margin: 0;
     text-align: right;
-    height: 100vh;
+    height: 100%;
     font-family: sans-serif;
 }
 
 #root{
     height: 100%;
+}
+
+.app-container{
+    height: 100vh;
 }
 
 ::-webkit-scrollbar {
