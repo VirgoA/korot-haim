@@ -6,26 +6,31 @@ import "./navigationBar.css";
 function NavigationBar(props) {
   return (
     <div className="navbar">
-      <div className="nav-logo">
-        <a>KorotHaim.com</a>
+      <div className="nav-left">
+        <div className="nav-logo">
+          <a>KorotHaim.com</a>
+        </div>
       </div>
-      <div className="nav-menu">
-        <a>צור קשר</a>
-        <a>שאלות נפוצות</a>
-        <a>עלינו</a>
+      <div className="nav-right">
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          style={{
+            fontSize:"22px"
+          }}
+          onClick={() => {
+          }}
+        >
+          הכן קורות חיים
+        </Button>
+        <div className="separator"></div>
+        <div className="nav-menu">
+          <a>צור קשר</a>
+          <a>שאלות נפוצות</a>
+          <a>עלינו</a>
+        </div>
       </div>
-      <Button
-        variant="contained"
-        size="large"
-        color="primary"
-        style={{
-          fontSize:"22px"
-        }}
-        onClick={() => {
-        }}
-      >
-        הכן קורות חיים
-      </Button>
     </div>
   );
 }
