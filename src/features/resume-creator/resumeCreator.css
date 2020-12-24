@@ -9,6 +9,7 @@
     padding: 48px;
     overflow-y: scroll;
     scrollbar-width: none;
+    max-width: 800px;
 }
 
 .title{
@@ -18,12 +19,11 @@
 }
 
 .description{
-    color:rgb(152, 161, 179);
     margin-bottom: 2px;
 }
 
 .resume-preview{
     flex: 1;
     padding: 48px;
-    background-color: lightblue;
+    background: #1e88e5;
 }

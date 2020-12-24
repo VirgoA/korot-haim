@@ -1,21 +1,6 @@
 import React from "react";
+import { withStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
-
-function oldBasicInput(props) {
-  return (
-    <div className="input-box">
-      <label>{props.name}</label>
-      <input
-        type="text"
-        name={props.name}
-        dir="rtl"
-        onChange={(e) => {
-          props.handleState(e.target.value);
-        }}
-      />
-    </div>
-  );
-}
 
 function BasicInput(props){
   return (
@@ -24,7 +9,6 @@ function BasicInput(props){
       style={{
         flex: 1
       }}
-      flexGrow={1} 
       label={props.name} 
       onChange={(e)=>{
         props.handleState(e.target.value)

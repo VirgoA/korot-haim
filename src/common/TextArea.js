@@ -1,8 +1,9 @@
+import { withStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 
 const TextArea = (props) => {
     return (
-        <TextField 
+        <TextField
             variant="filled" 
             label="פירוט" 
             multiline 
