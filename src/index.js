@@ -5,14 +5,17 @@ import App from './App';
 import './index.css';
 import store from './store'
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue';
 import RTL from './utils/rtl';
 
 
 const theme = createMuiTheme({
   direction: 'rtl',
   palette: {
-    type: 'dark',
-  },
+    primary: {
+      main: blue[600]
+    }
+  }
 });
 
 ReactDOM.render(
