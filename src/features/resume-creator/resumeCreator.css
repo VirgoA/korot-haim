@@ -14,6 +14,8 @@
 }
 
 .title{
+    border-right: #1e88e5 4px solid;
+    padding-right: 10px;
     font-size: 22px;
     margin-bottom: 12px;
     font-weight: 600;
