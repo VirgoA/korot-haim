@@ -5,3 +5,15 @@
 
 .k-pdf-export {
 }
+
+#resume-capture{
+  height: 528px;
+  width: 424px;
+  padding: none;
+  background-color: white;
+  box-shadow: 5px 5px 5px black;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-radius: 10px;
+}

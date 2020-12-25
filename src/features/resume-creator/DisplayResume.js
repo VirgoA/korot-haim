@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ResumeOne from "./templates/ResumeOne";
-import "./displayResume.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Button } from '@material-ui/core';
 import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
+import "./displayResume.css"
 
 function DisplayResume(props) {
   // const [resume, setResume] = useState();
@@ -27,21 +27,7 @@ function DisplayResume(props) {
 
   return (
     <div>
-      <div
-        id="resume-capture"
-        style={{
-          // height: 792,
-          height: 528,
-          // width: 636,
-          width: 424,
-          padding: "none",
-          backgroundColor: "white",
-          boxShadow: "5px 5px 5px black",
-          margin: "auto",
-          overflowX: "hidden",
-          overflowY: "hidden",
-        }}
-      >
+      <div id="resume-capture">
         <ResumeOne />
       </div>
       <div style={{display:"flex", justifyContent:"center"}}>
@@ -51,7 +37,7 @@ function DisplayResume(props) {
           color="secondary"
           style={{
             fontSize:"22px",
-            marginTop:"16px",
+            marginTop:"14px",
             alignContent:"center",
             fontWeight:"bold",
             width:"250px"
