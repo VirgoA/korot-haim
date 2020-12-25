@@ -1,14 +1,36 @@
 import "./app.css";
 import NavigationBar from "./features/resume-creator/NavigationBar";
 import ResumeCreator from "./features/resume-creator/ResumeCreator";
+import { useState, useEffect } from "react";
+import whaleGif from "./resources/gifs/whale.gif";
+import FadeIn from "react-fade-in";
 
 function App() {
-  return (
-    <div className="app-container">
-      <NavigationBar />
-      <ResumeCreator />
-    </div>
-  );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1400);
+  }, []);
+
+  if (loading) {
+    return (
+      <div id="loading-gif">
+        <img src={whaleGif} alt="loading..." />
+        {/** <LinearProgress /> */}
+      </div>
+    );
+  } else {
+    return (
+      <div className="app-container">
+        <NavigationBar />
+        <FadeIn transitionDuration="2500" id="loading-gif">
+          <ResumeCreator />
+        </FadeIn>
+      </div>
+    );
+  }
 }
 
 export default App;
