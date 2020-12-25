@@ -5,7 +5,7 @@ import App from './App';
 import './index.css';
 import store from './store'
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
+import { blue, blueGrey } from '@material-ui/core/colors';
 import RTL from './utils/rtl';
 
 
@@ -14,6 +14,9 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: blue[600]
+    },
+    secondary: {
+      main: blueGrey[800]
     }
   }
 });

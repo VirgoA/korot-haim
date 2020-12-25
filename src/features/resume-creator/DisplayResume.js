@@ -3,6 +3,8 @@ import ResumeOne from "./templates/ResumeOne";
 import "./displayResume.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { Button } from '@material-ui/core';
+import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
 
 function DisplayResume(props) {
   // const [resume, setResume] = useState();
@@ -42,20 +44,24 @@ function DisplayResume(props) {
       >
         <ResumeOne />
       </div>
-
-      <button
-        onClick={captureResume}
-        style={{
-          width: "300px",
-          margin: "auto",
-          marginTop: "24px",
-          display: "block",
-          alignContent: "center",
-          fontSize: "30px",
-        }}
-      >
-        download
-      </button>
+      <div style={{display:"flex", justifyContent:"center"}}>
+        <Button
+          variant="contained"
+          size="large"
+          color="secondary"
+          style={{
+            fontSize:"22px",
+            marginTop:"16px",
+            alignContent:"center",
+            fontWeight:"bold",
+            width:"250px"
+          }}
+          onClick={captureResume}
+        >
+          הורד
+        <GetAppRoundedIcon style={{marginTop:"4px"}}/>
+        </Button>
+      </div>
     </div>
   );
 }
