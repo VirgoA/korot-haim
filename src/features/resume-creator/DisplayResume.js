@@ -27,7 +27,15 @@ function DisplayResume(props) {
 
   return (
     <div>
-      <div style={{ width: "640px", height: "780px" }} id="resume-capture">
+      <div
+        style={{
+          width: "90%",
+          maxWidth: "640px",
+          minHeight: "780px",
+          maxHeight: "780px",
+        }}
+        id="resume-capture"
+      >
         <ResumeOne />
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>

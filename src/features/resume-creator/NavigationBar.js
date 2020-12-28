@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
 
 import "./navigationBar.css";
 
@@ -17,18 +17,17 @@ function NavigationBar(props) {
           size="large"
           color="primary"
           style={{
-            fontSize:"22px"
+            fontSize: "22px",
           }}
-          onClick={() => {
-          }}
+          onClick={() => {}}
         >
           הכן קורות חיים
         </Button>
         <div className="separator"></div>
         <div className="nav-menu">
-          <a>צור קשר</a>
-          <a>שאלות נפוצות</a>
-          <a>עלינו</a>
+          <a href="../contact.html">צור קשר</a>
+          <a href="../faq.html">שאלות נפוצות</a>
+          <a href="../about.html">עלינו</a>
         </div>
       </div>
     </div>
