@@ -35,7 +35,9 @@ function ResumeOne(props) {
           {professionalSummary !== "" ? (
             <p className="section-title">תמצית</p>
           ) : null}
-          {professionalSummary !== "" ? <p>{professionalSummary}</p> : null}
+          {professionalSummary !== "" ? (
+            <p dir="rtl">{professionalSummary}</p>
+          ) : null}
         </div>
 
         <div className="cv-education">
@@ -44,18 +46,21 @@ function ResumeOne(props) {
           ) : null}
           {education.map((item) => {
             return (
-              <div class="edu-item">
-                <div>
-                  <p class="edu-school-name">
-                    <b>{item.schoolName}</b>
-                  </p>
-                  <p class="edu-degree-name">{item.degree}</p>
+              <div>
+                <div class="edu-item" dir="ltr">
+                  <div>
+                    <p class="edu-school-name">
+                      <b>{item.schoolName}</b>
+                    </p>
+                    <p class="edu-degree-name">{item.degree}</p>
+                  </div>
+                  <div>
+                    <p class="edu-dates">
+                      {item.startDate} - {item.endDate}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p class="edu-dates">
-                    {item.startDate} - {item.endDate}
-                  </p>
-                </div>
+                <p>{item.summary}</p>
               </div>
             );
           })}
@@ -67,19 +72,22 @@ function ResumeOne(props) {
           ) : null}
           {experience.map((item) => {
             return (
-              <div class="exp-item">
-                <div>
-                  <b>
-                    <a class="exp-job-title">{item.title}</a>
-                  </b>
-                  <a> | </a>
-                  <a class="exp-company-name">{item.company}</a>
+              <div>
+                <div class="exp-item" dir="ltr">
+                  <div>
+                    <b>
+                      <a class="exp-job-title">{item.title}</a>
+                    </b>
+                    <a> | </a>
+                    <a class="exp-company-name">{item.company}</a>
+                  </div>
+                  <div>
+                    <a class="exp-dates">
+                      {item.startDate} - {item.endDate}
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <a class="exp-dates">
-                    {item.startDate} - {item.endDate}
-                  </a>
-                </div>
+                <p>{item.summary}</p>
               </div>
             );
           })}

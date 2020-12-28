@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
-import TextArea from "../../../common/TextArea"
+import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
-import { Button } from '@material-ui/core';
+import { Button } from "@material-ui/core";
 import "./sections.css";
 
 const { addEducation, removeEducation } = formSlice.actions;
@@ -14,7 +14,9 @@ function EducationSection(props) {
   return (
     <div className="form-section">
       <span className="title">השכלה</span>
-      <span className="description">בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים</span>
+      <span className="description">
+        בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים
+      </span>
 
       <SwitchButton
         btnText="הוסף לימודים +"
@@ -30,7 +32,7 @@ function EducationSection(props) {
           }
         />
       ) : null}
-      
+
       {props.education.length !== 0 ? (
         <div>
           <h1>רשימת השכלה</h1>
@@ -41,6 +43,7 @@ function EducationSection(props) {
                 <p>שם המוסד: {item.schoolName}</p>
                 <p>תאריך התחלה: {item.startDate}</p>
                 <p>תאריך סיום: {item.endDate}</p>
+                <p>סיכום: {item.summary}</p>
                 <button
                   type="button"
                   onClick={() => {
@@ -54,7 +57,6 @@ function EducationSection(props) {
           })}
         </div>
       ) : null}
-
     </div>
   );
 }
@@ -65,6 +67,8 @@ function AddEducationForm(props) {
 
   const [startDate, setstartDate] = useState();
   const [endDate, setendDate] = useState();
+
+  const [summary, setSummary] = useState();
 
   return (
     <div className="addForm">
@@ -77,13 +81,23 @@ function AddEducationForm(props) {
         <BasicInput name="תאריך תחילת לימודים" handleState={setendDate} />
       </div>
       <div className="row-inputs">
-        <TextArea/>
+        <TextArea
+          onChange={(e) => {
+            setSummary(e.target.value);
+          }}
+        />
       </div>
       <Button
         variant="outlined"
         color="primary"
         onClick={() => {
-          props.handleState({ degree, schoolName, startDate, endDate });
+          props.handleState({
+            degree,
+            schoolName,
+            startDate,
+            endDate,
+            summary,
+          });
           props.setButton(false);
         }}
       >

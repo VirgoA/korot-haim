@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import BasicInput from "../../../common/BasicInput";
-import TextArea from "../../../common/TextArea"
+import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
-import { Button } from '@material-ui/core';
-
+import { Button } from "@material-ui/core";
 
 import "./sections.css";
 
@@ -46,6 +45,8 @@ function EmploymentSection(props) {
                 <p>חברה: {item.company}</p>
                 <p>תאריך התחלה: {item.startDate}</p>
                 <p>תאריך סיום: {item.endDate}</p>
+                <p>סיכום: {item.summary}</p>
+
                 <button
                   type="button"
                   onClick={() => {
@@ -58,7 +59,7 @@ function EmploymentSection(props) {
             );
           })}
         </div>
-      ) : null} 
+      ) : null}
     </div>
   );
 }
@@ -69,6 +70,7 @@ function AddEmploymentForm(props) {
 
   const [startDate, setstartDate] = useState();
   const [endDate, setendDate] = useState();
+  const [summary, setSummary] = useState();
 
   return (
     <div className="addForm">
@@ -81,13 +83,17 @@ function AddEmploymentForm(props) {
         <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
       </div>
       <div className="row-inputs">
-        <TextArea/>
+        <TextArea
+          onChange={(e) => {
+            setSummary(e.target.value);
+          }}
+        />
       </div>
       <Button
         variant="outlined"
         color="primary"
         onClick={() => {
-          props.handleState({ title, company, startDate, endDate });
+          props.handleState({ title, company, startDate, endDate, summary });
           props.setButton(false);
         }}
       >

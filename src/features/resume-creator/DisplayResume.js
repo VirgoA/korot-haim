@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import ResumeOne from "./templates/ResumeOne";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { Button } from '@material-ui/core';
-import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
-import "./displayResume.css"
+import { Button } from "@material-ui/core";
+import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
+import "./displayResume.css";
 
 function DisplayResume(props) {
   // const [resume, setResume] = useState();
@@ -27,25 +27,25 @@ function DisplayResume(props) {
 
   return (
     <div>
-      <div id="resume-capture">
+      <div style={{ width: "640px", height: "780px" }} id="resume-capture">
         <ResumeOne />
       </div>
-      <div style={{display:"flex", justifyContent:"center"}}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Button
           variant="contained"
           size="large"
           color="secondary"
           style={{
-            fontSize:"22px",
-            marginTop:"14px",
-            alignContent:"center",
-            fontWeight:"bold",
-            width:"250px"
+            fontSize: "22px",
+            marginTop: "14px",
+            alignContent: "center",
+            fontWeight: "bold",
+            width: "250px",
           }}
           onClick={captureResume}
         >
           הורד
-        <GetAppRoundedIcon style={{marginTop:"4px"}}/>
+          <GetAppRoundedIcon style={{ marginTop: "4px" }} />
         </Button>
       </div>
     </div>
