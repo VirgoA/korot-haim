@@ -17,18 +17,22 @@ function App() {
   if (loading) {
     return (
       <div id="loading-gif">
-        <img src={whaleGif} alt="loading..." />
+        <FadeIn transitionDuration="2500" id="loading-gif">
+          <img src={whaleGif} alt="loading..." />
+        </FadeIn>
+
         {/** <LinearProgress /> */}
       </div>
     );
   } else {
     return (
-      <div className="app-container">
-        <NavigationBar />
-        <FadeIn transitionDuration="2500" id="loading-gif">
+      <FadeIn transitionDuration="2500" id="loading-gif">
+        <div className="app-container">
+          <NavigationBar />
+
           <ResumeCreator />
-        </FadeIn>
-      </div>
+        </div>
+      </FadeIn>
     );
   }
 }
