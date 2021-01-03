@@ -2,3 +2,13 @@
   border: 1px solid rgb(230, 235, 244);
   padding: 24px;
 }
+
+.chipsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.chip{
+  margin: 5px 10px;
+}

@@ -44,9 +44,9 @@ function ResumeOne(props) {
           {education.length != 0 ? (
             <p className="section-title">השכלה</p>
           ) : null}
-          {education.map((item) => {
+          {education.map((item, index) => {
             return (
-              <div>
+              <div key={index}>
                 <div className="edu-item" dir="ltr">
                   <div>
                     <p className="edu-school-name">
@@ -70,9 +70,9 @@ function ResumeOne(props) {
           {experience.length != 0 ? (
             <p className="section-title">ניסיון</p>
           ) : null}
-          {experience.map((item) => {
+          {experience.map((item, index) => {
             return (
-              <div>
+              <div key={index}>
                 <div className="exp-item" dir="ltr">
                   <div>
                     <b>

@@ -3,7 +3,7 @@ import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
-import { Button } from "@material-ui/core";
+import { Button, Chip } from "@material-ui/core";
 import "./sections.css";
 
 const { addEducation, removeEducation } = formSlice.actions;
@@ -17,6 +17,24 @@ function EducationSection(props) {
       <span className="description">
         בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים
       </span>
+
+      {props.education.length !== 0 ? (
+        <div className="chipsGroup">
+          {props.education.map((item, index) => {
+            return (
+              <div key={index}>
+                <Chip
+                  className="chip"
+                  onDelete={() => {
+                    props.dispatcher(removeEducation(index));
+                  }}
+                  label={item.degree}
+                />
+              </div>
+            )
+          })}
+        </div>
+      ) : null}
 
       <SwitchButton
         btnText="הוסף לימודים +"
@@ -33,30 +51,6 @@ function EducationSection(props) {
         />
       ) : null}
 
-      {props.education.length !== 0 ? (
-        <div>
-          <h1>רשימת השכלה</h1>
-          {props.education.map((item, i) => {
-            return (
-              <div key={i}>
-                <p>תיאור: {item.degree}</p>
-                <p>שם המוסד: {item.schoolName}</p>
-                <p>תאריך התחלה: {item.startDate}</p>
-                <p>תאריך סיום: {item.endDate}</p>
-                <p>סיכום: {item.summary}</p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    props.dispatcher(removeEducation(i));
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      ) : null}
     </div>
   );
 }

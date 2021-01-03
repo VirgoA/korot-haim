@@ -4,7 +4,6 @@ import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
 import { Button, Chip } from "@material-ui/core";
-import CancelIcon from '@material-ui/icons/Cancel';
 
 import "./sections.css";
 
@@ -21,6 +20,24 @@ function EmploymentSection(props) {
         התפקידים האחרונים שלכם קודם
       </span>
 
+      {props.experience.length !== 0 ? (
+        <div className="chipsGroup">
+          {props.experience.map((item, index) => {
+            return (
+              <div key={index}>
+                <Chip
+                  className="chip"
+                  onDelete={() => {
+                    props.dispatcher(removeExperience(index));
+                  }}
+                  label={item.company}
+                />
+              </div>
+            )
+          })}
+        </div>
+      ) : null}
+
       <SwitchButton
         btnText="הוסף תעסוקה +"
         currentState={showForm}
@@ -36,37 +53,6 @@ function EmploymentSection(props) {
         />
       ) : null}
 
-      {props.experience.length !== 0 ? (
-        <div>
-          <h1>רשימת ניסיון</h1>
-          {props.experience.map((item, i) => {
-            // return (
-            //   <div key={i}>
-            //     <p>תפקיד: {item.title}</p>
-            //     <p>חברה: {item.company}</p>
-            //     <p>תאריך התחלה: {item.startDate}</p>
-            //     <p>תאריך סיום: {item.endDate}</p>
-            //     <button
-            //       type="button"
-            //       onClick={() => {
-            //         props.dispatcher(removeExperience(i));
-            //       }}
-            //     >
-            //       Delete
-            //     </button>
-            //   </div>
-            // );
-            return (
-              <div key={i}>
-                <Chip
-                  icon={CancelIcon}
-                  label={item.company}
-                />
-              </div>
-            )
-          })}
-        </div>
-      ) : null}
     </div>
   );
 }
