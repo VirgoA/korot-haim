@@ -1,8 +1,8 @@
 import express from "express";
-
+import { printRequest } from "./middleware";
 const app = express();
 
-app.get("/", function (req, res) {
+app.post("/", printRequest, function (req, res) {
   res.send("Hello World");
 });
 
