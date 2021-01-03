@@ -30,7 +30,7 @@ function ResumeOne(props) {
         </div>
       </div>
 
-      <div class="cv-body">
+      <div className="cv-body">
         <div className="cv-summary">
           {professionalSummary !== "" ? (
             <p className="section-title">תמצית</p>
@@ -47,15 +47,15 @@ function ResumeOne(props) {
           {education.map((item) => {
             return (
               <div>
-                <div class="edu-item" dir="ltr">
+                <div className="edu-item" dir="ltr">
                   <div>
-                    <p class="edu-school-name">
+                    <p className="edu-school-name">
                       <b>{item.schoolName}</b>
                     </p>
-                    <p class="edu-degree-name">{item.degree}</p>
+                    <p className="edu-degree-name">{item.degree}</p>
                   </div>
                   <div>
-                    <p class="edu-dates">
+                    <p className="edu-dates">
                       {item.startDate} - {item.endDate}
                     </p>
                   </div>
@@ -73,16 +73,16 @@ function ResumeOne(props) {
           {experience.map((item) => {
             return (
               <div>
-                <div class="exp-item" dir="ltr">
+                <div className="exp-item" dir="ltr">
                   <div>
                     <b>
-                      <a class="exp-job-title">{item.title}</a>
+                      <a className="exp-job-title">{item.title}</a>
                     </b>
                     <a> | </a>
-                    <a class="exp-company-name">{item.company}</a>
+                    <a className="exp-company-name">{item.company}</a>
                   </div>
                   <div>
-                    <a class="exp-dates">
+                    <a className="exp-dates">
                       {item.startDate} - {item.endDate}
                     </a>
                   </div>

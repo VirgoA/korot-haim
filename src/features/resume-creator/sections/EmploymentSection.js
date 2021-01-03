@@ -3,7 +3,8 @@ import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
 import formSlice from "../state/formSlice";
-import { Button } from "@material-ui/core";
+import { Button, Chip } from "@material-ui/core";
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import "./sections.css";
 
@@ -39,24 +40,30 @@ function EmploymentSection(props) {
         <div>
           <h1>רשימת ניסיון</h1>
           {props.experience.map((item, i) => {
+            // return (
+            //   <div key={i}>
+            //     <p>תפקיד: {item.title}</p>
+            //     <p>חברה: {item.company}</p>
+            //     <p>תאריך התחלה: {item.startDate}</p>
+            //     <p>תאריך סיום: {item.endDate}</p>
+            //     <button
+            //       type="button"
+            //       onClick={() => {
+            //         props.dispatcher(removeExperience(i));
+            //       }}
+            //     >
+            //       Delete
+            //     </button>
+            //   </div>
+            // );
             return (
               <div key={i}>
-                <p>תפקיד: {item.title}</p>
-                <p>חברה: {item.company}</p>
-                <p>תאריך התחלה: {item.startDate}</p>
-                <p>תאריך סיום: {item.endDate}</p>
-                <p>סיכום: {item.summary}</p>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    props.dispatcher(removeExperience(i));
-                  }}
-                >
-                  Delete
-                </button>
+                <Chip
+                  icon={CancelIcon}
+                  label={item.company}
+                />
               </div>
-            );
+            )
           })}
         </div>
       ) : null}
