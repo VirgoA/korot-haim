@@ -10,6 +10,7 @@
   "author": "Tal Gold",
   "license": "ISC",
   "dependencies": {
+    "common-tags": "^1.8.0",
     "express": "^4.17.1",
     "node-latex": "^3.0.0",
     "pretty-latex": "^0.1.0"

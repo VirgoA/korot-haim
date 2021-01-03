@@ -1,3 +1,6 @@
+import { generatePDF } from "../generator";
+var fs = require("fs");
+
 export function printRequest(req, res, next) {
   console.log("middleware function");
   console.log(req.body);
@@ -27,4 +30,14 @@ export function accessControlAllowOrigin(req, res, next) {
 
   // Pass to next layer of middleware
   next();
+}
+
+export function generatePDFMW(req, res, next) {
+  const output = fs.createWriteStream("output.pdf");
+
+  let pdf = generatePDF(req.body);
+  pdf.pipe(output);
+
+  //res.setHeader("content-type", "application/pdf");
+  return next();
 }
