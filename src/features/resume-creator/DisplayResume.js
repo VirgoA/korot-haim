@@ -31,8 +31,7 @@ function DisplayResume(props) {
         style={{
           width: "90%",
           maxWidth: "640px",
-          minHeight: "780px",
-          maxHeight: "780px",
+          height: "75vh"
         }}
         id="resume-capture"
       >

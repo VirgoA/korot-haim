@@ -13,3 +13,11 @@
 form{
 
 }
+
+@media (max-width:600px)  { 
+    .row-inputs{
+        flex-direction: column;
+        margin-bottom: 24px;
+        gap: 24px;
+    }
+}

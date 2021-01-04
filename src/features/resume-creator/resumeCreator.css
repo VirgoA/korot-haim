@@ -33,3 +33,16 @@
     background: linear-gradient(0deg, #64b5f6, #1e88e5);
     max-height: 100vh;
 }
+
+@media (max-width:320px){ 
+    .resume-control{
+        padding: 12px;
+    }
+ }
+
+@media (max-width:1025px) { 
+    .container{
+        display: flex;
+        flex-direction: column;
+    }       
+}

@@ -26,3 +26,9 @@ body{
     width: 0%;
     background: transparent;
 }
+
+@media (max-width:1025px) { 
+    .app-container{
+        height: 100%;
+    }    
+}
