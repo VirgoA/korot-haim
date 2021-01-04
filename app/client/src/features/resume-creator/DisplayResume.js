@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ResumeOne from "./templates/ResumeOne";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import "./displayResume.css";
+import { sendPostReq } from "../../communication";
 
 function DisplayResume(props) {
   // const [resume, setResume] = useState();
@@ -24,6 +26,8 @@ function DisplayResume(props) {
       pdf.save("download.pdf");
     });
   };
+
+  const data = useSelector((state) => state.form);
 
   return (
     <div>
@@ -50,7 +54,9 @@ function DisplayResume(props) {
             fontWeight: "bold",
             width: "250px",
           }}
-          onClick={captureResume}
+          onClick={() => {
+            sendPostReq(data);
+          }}
         >
           הורד
           <GetAppRoundedIcon style={{ marginTop: "4px" }} />

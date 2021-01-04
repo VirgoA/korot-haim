@@ -1,10 +1,19 @@
-import { generatePDF } from "../generator";
-var fs = require("fs");
+import { generatePDFFromData } from "../generator";
 
 export function printRequest(req, res, next) {
   console.log("middleware function");
   console.log(req.body);
 
+  return next();
+}
+
+export function generatePDF(req, res, next) {
+  let pdf = generatePDFFromData(req.body);
+  pdf.pipe(res);
+
+  //res.end();
+
+  console.log(res);
   return next();
 }
 
@@ -21,7 +30,7 @@ export function accessControlAllowOrigin(req, res, next) {
   // Request headers you wish to allow
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
+    "X-Requested-With,content-type,responseType,accept"
   );
 
   // Set to true if you need the website to include cookies in the requests sent
@@ -30,14 +39,4 @@ export function accessControlAllowOrigin(req, res, next) {
 
   // Pass to next layer of middleware
   next();
-}
-
-export function generatePDFMW(req, res, next) {
-  const output = fs.createWriteStream("output.pdf");
-
-  let pdf = generatePDF(req.body);
-  pdf.pipe(output);
-
-  //res.setHeader("content-type", "application/pdf");
-  return next();
 }

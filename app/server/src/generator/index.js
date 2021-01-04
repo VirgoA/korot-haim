@@ -10,11 +10,11 @@ import getTemplateData from "./templates";
  * @return The generated PDF.
  */
 
-function generatePDF(formData) {
+function generatePDFFromData(formData) {
   const { texDoc, opts } = getTemplateData(formData);
   const pdf = latex(texDoc, opts);
 
   return pdf;
 }
 
-export { generatePDF };
+export { generatePDFFromData };
