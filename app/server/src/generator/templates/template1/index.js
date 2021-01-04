@@ -37,7 +37,7 @@ const generator = {
 
     return source`
       %==== Education ====%
-      \\header{${heading || "Education"}}
+      \\header{${heading || "השכלה"}}
       ${education.map((school) => {
         const {
           institution,
@@ -101,7 +101,7 @@ const generator = {
 
     return source`
       %==== Experience ====%
-      \\header{${heading || "Experience"}}
+      \\header{${heading || "ניסיון"}}
       \\vspace{1mm}
 
       ${work.map((job) => {
@@ -322,8 +322,9 @@ const generator = {
 function template1(values) {
   const { headings = {} } = values;
 
+  //    \\raggedright
   return stripIndent`
-    \\documentclass[a4paper]{article}
+    \\documentclass[12,a4paper]{article}
     \\usepackage{fullpage}
     \\usepackage{amsmath}
     \\usepackage{amssymb}
@@ -335,7 +336,8 @@ function template1(values) {
     \\usepackage[utf8]{inputenc}
     \\textheight=10in
     \\pagestyle{empty}
-    \\raggedright
+    \\raggedleft
+
 
     ${generator.resumeDefinitions()}
 
