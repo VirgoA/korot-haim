@@ -37,7 +37,10 @@ const generator = {
 
     return source`
       %==== Education ====%
-      \\header{${heading || "השכלה"}}
+      \\begin{large}
+      
+      \\header{\\textbf{${heading || "השכלה"}}}
+      \\end{large}
       ${education.map((school) => {
         const {
           institution,
@@ -65,7 +68,7 @@ const generator = {
         }
 
         if (area) {
-          line2 += studyType ? ` ${area}` : `Degree in ${area}`;
+          line2 += studyType ? ` ${area}` : `תואר ב${area}`;
         }
 
         if (gpa) {
@@ -73,7 +76,7 @@ const generator = {
         }
 
         if (startDate || endDate) {
-          const gradLine = `${startDate || ""} - ${endDate || ""}`;
+          const gradLine = `${endDate || ""}`;
           line2 += line2 ? ` \\hfill ${gradLine}` : gradLine;
         }
 
@@ -94,6 +97,21 @@ const generator = {
     `;
   },
 
+  summarySection(summary) {
+    if (!summary) {
+      return "";
+    }
+
+    return source`
+      %==== Education ====%
+      \\begin{Large}
+      
+      \\header{\\textbf{תמצית}}
+      \\end{Large}
+      ${summary}
+    `;
+  },
+
   workSection(work, heading) {
     if (!work) {
       return "";
@@ -101,7 +119,9 @@ const generator = {
 
     return source`
       %==== Experience ====%
-      \\header{${heading || "ניסיון"}}
+      \\begin{large}
+      \\header{\\textbf{${heading || "ניסיון"}}}
+      \\end{large}
       \\vspace{1mm}
 
       ${work.map((job) => {
@@ -355,6 +375,8 @@ function template1(values) {
               values.education,
               headings.education
             );
+          case "summary":
+            return generator.summarySection(values.summary);
 
           case "work":
             return generator.workSection(values.work, headings.work);

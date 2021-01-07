@@ -10,8 +10,6 @@ const app = express();
 app.use(accessControlAllowOrigin);
 app.use(express.json());
 
-app.post("/", printRequest, generatePDF, function (req, res) {
-  //res.send("Hello World");
-});
+app.post("/", printRequest, generatePDF);
 
 export default app;

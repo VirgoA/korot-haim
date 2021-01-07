@@ -31,9 +31,10 @@ function convertDataToObject(data) {
       phone: data.phoneNumber,
       name: data.name + " " + data.lastName,
     },
+    summary: data.professionalSummary,
     education: educationArray,
     work: experienceArray,
-    sections: ["templates", "profile", "education", "work"],
+    sections: ["templates", "profile", "summary", "education", "work"],
   };
 
   console.log(dataObject);
@@ -48,6 +49,7 @@ function convertDataToObject(data) {
         location: "",
         area: education[index].degree,
         studyType: "",
+        startDate: education[index].startDate,
         endDate: education[index].endDate,
       };
       educationArray.push(educationObject);

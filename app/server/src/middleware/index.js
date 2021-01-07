@@ -10,11 +10,8 @@ export function printRequest(req, res, next) {
 export function generatePDF(req, res, next) {
   let pdf = generatePDFFromData(req.body);
   pdf.pipe(res);
-
-  //res.end();
-
   console.log(res);
-  return next();
+  return;
 }
 
 export function accessControlAllowOrigin(req, res, next) {
