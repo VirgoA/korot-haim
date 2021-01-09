@@ -30,10 +30,10 @@ function EmploymentSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeExperience(index));
                   }}
-                  label={item.company}
+                  label={item.company + ` - ` + item.title}
                 />
               </div>
-            )
+            );
           })}
         </div>
       ) : null}
@@ -52,7 +52,6 @@ function EmploymentSection(props) {
           }
         />
       ) : null}
-
     </div>
   );
 }
