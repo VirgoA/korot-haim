@@ -20,8 +20,6 @@ function App() {
         <FadeIn transitionDuration="2500" id="loading-gif">
           <img src={whaleGif} alt="loading..." />
         </FadeIn>
-
-        {/** <LinearProgress /> */}
       </div>
     );
   } else {
