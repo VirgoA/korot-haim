@@ -44,5 +44,9 @@
     .container{
         display: flex;
         flex-direction: column;
-    }       
+    }     
+    
+    .resume-preview{
+        display: none;
+    }  
 }

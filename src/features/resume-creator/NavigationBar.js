@@ -7,6 +7,7 @@ function NavigationBar(props) {
   return (
     <div className="navbar">
       <div className="nav-left">
+        <span className="ham-button"></span>
         <div className="nav-logo">
           <a>KorotHaim.com</a>
         </div>
