@@ -19,7 +19,7 @@ function ResumeOne(props) {
         <div className="full-name">
           <p>
             <span id="personal-name">{name === "" ? "שם" : name}</span>
-            <span id="last-name">{lastName === "" ? "משפחה" : lastName}</span>
+            <span id="last-name">{lastName === "" ? "מלא" : lastName}</span>
           </p>
         </div>
         <div className="personal-info">
