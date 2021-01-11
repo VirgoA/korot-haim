@@ -7,7 +7,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import "./navigationBar.css";
 
 function NavigationBar(props) {
-  //test zone
 
   const [state, setState] = React.useState({
     open: false
@@ -20,6 +19,26 @@ function NavigationBar(props) {
 
     setState({ ...state, open});
   };
+  
+  const navMenu = () => (
+    <div className="nav-menu">
+      <a href="../contact.html">צור קשר</a>
+      <a href="../faq.html">שאלות נפוצות</a>
+      <a href="../about.html">עלינו</a>
+    </div>
+  )
+
+  const callToAction = () => (
+    <Button
+      variant="contained"
+      size="large"
+      color="primary"
+      id="action"
+      onClick={() => {}}
+    >
+      הכן קורות חיים
+    </Button>
+  )
 
   const list = () => (
     <div
@@ -27,64 +46,33 @@ function NavigationBar(props) {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      {callToAction()}
+      {/* <Divider /> */}
+      {navMenu()}
     </div>
   );
-  //test zone end
+
   return (
     <div className="navbar">
       <div className="nav-left">
-        <span className="ham-button"></span>
-        {/* test zone */}
-        <Button onClick={toggleDrawer(true)}>Test</Button>
-          <SwipeableDrawer
-            anchor={"left"}
-            open={state["open"]}
-            onClose={toggleDrawer(false)}
-            onOpen={toggleDrawer(true)}
-          >
-            {list()}
-        </SwipeableDrawer>
-        {/* test zone end */}
+        <span className="ham-button" onClick={toggleDrawer(true)}></span>
         <div className="nav-logo">
           <a>KorotHaim.com</a>
         </div>
       </div>
       <div className="nav-right">
-        <Button
-          variant="contained"
-          size="large"
-          color="primary"
-          style={{
-            fontSize: "22px",
-          }}
-          onClick={() => {}}
-        >
-          הכן קורות חיים
-        </Button>
+        {callToAction()}
         <div className="separator"></div>
-        <div className="nav-menu">
-          <a href="../contact.html">צור קשר</a>
-          <a href="../faq.html">שאלות נפוצות</a>
-          <a href="../about.html">עלינו</a>
-        </div>
+        {navMenu()}
       </div>
+      <SwipeableDrawer
+          anchor={"left"}
+          open={state["open"]}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
+        >
+          {list()}
+        </SwipeableDrawer>
     </div>
   );
 }
