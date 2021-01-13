@@ -10,7 +10,7 @@ const formSlice = createSlice({
     professionalSummary: "",
     experience: [],
     education: [],
-    links: [],
+    skills: [],
   },
   reducers: {
     setName: (state, action) => {
@@ -46,11 +46,11 @@ const formSlice = createSlice({
       });
     },
 
-    addLink: (state, action) => {
-      state.links = [...state.links, action.payload];
+    addSkill: (state, action) => {
+      state.skills = [...state.skills, action.payload];
     },
-    removeLink: (state, action) => {
-      state.links = state.links.filter((item, index) => {
+    removeSkill: (state, action) => {
+      state.skills = state.skills.filter((item, index) => {
         return index !== action.payload;
       });
     },

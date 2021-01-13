@@ -7,14 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import formSlice from "./state/formSlice";
 import PersonalInfoSection from "./sections/PersonalInfoSection";
 import EducationSection from "./sections/EducationSection";
-import LinkSection from "./sections/LinkSection";
+import SkillSection from "./sections/SkillSection";
 
 const ResumeForm = () => {
   const dispatch = useDispatch();
 
   const { setProfessionalSummary } = formSlice.actions;
 
-  const { experience, education, links } = useSelector((state) => state.form);
+  const { experience, education, skills } = useSelector((state) => state.form);
   console.log(useSelector((state) => state));
 
   return (
@@ -31,7 +31,7 @@ const ResumeForm = () => {
 
         <EducationSection dispatcher={dispatch} education={education} />
 
-        <LinkSection dispatcher={dispatch} links={links} />
+        <SkillSection dispatcher={dispatch} skills={skills} />
       </div>
     </form>
   );
