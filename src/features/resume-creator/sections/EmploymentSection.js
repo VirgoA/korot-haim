@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
@@ -30,7 +30,7 @@ function EmploymentSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeExperience(index));
                   }}
-                  label={item.company + ` - ` + item.title}
+                  label={`${item.company} - ${item.title}`}
                 />
               </div>
             );
@@ -57,18 +57,58 @@ function EmploymentSection(props) {
 }
 
 function AddEmploymentForm(props) {
-  const [company, setCompany] = useState();
-  const [title, setJob] = useState();
+  const [company, setCompany] = useState('');
+  const [title, setTitle] = useState('');
 
   const [startDate, setstartDate] = useState();
   const [endDate, setendDate] = useState();
   const [summary, setSummary] = useState();
 
+  const [titleError, setTitleError] = useState('');
+  const [companyError, setCompanyError] = useState('');
+
+  const validateEmployment = () => {
+    let titleErrorMsg = ""
+    if(!title){
+      titleErrorMsg = "יש להזין תפקיד"
+      setTitleError(titleErrorMsg)
+    }
+    else{
+      titleErrorMsg = ""
+      setTitleError(titleErrorMsg)
+    }
+
+    let companyErrorMsg = ""
+    if(!company){
+      companyErrorMsg = "יש להזין חברה/מעסיק"
+      setCompanyError(companyErrorMsg)
+    }
+    else{
+      companyErrorMsg = ""
+      setCompanyError(companyErrorMsg)
+    }
+
+    if(companyErrorMsg || titleErrorMsg){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
+  const addEmployment = () => {
+    let isValid = validateEmployment()
+    if(isValid){
+      props.handleState({ title, company, startDate, endDate, summary });
+      props.setButton(false);
+    }
+  }
+
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" handleState={setCompany} />
-        <BasicInput name="שם תפקיד" handleState={setJob} />
+        <BasicInput name="חברה/מעסיק" error={!!companyError} placeholder={companyError} handleState={setCompany} />
+        <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
       </div>
       <div className="row-inputs">
         <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
@@ -84,10 +124,7 @@ function AddEmploymentForm(props) {
       <Button
         variant="outlined"
         color="primary"
-        onClick={() => {
-          props.handleState({ title, company, startDate, endDate, summary });
-          props.setButton(false);
-        }}
+        onClick={addEmployment}
       >
         הוספה
       </Button>

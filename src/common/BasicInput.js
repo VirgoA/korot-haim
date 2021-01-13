@@ -5,6 +5,7 @@ import { TextField } from '@material-ui/core';
 function BasicInput(props){
   return (
     <TextField 
+      error={props.error}
       variant="outlined" 
       style={{
         flex: 1

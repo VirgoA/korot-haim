@@ -28,7 +28,7 @@ function EducationSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeEducation(index));
                   }}
-                  label={item.degree}
+                  label={`${item.degree} - ${item.schoolName}`}
                 />
               </div>
             )
@@ -64,11 +64,57 @@ function AddEducationForm(props) {
 
   const [summary, setSummary] = useState();
 
+  const [degreeError, setDegreeError] = useState('');
+  const [schoolNameError, setSchoolNameError] = useState('');
+
+  const validateEducation = () => {
+    let degreeErrorMsg = ""
+    if(!degree){
+      degreeErrorMsg = "יש להזין תיאור השלכה"
+      setDegreeError(degreeErrorMsg)
+    }
+    else{
+      degreeErrorMsg = ""
+      setDegreeError(degreeErrorMsg)
+    }
+
+    let schoolNameError = ""
+    if(!schoolName){
+      schoolNameError = "יש להזין שם מוסד"
+      setSchoolNameError(schoolNameError)
+    }
+    else{
+      schoolNameError = ""
+      setSchoolNameError(schoolNameError)
+    }
+
+    if(schoolNameError || degreeErrorMsg){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
+  const addEducation = () => {
+    let isValid = validateEducation()
+    if(isValid){
+      props.handleState({
+        degree,
+        schoolName,
+        startDate,
+        endDate,
+        summary,
+      });
+      props.setButton(false);
+    }
+  }
+
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="שם המוסד" handleState={setschoolName} />
-        <BasicInput name="תיאור ההשכלה" handleState={setDegree} />
+        <BasicInput name="שם המוסד" error={!!schoolNameError} handleState={setschoolName} />
+        <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
       </div>
       <div className="row-inputs">
         <BasicInput name="תאריך סוף לימודים" handleState={setstartDate} />
@@ -84,16 +130,7 @@ function AddEducationForm(props) {
       <Button
         variant="outlined"
         color="primary"
-        onClick={() => {
-          props.handleState({
-            degree,
-            schoolName,
-            startDate,
-            endDate,
-            summary,
-          });
-          props.setButton(false);
-        }}
+        onClick={addEducation}
       >
         הוספה
       </Button>
