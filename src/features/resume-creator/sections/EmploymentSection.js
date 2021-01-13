@@ -111,8 +111,8 @@ function AddEmploymentForm(props) {
         <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
         <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
+        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
       </div>
       <div className="row-inputs">
         <TextArea

@@ -28,7 +28,7 @@ function EducationSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeEducation(index));
                   }}
-                  label={`${item.degree} - ${item.schoolName}`}
+                  label={`${item.schoolName} - ${item.degree}`}
                 />
               </div>
             )
@@ -117,8 +117,8 @@ function AddEducationForm(props) {
         <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך סוף לימודים" handleState={setstartDate} />
         <BasicInput name="תאריך תחילת לימודים" handleState={setendDate} />
+        <BasicInput name="תאריך סוף לימודים" handleState={setstartDate} />
       </div>
       <div className="row-inputs">
         <TextArea
