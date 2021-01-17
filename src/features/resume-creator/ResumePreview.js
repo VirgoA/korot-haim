@@ -1,38 +1,25 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import ResumeOne from "./templates/ResumeOne";
+import BlueTemplate from "./templates/BlueTemplate";
 import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import "./displayResume.css";
 import { sendPostReq } from "../../communication";
 
-function DisplayResume(props) {
+function ResumePreview(props) {
   const data = useSelector((state) => state.form);
 
   return (
-    <div>
-      <div
-        style={{
-          width: "90%",
-          maxWidth: "640px",
-          height: "75vh",
-        }}
-        id="resume-capture"
-      >
-        <ResumeOne />
+    <div className="resume-preview">
+      <div id="resume-capture">
+        <BlueTemplate/>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className="resume-preview-controls">
         <Button
           variant="contained"
           size="large"
           color="secondary"
-          style={{
-            fontSize: "22px",
-            marginTop: "14px",
-            alignContent: "center",
-            fontWeight: "bold",
-            width: "250px",
-          }}
+          id="download-btn"
           onClick={() => {
             sendPostReq(data);
           }}
@@ -45,4 +32,4 @@ function DisplayResume(props) {
   );
 }
 
-export default DisplayResume;
+export default ResumePreview;

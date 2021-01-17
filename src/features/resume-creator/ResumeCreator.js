@@ -1,4 +1,4 @@
-import DisplayResume from "./DisplayResume";
+import ResumePreview from "./ResumePreview";
 import "./resumeCreator.css";
 import ResumeForm from "./ResumeForm";
 
@@ -8,9 +8,7 @@ const ResumeCreator = () => {
       <div className="resume-control">
         <ResumeForm />
       </div>
-      <div className="resume-preview">
-        <DisplayResume />
-      </div>
+      <ResumePreview />
     </div>
   );
 };

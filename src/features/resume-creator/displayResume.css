@@ -3,17 +3,43 @@
   src: url("../../fonts/Rubik-Regular.ttf") format("truetype");
 }
 
-.k-pdf-export {
+.resume-preview{
+  flex: 1;
+  padding: 48px;
+  /* background: #1e88e5; */
+  background: linear-gradient(0deg, #64b5f6, #1e88e5);
+  /* max-height: 100vh; */
+  overflow-y: scroll;
+}
+
+.resume-preview-controls{
+  display: flex;
+  justify-content: center;
 }
 
 #resume-capture{
-  height: 528px;
-  width: 424px;
   padding: none;
-  background-color: white;
+  max-width: 21cm;
+  max-height: 29.7cm;
   box-shadow: 5px 5px 5px black;
   margin: auto;
   overflow-x: hidden;
   overflow-y: hidden;
   border-radius: 10px;
+  /* transform: scale(0.5); */
+}
+
+#download-btn{
+  font-size: 22px;
+  margin-top: 14px;
+  align-content: center;
+  font-weight: bold;
+  width: 250px;
+}
+
+@media (max-width:1025px) { 
+
+  .resume-preview{
+      display: none;
+  }  
 }
