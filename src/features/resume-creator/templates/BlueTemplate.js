@@ -26,8 +26,8 @@ function BlueTemplate(props) {
     )
 
     const renderContent = (arr) => (
-        arr.map((content) => (
-            <div className="resume-section-content">
+        arr.map((content, index) => (
+            <div key={index} className="resume-section-content">
                 {`${content.schoolName || content.company} - ${content.degree || content.title}`}
             </div>
         ))
