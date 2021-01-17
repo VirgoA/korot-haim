@@ -59,8 +59,8 @@ function AddEducationForm(props) {
   const [schoolName, setschoolName] = useState();
   const [degree, setDegree] = useState();
 
-  const [startDate, setstartDate] = useState();
-  const [endDate, setendDate] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const [summary, setSummary] = useState();
 
@@ -117,8 +117,8 @@ function AddEducationForm(props) {
         <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת לימודים" handleState={setendDate} />
-        <BasicInput name="תאריך סוף לימודים" handleState={setstartDate} />
+        <BasicInput name="תאריך תחילת לימודים" handleState={setStartDate} />
+        <BasicInput name="תאריך סוף לימודים" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
         <TextArea

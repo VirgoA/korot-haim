@@ -60,8 +60,8 @@ function AddEmploymentForm(props) {
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
 
-  const [startDate, setstartDate] = useState();
-  const [endDate, setendDate] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
   const [summary, setSummary] = useState();
 
   const [titleError, setTitleError] = useState('');
@@ -111,8 +111,8 @@ function AddEmploymentForm(props) {
         <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת תעסוקה" handleState={setendDate} />
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setstartDate} />
+        <BasicInput name="תאריך תחילת תעסוקה" handleState={setStartDate} />
+        <BasicInput name="תאריך סוף תעסוקה" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
         <TextArea

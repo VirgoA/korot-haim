@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import "./displayResume.css";
 import { sendPostReq } from "../../communication";
+import exampleData from "../../utils/example_data.json"
 
 function ResumePreview(props) {
   const data = useSelector((state) => state.form);
@@ -12,7 +13,7 @@ function ResumePreview(props) {
   return (
     <div className="resume-preview">
       <div id="resume-capture">
-        <BlueTemplate/>
+        <BlueTemplate exampleData={exampleData} data={data}/>
       </div>
       <div className="resume-preview-controls">
         <Button
