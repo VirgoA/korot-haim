@@ -4,14 +4,12 @@ import BlueTemplate from "./templates/BlueTemplate";
 import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import "./displayResume.css";
-import { sendPostReq } from "../../communication";
+import { downloadResume } from "../../api";
 import exampleData from "../../utils/example_data.json"
 import ReactDOMServer from 'react-dom/server'
 
 function ResumePreview(props) {
   const data = useSelector((state) => state.form);
-
-  const html = ReactDOMServer.renderToStaticMarkup(<BlueTemplate exampleData={exampleData} data={data}/>)
 
   return (
     <div className="resume-preview">
@@ -25,7 +23,11 @@ function ResumePreview(props) {
           color="secondary"
           id="download-btn"
           onClick={() => {
-            sendPostReq(data);
+            downloadResume(
+              ReactDOMServer.renderToStaticMarkup(
+                <BlueTemplate exampleData={exampleData} data={data}/>
+              )
+            );
           }}
         >
           הורד
