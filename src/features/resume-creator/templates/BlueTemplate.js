@@ -34,6 +34,9 @@ function BlueTemplate(props) {
 
     const css = `
         .A4 {
+            text-align: right;
+            font-family: sans-serif;
+            direction:rtl;
             background: white;
             width: 21cm;
             height: 29.7cm;
@@ -45,40 +48,40 @@ function BlueTemplate(props) {
             overflow-y: scroll;
             box-sizing: border-box;
         }
-    
+
         .resume-container{
             display: flex;
             flex-direction: column;
             padding: 60px 20px;
         }
-    
+
         .resume-head{
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 50px;
         }
-    
+
         .resume-body{
             display: flex;
             flex-direction: column;
         }
-    
+
         .resume-info-name{
             font-size: 3rem;
             font-weight: bold;
         }
-    
+
         .resume-info-contact{
             color: darkgray;
         }
-    
+
         .resume-section{
             display: flex;
             flex-direction: row;
             margin-bottom: 25px;
         }
-    
+
         .resume-section-side{
             display: flex;
             flex-direction: column;
@@ -86,21 +89,21 @@ function BlueTemplate(props) {
             width: 100px;
             margin-left: 20px;
         }
-    
+
         .resume-side-decoration{
             margin-top: 11px;
             border-top: 5px solid #1e88e5;
             /* background-color: #1e88e5; */
         }
-    
+
         .resume-side-content{
             text-align: left;
         }
-    
+
         .resume-section-title{
             color: #64b5f6;
             font-size: 22px;
-        } 
+        }
     `
     return (
       <div className="A4">
@@ -131,7 +134,7 @@ function BlueTemplate(props) {
                     </div>
                     <div className="resume-section-main">
                       <div className="resume-section-title">
-                          תמצית   
+                          תמצית
                       </div>
                       <div className="resume-section-content">
                         {professionalSummary ? professionalSummary : exampleData.professionalSummary}
@@ -143,17 +146,17 @@ function BlueTemplate(props) {
                         <div className="resume-side-decoration"></div>
                         <div className="resume-side-body">
                             {
-                                experience.length !== 0 ? renderDates(experience) : 
+                                experience.length !== 0 ? renderDates(experience) :
                                 renderDates(exampleData.experience)
                             }
-                        </div>                     
+                        </div>
                     </div>
                     <div className="resume-section-main">
                         <div className="resume-section-title">
-                            ניסיון   
+                            ניסיון
                         </div>
                         {
-                            experience.length !== 0 ? 
+                            experience.length !== 0 ?
                             renderContent(experience) : renderContent(exampleData.experience)
                         }
                     </div>
@@ -163,17 +166,17 @@ function BlueTemplate(props) {
                       <div className="resume-side-decoration"></div>
                       <div className="resume-side-body">
                         {
-                            education.length !== 0 ? renderDates(education) : 
+                            education.length !== 0 ? renderDates(education) :
                             renderDates(exampleData.education)
                         }
-                      </div>                     
+                      </div>
                     </div>
                     <div className="resume-section-main">
                         <div className="resume-section-title">
-                            השכלה   
+                            השכלה
                         </div>
                         {
-                            education.length !== 0 ? 
+                            education.length !== 0 ?
                             renderContent(education) : renderContent(exampleData.education)
                         }
                     </div>
@@ -184,15 +187,15 @@ function BlueTemplate(props) {
                           <div className="resume-side-body">
                               <div className="resume-side-content">
                                   צד שרת
-                              </div>  
+                              </div>
                               <div className="resume-side-content">
                                   צד לקוח
-                              </div> 
-                          </div>                     
+                              </div>
+                          </div>
                       </div>
                       <div className="resume-section-main">
                           <div className="resume-section-title">
-                              מיומנויות   
+                              מיומנויות
                           </div>
                           <div className="resume-section-content">
                               node.js, asp.net, django
