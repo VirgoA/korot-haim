@@ -44,7 +44,6 @@ function BlueTemplate(props) {
             margin: 0 auto;
             padding: 10px 25px;
             margin-bottom: 0.5cm;
-            box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
             overflow-y: scroll;
             box-sizing: border-box;
         }
