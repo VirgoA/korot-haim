@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  name: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  professionalSummary: "",
+  experience: [],
+  education: [],
+  skills: [],
+}
+
 const formSlice = createSlice({
   name: "form",
-  initialState: {
-    name: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    professionalSummary: "",
-    experience: [],
-    education: [],
-    skills: [],
-  },
+  initialState: initialState,
   reducers: {
     setName: (state, action) => {
       state.name = action.payload;
@@ -54,6 +56,11 @@ const formSlice = createSlice({
         return index !== action.payload;
       });
     },
+    setExampleState: (state, action) => {
+      for(let key in {...state}){
+        state[key] = action.payload[key]
+      }
+    }
   },
 });
 
