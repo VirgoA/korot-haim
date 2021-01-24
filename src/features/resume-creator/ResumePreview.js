@@ -14,7 +14,7 @@ function ResumePreview(props) {
   return (
     <div className="resume-preview">
       <div id="resume-capture">
-        <BlueTemplate exampleData={exampleData} data={data}/>
+        <BlueTemplate data={data}/>
       </div>
       <div className="resume-preview-controls">
         <Button
@@ -25,7 +25,7 @@ function ResumePreview(props) {
           onClick={() => {
             downloadResume(
               ReactDOMServer.renderToStaticMarkup(
-                <BlueTemplate exampleData={exampleData} data={data}/>
+                <BlueTemplate data={data}/>
               )
             );
           }}

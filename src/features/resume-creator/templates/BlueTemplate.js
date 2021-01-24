@@ -13,8 +13,6 @@ function BlueTemplate(props) {
       professionalSummary,
     } = props.data;
 
-    const exampleData = props.exampleData;
-
     const renderDates = (arr) => (
         arr.map((exp, index)=>(
             <div key={index} className="resume-side-content">
@@ -112,14 +110,14 @@ function BlueTemplate(props) {
           <div className="resume-container">
               <div className="resume-head">
                     <div className="resume-info-name">
-                        {name ? `${name} ${lastName}` : `${exampleData.name} ${exampleData.lastName}`}
+                        {name && `${name} ${lastName}`}
                     </div>
                   <div className="resume-info-contact">
                         <div className="resume-contact-phone">
-                            {phoneNumber ? phoneNumber : exampleData.phoneNumber}
+                            {phoneNumber}
                         </div>
                         <div className="resume-contact-email">
-                            {email ? email : exampleData.email}
+                            {email}
                         </div>
                   </div>
               </div>
@@ -136,7 +134,7 @@ function BlueTemplate(props) {
                           תמצית
                       </div>
                       <div className="resume-section-content">
-                        {professionalSummary ? professionalSummary : exampleData.professionalSummary}
+                        {professionalSummary}
                       </div>
                     </div>
                   </div>
@@ -145,8 +143,7 @@ function BlueTemplate(props) {
                         <div className="resume-side-decoration"></div>
                         <div className="resume-side-body">
                             {
-                                experience.length !== 0 ? renderDates(experience) :
-                                renderDates(exampleData.experience)
+                                experience.length !== 0 && renderDates(experience)
                             }
                         </div>
                     </div>
@@ -155,8 +152,7 @@ function BlueTemplate(props) {
                             ניסיון
                         </div>
                         {
-                            experience.length !== 0 ?
-                            renderContent(experience) : renderContent(exampleData.experience)
+                            experience.length !== 0 && renderContent(experience)
                         }
                     </div>
                   </div>
@@ -165,8 +161,7 @@ function BlueTemplate(props) {
                       <div className="resume-side-decoration"></div>
                       <div className="resume-side-body">
                         {
-                            education.length !== 0 ? renderDates(education) :
-                            renderDates(exampleData.education)
+                            education.length !== 0 && renderDates(education)
                         }
                       </div>
                     </div>
@@ -175,8 +170,7 @@ function BlueTemplate(props) {
                             השכלה
                         </div>
                         {
-                            education.length !== 0 ?
-                            renderContent(education) : renderContent(exampleData.education)
+                            education.length !== 0 && renderContent(education)
                         }
                     </div>
                   </div>
