@@ -122,58 +122,56 @@ function BlueTemplate(props) {
                   </div>
               </div>
               <div className="resume-body">
-                  <div className="resume-section">
-                    <div className="resume-section-side">
-                      <div className="resume-side-decoration"></div>
-                      <div className="resume-side-body">
-                          <div className="resume-side-content"></div>
-                      </div>
-                    </div>
-                    <div className="resume-section-main">
-                      <div className="resume-section-title">
-                          תמצית
-                      </div>
-                      <div className="resume-section-content">
-                        {professionalSummary}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="resume-section">
-                    <div className="resume-section-side">
-                        <div className="resume-side-decoration"></div>
-                        <div className="resume-side-body">
-                            {
-                                experience.length !== 0 && renderDates(experience)
-                            }
+                  {professionalSummary && 
+                    <div className="resume-section">
+                        <div className="resume-section-side">
+                          <div className="resume-side-decoration"></div>
+                          <div className="resume-side-body">
+                              <div className="resume-side-content"></div>
+                          </div>
+                        </div>
+                        <div className="resume-section-main">
+                          <div className="resume-section-title">
+                              תמצית
+                          </div>
+                          <div className="resume-section-content">
+                            {professionalSummary}
+                          </div>
                         </div>
                     </div>
-                    <div className="resume-section-main">
-                        <div className="resume-section-title">
-                            ניסיון
-                        </div>
-                        {
-                            experience.length !== 0 && renderContent(experience)
-                        }
-                    </div>
-                  </div>
-                  <div className="resume-section">
-                    <div className="resume-section-side">
-                      <div className="resume-side-decoration"></div>
-                      <div className="resume-side-body">
-                        {
-                            education.length !== 0 && renderDates(education)
-                        }
+                  }
+                  {experience.length !== 0 && 
+                    <div className="resume-section">
+                      <div className="resume-section-side">
+                          <div className="resume-side-decoration"></div>
+                          <div className="resume-side-body">
+                              {renderDates(experience)}
+                          </div>
+                      </div>
+                      <div className="resume-section-main">
+                          <div className="resume-section-title">
+                              ניסיון
+                          </div>
+                          {renderContent(experience)}
                       </div>
                     </div>
-                    <div className="resume-section-main">
-                        <div className="resume-section-title">
-                            השכלה
+                  }
+                  {education.length !== 0 &&
+                    <div className="resume-section">
+                        <div className="resume-section-side">
+                          <div className="resume-side-decoration"></div>
+                          <div className="resume-side-body">
+                            {renderDates(education)}
+                          </div>
                         </div>
-                        {
-                            education.length !== 0 && renderContent(education)
-                        }
+                        <div className="resume-section-main">
+                            <div className="resume-section-title">
+                                השכלה
+                            </div>
+                            {renderContent(education)}
+                        </div>
                     </div>
-                  </div>
+                  }
                   <div className="resume-section">
                       <div className="resume-section-side">
                           <div className="resume-side-decoration"></div>
