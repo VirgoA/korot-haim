@@ -4,6 +4,7 @@ import ResumeCreator from "./features/resume-creator/ResumeCreator";
 import { useState, useEffect } from "react";
 import whaleGif from "./resources/gifs/whale.gif";
 import FadeIn from "react-fade-in";
+import { wakeupServer } from "./api/index";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
+      wakeupServer();
     }, 1400);
   }, []);
 

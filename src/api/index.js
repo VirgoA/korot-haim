@@ -18,3 +18,9 @@ export const downloadResume = async (html) => {
     return error;
   }
 };
+
+export const wakeupServer = async () => {
+  axios.get(url + "hello").then((res) => {
+    console.log(res.data);
+  });
+};
