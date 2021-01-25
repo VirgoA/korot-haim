@@ -1,7 +1,7 @@
 import download from "downloadjs";
 import axios from "axios";
 
-const url = "http://localhost:3001";
+const url = "https://korothaim-api.herokuapp.com/";
 
 export const downloadResume = async (html) => {
   try {
