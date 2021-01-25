@@ -15,7 +15,7 @@ function EducationSection(props) {
     <div className="form-section">
       <span className="title">השכלה</span>
       <span className="description">
-        בחלק זה תציינו את ההשכלה שלכם, איכן למדתם וכמה שנים
+        בחלק זה תציינו את ההשכלה שלכם, היכן למדתם וכמה שנים
       </span>
 
       {props.education.length !== 0 ? (
