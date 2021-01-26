@@ -63,7 +63,7 @@ function SkillSection(props) {
 }
 
 function AddSkillForm(props) {
-  const [sphere, setSphere] = useState();
+  const [sphere, setSphere] = useState("כללי");
   const [skill, setSkill] = useState();
 
   const [skillError, setSkillError] = useState('');
