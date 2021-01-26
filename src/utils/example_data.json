@@ -43,10 +43,8 @@
         "schoolName":"הפתוחה"
       }
     ],
-    "skills": [
-      {
-        "skill":"",
-        "skillSphere":""
-      }
-    ]
+    "skills": {
+      "צד לקוח": ["react", "angular"],
+      "צד שרת": ["django", "asp.net", "node.js"]
+    }
 }

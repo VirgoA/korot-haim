@@ -10,28 +10,40 @@ const { addSkill, removeSkill } = formSlice.actions;
 function SkillSection(props) {
   const [showForm, setShowForm] = useState(false);
 
+  const renderChips = () => {
+    const toRender = [];
+
+    for(const sphere in props.skills){
+      props.skills[sphere].forEach(skill=>toRender.push({skill, sphere}));
+    }
+
+    return (
+      toRender.map((item, index) => {
+        return (
+          <div key={index}>
+            <Chip
+              className="chip"
+              onDelete={() => {
+                props.dispatcher(removeSkill(item));
+              }}
+              label={`${item.skill}`}
+            />
+          </div>
+        )
+      })
+    )
+  }
+
   return (
     <div className="form-section">
       <span className="title">מיומנויות</span>
       <span className="description">תציינו את המיומנויות שלכם</span>
-      
-      {props.skills.length !== 0 ? (
+
+      {props.skills && (
         <div className="chipsGroup">
-          {props.skills.map((item, index) => {
-            return (
-              <div key={index}>
-                <Chip
-                  className="chip"
-                  onDelete={() => {
-                    props.dispatcher(removeSkill(index));
-                  }}
-                  label={`${item.skill}`}
-                />
-              </div>
-            )
-          })}
+          {renderChips()}
         </div>
-      ) : null}    
+      )}       
 
       <SwitchButton
         btnText="הוסף קישור +"
@@ -51,7 +63,7 @@ function SkillSection(props) {
 }
 
 function AddSkillForm(props) {
-  const [skillSphere, setSkillSphere] = useState();
+  const [sphere, setSphere] = useState();
   const [skill, setSkill] = useState();
 
   const [skillError, setSkillError] = useState('');
@@ -78,7 +90,7 @@ function AddSkillForm(props) {
   const addSkill = () => {
     let isValid = validateSkill()
     if(isValid){
-      props.handleState({ skill, skillSphere });
+      props.handleState({ skill, sphere });
       props.setButton(false);
     }
   }
@@ -87,7 +99,7 @@ function AddSkillForm(props) {
     <div className="addForm">
       <div className="row-inputs">
         <BasicInput name="מיומנות" error={!!skillError} handleState={setSkill} />
-        <BasicInput name="תחום" handleState={setSkillSphere} />
+        <BasicInput name="תחום" handleState={setSphere} />
       </div>
 
       <Button

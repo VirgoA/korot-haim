@@ -8,7 +8,7 @@ const initialState = {
   professionalSummary: "",
   experience: [],
   education: [],
-  skills: [],
+  skills: {},
 }
 
 const formSlice = createSlice({
@@ -49,12 +49,22 @@ const formSlice = createSlice({
     },
 
     addSkill: (state, action) => {
-      state.skills = [...state.skills, action.payload];
+      if(state.skills[action.payload.sphere]){
+        state.skills[action.payload.sphere] = [...state.skills[action.payload.sphere], action.payload.skill]
+      } else {
+        state.skills[action.payload.sphere] = [action.payload.skill]
+      }
     },
     removeSkill: (state, action) => {
-      state.skills = state.skills.filter((item, index) => {
-        return index !== action.payload;
-      });
+      const sphere = action.payload.sphere;
+      if(state.skills[sphere].length <= 1){
+        const {[sphere]:value, ...restSkills} = state.skills
+        state.skills = restSkills
+      } else {
+        state.skills[sphere] = state.skills[sphere].filter((item)=>{
+          return item !== action.payload.skill
+        })
+      }
     },
     setExampleState: (state, action) => {
       for(let key in {...state}){
