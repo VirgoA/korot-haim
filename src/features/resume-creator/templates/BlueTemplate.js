@@ -1,5 +1,4 @@
 import React from "react";
-import SkillSection from "../sections/SkillSection";
 
 function BlueTemplate(props) {
 
