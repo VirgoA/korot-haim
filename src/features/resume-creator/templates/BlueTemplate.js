@@ -1,4 +1,5 @@
 import React from "react";
+import SkillSection from "../sections/SkillSection";
 
 function BlueTemplate(props) {
 
@@ -29,6 +30,33 @@ function BlueTemplate(props) {
             </div>
         ))
     )
+
+    const renderSpheres = () => (
+        Object.keys(skills).map((skill, index) => (
+            <div key={index} className="resume-side-content">
+                {skill}
+            </div>
+        ))
+    )
+
+    const renderSkills = () => {
+        let skillsToRender = []
+        for(const sphere in skills){
+            skillsToRender.push(skills[sphere]);
+        }
+
+        return (
+            <div>
+                {
+                    skillsToRender.map((arr, index)=>(
+                        <div key={index} className="resume-section-content">
+                            {arr.join(' ,')}
+                        </div>
+                    ))
+                }
+            </div>
+        )
+    }
 
     const css = `
         .A4 {
@@ -172,30 +200,22 @@ function BlueTemplate(props) {
                         </div>
                     </div>
                   }
-                  <div className="resume-section">
-                      <div className="resume-section-side">
-                          <div className="resume-side-decoration"></div>
-                          <div className="resume-side-body">
-                              <div className="resume-side-content">
-                                  צד שרת
-                              </div>
-                              <div className="resume-side-content">
-                                  צד לקוח
-                              </div>
-                          </div>
+                  {Object.keys(skills).length !== 0 &&
+                    <div className="resume-section">
+                    <div className="resume-section-side">
+                      <div className="resume-side-decoration"></div>
+                      <div className="resume-side-body">
+                          {renderSpheres()}
                       </div>
-                      <div className="resume-section-main">
-                          <div className="resume-section-title">
-                              מיומנויות
-                          </div>
-                          <div className="resume-section-content">
-                              node.js, asp.net, django
-                          </div>
-                          <div className="resume-section-content">
-                              react, angular, material-ui
-                          </div>
-                      </div>
-                  </div>
+                    </div>
+                    <div className="resume-section-main">
+                        <div className="resume-section-title">
+                            מיומנויות
+                        </div>
+                        {renderSkills()}
+                    </div>
+                    </div>
+                  }
               </div>
           </div>
       </div>
