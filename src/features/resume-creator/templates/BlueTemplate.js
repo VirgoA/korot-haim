@@ -100,6 +100,10 @@ function BlueTemplate(props) {
             color: darkgray;
         }
 
+        .resume-contact-email{
+            min-width: 150px;
+        }
+
         .resume-section{
             display: flex;
             flex-direction: row;
