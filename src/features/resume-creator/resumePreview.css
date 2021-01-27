@@ -4,7 +4,7 @@
 }
 
 .resume-preview{
-  flex: 1;
+  flex: 2;
   padding: 48px;
   /* background: #1e88e5; */
   background: linear-gradient(0deg, #64b5f6, #1e88e5);
@@ -37,7 +37,19 @@
   width: 250px;
 }
 
-@media (max-width:1025px) { 
+@media (max-width: 1370px) {
+  .resume-preview{
+    flex: 3
+  }
+}
+
+@media (max-width: 1250px) {
+  .resume-preview{
+    flex: 4
+  }
+}
+
+@media (max-width:1170px) { 
 
   .resume-preview{
       display: none;

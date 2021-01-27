@@ -26,16 +26,33 @@
     color: #98a1b3;
 }
 
+@media (max-width: 1250px) {
+    .resume-control{
+        padding: 12px;
+    }
+}
+
+@media (max-width: 1170px) {
+    .container{
+        justify-content: center;
+    }
+    .resume-control{
+        padding: 48px;
+    }
+}
+
+@media (max-width:1025px) { 
+
+}
+
+@media (max-width: 780px) {
+    .resume-control{
+        padding: 24px;
+    }    
+}
+
 @media (max-width:320px){ 
     .resume-control{
         padding: 12px;
     }
- }
-
-@media (max-width:1025px) { 
-    .container{
-        display: flex;
-        flex-direction: column;
-    }     
-     
 }

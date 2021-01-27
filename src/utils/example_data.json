@@ -44,7 +44,7 @@
       }
     ],
     "skills": {
-      "צד לקוח": ["react", "angular"],
-      "צד שרת": ["django", "asp.net", "node.js"]
+      "צד לקוח": ["React", "Angular"],
+      "צד שרת": ["Django", "Node.js"]
     }
 }
