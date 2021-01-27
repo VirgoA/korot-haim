@@ -66,29 +66,23 @@ function AddEducationForm(props) {
 
   const [degreeError, setDegreeError] = useState('');
   const [schoolNameError, setSchoolNameError] = useState('');
+  const [startDateError, setStartDateError] = useState('');
 
   const validateEducation = () => {
+    
     let degreeErrorMsg = ""
-    if(!degree){
-      degreeErrorMsg = "יש להזין תיאור השלכה"
-      setDegreeError(degreeErrorMsg)
-    }
-    else{
-      degreeErrorMsg = ""
-      setDegreeError(degreeErrorMsg)
-    }
+    degree ? degreeErrorMsg = "" : degreeErrorMsg = "יש להזין תיאור השלכה"
+    setDegreeError(degreeErrorMsg)
 
-    let schoolNameError = ""
-    if(!schoolName){
-      schoolNameError = "יש להזין שם מוסד"
-      setSchoolNameError(schoolNameError)
-    }
-    else{
-      schoolNameError = ""
-      setSchoolNameError(schoolNameError)
-    }
+    let schoolNameErrorMsg = ""
+    schoolName ? schoolNameErrorMsg = "" : schoolNameErrorMsg = "יש להזין שם מוסד"
+    setSchoolNameError(schoolNameErrorMsg)
 
-    if(schoolNameError || degreeErrorMsg){
+    let startDateErrorMsg = ""
+    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת לימודים"
+    setStartDateError(startDateErrorMsg)
+
+    if(schoolNameErrorMsg || degreeErrorMsg || startDateErrorMsg){
       return false
     }
     else{
@@ -117,7 +111,7 @@ function AddEducationForm(props) {
         <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת לימודים" handleState={setStartDate} />
+        <BasicInput name="תאריך תחילת לימודים" error={!!startDateError} handleState={setStartDate} />
         <BasicInput name="תאריך סוף לימודים" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
