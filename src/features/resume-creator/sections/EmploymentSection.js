@@ -66,29 +66,24 @@ function AddEmploymentForm(props) {
 
   const [titleError, setTitleError] = useState('');
   const [companyError, setCompanyError] = useState('');
+  const [startDateError, setStartDateError] = useState('');
+
 
   const validateEmployment = () => {
+
     let titleErrorMsg = ""
-    if(!title){
-      titleErrorMsg = "יש להזין תפקיד"
-      setTitleError(titleErrorMsg)
-    }
-    else{
-      titleErrorMsg = ""
-      setTitleError(titleErrorMsg)
-    }
+    title ? titleErrorMsg = "" : titleErrorMsg = "יש להזין תפקיד"
+    setTitleError(titleErrorMsg)
 
     let companyErrorMsg = ""
-    if(!company){
-      companyErrorMsg = "יש להזין חברה/מעסיק"
-      setCompanyError(companyErrorMsg)
-    }
-    else{
-      companyErrorMsg = ""
-      setCompanyError(companyErrorMsg)
-    }
+    company ? companyErrorMsg = "" : companyErrorMsg = "יש להזין חברה/מעסיק"
+    setCompanyError(companyErrorMsg)
 
-    if(companyErrorMsg || titleErrorMsg){
+    let startDateErrorMsg = ""
+    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת העסקה"
+    setStartDateError(startDateErrorMsg)
+
+    if(companyErrorMsg || titleErrorMsg || startDateErrorMsg){
       return false
     }
     else{
@@ -111,7 +106,7 @@ function AddEmploymentForm(props) {
         <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת תעסוקה" handleState={setStartDate} />
+        <BasicInput name="תאריך תחילת תעסוקה" error={!!startDateError} handleState={setStartDate} />
         <BasicInput name="תאריך סוף תעסוקה" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
