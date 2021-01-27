@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import BlueTemplate from "./templates/BlueTemplate";
 import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
-import "./displayResume.css";
+import "./resumePreview.css";
 import { downloadResume } from "../../api";
 import exampleData from "../../utils/example_data.json";
 import ReactDOMServer from "react-dom/server";
