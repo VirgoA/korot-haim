@@ -11,10 +11,3 @@
   -webkit-border-radius: 30%;
   -o-border-radius: 30%;
 }
-
-.footer-test{
-  position: absolute;
-  bottom: 0;
-  right: 95vw;
-  z-index: 9999;
-}
