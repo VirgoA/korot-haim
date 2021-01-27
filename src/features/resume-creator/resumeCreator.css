@@ -41,10 +41,6 @@
     }
 }
 
-@media (max-width:1025px) { 
-
-}
-
 @media (max-width: 780px) {
     .resume-control{
         padding: 24px;
