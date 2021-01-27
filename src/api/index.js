@@ -21,7 +21,12 @@ export const downloadResume = async (html) => {
 };
 
 export const wakeupServer = async () => {
-  axios.get(url + "hello").then((res) => {
-    console.log(res.data);
-  });
+  try{
+    const res = await fetch(url + '/hello')
+    const msgFromServer = await res.json();
+    console.log(msgFromServer);
+  } catch (error) {
+    return error
+  }
+
 };
