@@ -6,7 +6,6 @@ import { downloadResume } from "../../api";
 import ReactDOMServer from "react-dom/server";
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import BlueTemplate from "./templates/BlueTemplate";
-import formSlice from "./state/formSlice";
 import requestSlice from "./state/requestSlice";
 
 function ExtraControls(props) {
