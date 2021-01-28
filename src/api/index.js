@@ -15,8 +15,9 @@ export const downloadResume = async (html) => {
     });
     let pdf = new Blob([response.data], { type: "application/pdf" });
     download(pdf, "korothaim.pdf");
+    return response
   } catch (error) {
-    return error;
+    return error
   }
 };
 

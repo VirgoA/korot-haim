@@ -6,16 +6,51 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import "./resumePreview.css";
 import { downloadResume } from "../../api";
 import ReactDOMServer from "react-dom/server";
+import formSlice from "./state/formSlice";
+import requestSlice from "./state/requestSlice";
 
 function ResumePreview(props) {
-  const data = useSelector((state) => state.form);
-  const [downloadAvailable, setAvailability] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const { 
+    sentDownloadRequest, 
+    downloadRequestSucceeded,
+    downloadRequestFailed
+  } = requestSlice.actions;
+
+  const formData = useSelector((state) => state.form);
+  const requestData = useSelector((state) => state.request);
+
+  const downloadRequest = async () => {
+    if(requestData.downloadRequest.status !== "loading") {
+
+      dispatch(sentDownloadRequest());
+      try {
+
+        const res = await downloadResume(
+          ReactDOMServer.renderToStaticMarkup(<BlueTemplate data={formData}/>)
+        )
+
+        if(res.status === 200) {
+          await new Promise(r => setTimeout(r, 2000));
+          dispatch(downloadRequestSucceeded())
+        } else {
+          dispatch(downloadRequestFailed());
+        }
+
+      } catch(error) {
+        dispatch(downloadRequestFailed());
+      }
+
+    }
+  }
 
   return (
     <div className="resume-preview-container">
       <div className="resume-preview">
         <div id="resume-capture">
-          <BlueTemplate data={data} />
+          <BlueTemplate data={formData} />
         </div>
       </div>
       <div className="resume-preview-controls">
@@ -34,26 +69,6 @@ function ResumePreview(props) {
     </div>
   );
 
-  function downloadRequest() {
-    setAvailability(false);
-    submitRequest(downloadAvailable, data);
-    const promise = new Promise((resolve) => {
-      setTimeout(() => {
-        setAvailability(true);
-      }, 5000); //5 seconds delay.
-    });
-  }
-}
-
-function submitRequest(downloadAvailable, data) {
-  if (downloadAvailable) {
-    downloadResume(
-      ReactDOMServer.renderToStaticMarkup(<BlueTemplate data={data} />)
-    );
-  } else {
-    console.log("request canceled - download delay");
-    console.log("only 1 request is allowed every 5 seconds");
-  }
 }
 
 export default ResumePreview;
