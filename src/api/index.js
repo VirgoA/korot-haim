@@ -22,6 +22,7 @@ export const downloadResume = async (html) => {
 };
 
 export const wakeupServer = async () => {
+<<<<<<< HEAD
   try {
     const res = await fetch(url + "/hello");
     const msgFromServer = await res.json();
@@ -29,4 +30,14 @@ export const wakeupServer = async () => {
   } catch (error) {
     return error;
   }
+=======
+  try{
+    const res = await fetch(url + '/hello')
+    const msgFromServer = await res.json();
+    console.log(msgFromServer);
+  } catch (error) {
+    return error
+  }
+
+>>>>>>> 34fded07b62a65c95bb6c54d07d7ea7ff8ab6d5f
 };
