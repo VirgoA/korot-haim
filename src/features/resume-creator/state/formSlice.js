@@ -10,7 +10,6 @@ const initialState = {
   experience: [],
   education: [],
   skills: {},
-  downloadRequestInProgress: false,
 };
 
 const formSlice = createSlice({
@@ -76,31 +75,7 @@ const formSlice = createSlice({
         state[key] = action.payload[key];
       }
     },
-    downloadResumeReq: (state, action) => {
-      state.downloadRequestInProgress = true;
-    },
-    downloadResumeSuccess: (state, action) => {
-      state.downloadRequestInProgress = false;
-    },
   },
 });
 
 export default formSlice;
-
-export const { downloadResumeReq, downloadResumeSuccess } = formSlice.actions;
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-export function pdfDownloadRequest(data) {
-  return async (dispatch) => {
-    dispatch(downloadResumeReq());
-    try {
-      const response = await downloadResume(data);
-      console.log("download request dispatched");
-      await sleep(1500);
-      dispatch(downloadResumeSuccess(response));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
