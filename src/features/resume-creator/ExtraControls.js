@@ -1,7 +1,7 @@
 import React from "react";
 import "./extraControls.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Tooltip } from "@material-ui/core";
+import { Button, Tooltip, CircularProgress } from "@material-ui/core";
 import { downloadResume } from "../../api";
 import ReactDOMServer from "react-dom/server";
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
@@ -47,17 +47,27 @@ function ExtraControls(props) {
 
   return (
     <div className="extra-controls">
-        <Tooltip title="הורדה">
-          <Button
-            variant="contained"
-            size="large"
-            color="secondary"
-            id="download-btn"
-            onClick={downloadRequest}
-          >
-            <SaveAltIcon style={{fontSize:"1.5em"}}/>
-          </Button>
-        </Tooltip>
+        {
+            requestData.downloadRequest.status !== "loading" 
+                ?
+                (
+                    <Tooltip title="הורדה">
+                        <Button
+                          variant="contained"
+                          size="large"
+                          color="secondary"
+                          id="download-btn"
+                          onClick={downloadRequest}
+                        >
+                          <SaveAltIcon style={{fontSize:"1.5em"}}/>
+                        </Button>
+                    </Tooltip>
+                )
+                :
+                (   
+                    <CircularProgress color="secondary"/>
+                )
+        }
     </div>
   );
 }
