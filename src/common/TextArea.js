@@ -3,21 +3,19 @@ import { TextField } from "@material-ui/core";
 import { Editor } from "@tinymce/tinymce-react";
 
 const TextArea = (props) => {
-  let handleEditorChange = (content, editor) => {
-    console.log("Content was updated:", content);
-  };
-
   return (
     <Editor
+      className="tinyMCE"
       initialValue="<p></p>"
       apiKey="vn45h6ki675w3yybivtcmkhrdeklzqss4720bt8pfnirac5e"
       init={{
         height: 200,
-        width: 700,
+        width: "100%",
         skin: "material-classic",
         content_css: "material-classic",
         icons: "material",
         menubar: false,
+        branding: false,
         directionality: "rtl",
         plugins: [
           "advlist autolink lists link image charmap print preview anchor",
