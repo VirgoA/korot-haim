@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BlueTemplate from "./templates/BlueTemplate";
-import { Button } from "@material-ui/core";
-import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
+import { Button, Tooltip } from "@material-ui/core";
+import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import "./resumePreview.css";
 import exampleData from "../../utils/example_data.json";
 import ReactDOMServer from "react-dom/server";
@@ -26,21 +26,24 @@ function ResumePreview(props) {
   };
 
   return (
-    <div className="resume-preview">
-      <div id="resume-capture">
-        <BlueTemplate data={data} />
+    <div className="resume-preview-container">
+      <div className="resume-preview">
+        <div id="resume-capture">
+          <BlueTemplate data={data} />
+        </div>
       </div>
       <div className="resume-preview-controls">
-        <Button
-          variant="contained"
-          size="large"
-          color="secondary"
-          id="download-btn"
-          onClick={submitDownloadRequest}
-        >
-          {downloadRequestInProgress ? "הורדה בפעולה" : "הורדה"}
-          <GetAppRoundedIcon style={{ marginTop: "4px" }} />
-        </Button>
+        <Tooltip title="הורדה">
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            id="download-btn"
+            onClick={submitDownloadRequest}
+          >
+            <SaveAltIcon style={{ fontSize: "1.5em" }} />
+          </Button>
+        </Tooltip>
       </div>
     </div>
   );

@@ -3,18 +3,24 @@
   src: url("../../fonts/Rubik-Regular.ttf") format("truetype");
 }
 
-.resume-preview{
+.resume-preview-container{
   flex: 2;
-  padding: 48px;
-  /* background: #1e88e5; */
-  background: linear-gradient(0deg, #64b5f6, #1e88e5);
-  /* max-height: 100vh; */
   overflow-y: scroll;
 }
 
+.resume-preview{
+  padding: 48px 48px 48px 48px;
+  background: linear-gradient(0deg, #64b5f6, #1e88e5);
+}
+
 .resume-preview-controls{
-  display: flex;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  /* display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: black; */
 }
 
 #resume-capture{
@@ -26,32 +32,33 @@
   overflow-x: hidden;
   overflow-y: hidden;
   border-radius: 10px;
-  /* transform: scale(0.5); */
 }
 
 #download-btn{
-  font-size: 22px;
-  margin-top: 14px;
   align-content: center;
   font-weight: bold;
-  width: 250px;
+  font-size: 22px;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 1370px) {
-  .resume-preview{
+  .resume-preview-container{
     flex: 3
   }
 }
 
 @media (max-width: 1250px) {
-  .resume-preview{
+  .resume-preview-container{
     flex: 4
   }
 }
 
 @media (max-width:1170px) { 
 
-  .resume-preview{
+  .resume-preview-container{
       display: none;
   }  
 }
