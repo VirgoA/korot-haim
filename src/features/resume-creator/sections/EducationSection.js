@@ -31,7 +31,7 @@ function EducationSection(props) {
                   label={`${item.schoolName} - ${item.degree}`}
                 />
               </div>
-            )
+            );
           })}
         </div>
       ) : null}
@@ -50,7 +50,6 @@ function EducationSection(props) {
           }
         />
       ) : null}
-
     </div>
   );
 }
@@ -64,35 +63,37 @@ function AddEducationForm(props) {
 
   const [summary, setSummary] = useState();
 
-  const [degreeError, setDegreeError] = useState('');
-  const [schoolNameError, setSchoolNameError] = useState('');
-  const [startDateError, setStartDateError] = useState('');
+  const [degreeError, setDegreeError] = useState("");
+  const [schoolNameError, setSchoolNameError] = useState("");
+  const [startDateError, setStartDateError] = useState("");
 
   const validateEducation = () => {
-    
-    let degreeErrorMsg = ""
-    degree ? degreeErrorMsg = "" : degreeErrorMsg = "יש להזין תיאור השלכה"
-    setDegreeError(degreeErrorMsg)
+    let degreeErrorMsg = "";
+    degree ? (degreeErrorMsg = "") : (degreeErrorMsg = "יש להזין תיאור השלכה");
+    setDegreeError(degreeErrorMsg);
 
-    let schoolNameErrorMsg = ""
-    schoolName ? schoolNameErrorMsg = "" : schoolNameErrorMsg = "יש להזין שם מוסד"
-    setSchoolNameError(schoolNameErrorMsg)
+    let schoolNameErrorMsg = "";
+    schoolName
+      ? (schoolNameErrorMsg = "")
+      : (schoolNameErrorMsg = "יש להזין שם מוסד");
+    setSchoolNameError(schoolNameErrorMsg);
 
-    let startDateErrorMsg = ""
-    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת לימודים"
-    setStartDateError(startDateErrorMsg)
+    let startDateErrorMsg = "";
+    startDate
+      ? (startDateErrorMsg = "")
+      : (startDateErrorMsg = "יש להזין תאריך תחילת לימודים");
+    setStartDateError(startDateErrorMsg);
 
-    if(schoolNameErrorMsg || degreeErrorMsg || startDateErrorMsg){
-      return false
+    if (schoolNameErrorMsg || degreeErrorMsg || startDateErrorMsg) {
+      return false;
+    } else {
+      return true;
     }
-    else{
-      return true
-    }
-  }
+  };
 
   const addEducation = () => {
-    let isValid = validateEducation()
-    if(isValid){
+    let isValid = validateEducation();
+    if (isValid) {
       props.handleState({
         degree,
         schoolName,
@@ -102,30 +103,38 @@ function AddEducationForm(props) {
       });
       props.setButton(false);
     }
-  }
+  };
 
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="שם המוסד" error={!!schoolNameError} handleState={setschoolName} />
-        <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
+        <BasicInput
+          name="שם המוסד"
+          error={!!schoolNameError}
+          handleState={setschoolName}
+        />
+        <BasicInput
+          name="תיאור ההשכלה"
+          error={!!degreeError}
+          handleState={setDegree}
+        />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת לימודים" error={!!startDateError} handleState={setStartDate} />
+        <BasicInput
+          name="תאריך תחילת לימודים"
+          error={!!startDateError}
+          handleState={setStartDate}
+        />
         <BasicInput name="תאריך סוף לימודים" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
         <TextArea
-          onChange={(e) => {
-            setSummary(e.target.value);
+          onChange={(content) => {
+            setSummary(content);
           }}
         />
       </div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={addEducation}
-      >
+      <Button variant="outlined" color="primary" onClick={addEducation}>
         הוספה
       </Button>
     </div>

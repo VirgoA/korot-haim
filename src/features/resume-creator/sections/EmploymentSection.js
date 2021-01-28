@@ -57,70 +57,81 @@ function EmploymentSection(props) {
 }
 
 function AddEmploymentForm(props) {
-  const [company, setCompany] = useState('');
-  const [title, setTitle] = useState('');
+  const [company, setCompany] = useState("");
+  const [title, setTitle] = useState("");
 
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [summary, setSummary] = useState();
 
-  const [titleError, setTitleError] = useState('');
-  const [companyError, setCompanyError] = useState('');
-  const [startDateError, setStartDateError] = useState('');
-
+  const [titleError, setTitleError] = useState("");
+  const [companyError, setCompanyError] = useState("");
+  const [startDateError, setStartDateError] = useState("");
 
   const validateEmployment = () => {
+    let titleErrorMsg = "";
+    title ? (titleErrorMsg = "") : (titleErrorMsg = "יש להזין תפקיד");
+    setTitleError(titleErrorMsg);
 
-    let titleErrorMsg = ""
-    title ? titleErrorMsg = "" : titleErrorMsg = "יש להזין תפקיד"
-    setTitleError(titleErrorMsg)
+    let companyErrorMsg = "";
+    company
+      ? (companyErrorMsg = "")
+      : (companyErrorMsg = "יש להזין חברה/מעסיק");
+    setCompanyError(companyErrorMsg);
 
-    let companyErrorMsg = ""
-    company ? companyErrorMsg = "" : companyErrorMsg = "יש להזין חברה/מעסיק"
-    setCompanyError(companyErrorMsg)
+    let startDateErrorMsg = "";
+    startDate
+      ? (startDateErrorMsg = "")
+      : (startDateErrorMsg = "יש להזין תאריך תחילת העסקה");
+    setStartDateError(startDateErrorMsg);
 
-    let startDateErrorMsg = ""
-    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת העסקה"
-    setStartDateError(startDateErrorMsg)
-
-    if(companyErrorMsg || titleErrorMsg || startDateErrorMsg){
-      return false
+    if (companyErrorMsg || titleErrorMsg || startDateErrorMsg) {
+      return false;
+    } else {
+      return true;
     }
-    else{
-      return true
-    }
-  }
+  };
 
   const addEmployment = () => {
-    let isValid = validateEmployment()
-    if(isValid){
+    let isValid = validateEmployment();
+    if (isValid) {
       props.handleState({ title, company, startDate, endDate, summary });
       props.setButton(false);
     }
-  }
+  };
 
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" error={!!companyError} placeholder={companyError} handleState={setCompany} />
-        <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
+        <BasicInput
+          name="חברה/מעסיק"
+          error={!!companyError}
+          placeholder={companyError}
+          handleState={setCompany}
+        />
+        <BasicInput
+          name="שם תפקיד"
+          error={!!titleError}
+          placeholder={titleError}
+          handleState={setTitle}
+        />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת תעסוקה" error={!!startDateError} handleState={setStartDate} />
+        <BasicInput
+          name="תאריך תחילת תעסוקה"
+          error={!!startDateError}
+          handleState={setStartDate}
+        />
         <BasicInput name="תאריך סוף תעסוקה" handleState={setEndDate} />
       </div>
       <div className="row-inputs">
         <TextArea
-          onChange={(e) => {
-            setSummary(e.target.value);
+          onChange={(content) => {
+            setSummary(content);
           }}
         />
       </div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={addEmployment}
-      >
+      <Button variant="outlined" color="primary" onClick={addEmployment}>
         הוספה
       </Button>
     </div>

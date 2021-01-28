@@ -10,8 +10,8 @@ function SummarySection(props) {
       </span>
       <div className="row-inputs">
         <TextArea
-          onChange={(e) => {
-            props.dispatcher(props.reducer(e.target.value));
+          onChange={(content) => {
+            props.dispatcher(props.reducer(content));
           }}
         />
       </div>
