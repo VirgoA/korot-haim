@@ -4,13 +4,26 @@ import BlueTemplate from "./templates/BlueTemplate";
 import { Button } from "@material-ui/core";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 import "./resumePreview.css";
-import { downloadResume } from "../../api";
 import exampleData from "../../utils/example_data.json";
 import ReactDOMServer from "react-dom/server";
+import { pdfDownloadRequest } from "./state/formSlice";
 
 function ResumePreview(props) {
+  const dispatch = useDispatch();
   const data = useSelector((state) => state.form);
-  const [downloadAvailable, setAvailability] = useState(true);
+  const { downloadRequestInProgress } = data;
+
+  const submitDownloadRequest = function () {
+    if (downloadRequestInProgress) {
+      console.log("download in progress");
+    } else {
+      dispatch(
+        pdfDownloadRequest(
+          ReactDOMServer.renderToStaticMarkup(<BlueTemplate data={data} />)
+        )
+      );
+    }
+  };
 
   return (
     <div className="resume-preview">
@@ -23,35 +36,14 @@ function ResumePreview(props) {
           size="large"
           color="secondary"
           id="download-btn"
-          onClick={downloadRequest}
+          onClick={submitDownloadRequest}
         >
-          הורד
+          {downloadRequestInProgress ? "הורדה בפעולה" : "הורדה"}
           <GetAppRoundedIcon style={{ marginTop: "4px" }} />
         </Button>
       </div>
     </div>
   );
-
-  function downloadRequest() {
-    setAvailability(false);
-    submitRequest(downloadAvailable, data);
-    const promise = new Promise((resolve) => {
-      setTimeout(() => {
-        setAvailability(true);
-      }, 5000); //5 seconds delay.
-    });
-  }
-}
-
-function submitRequest(downloadAvailable, data) {
-  if (downloadAvailable) {
-    downloadResume(
-      ReactDOMServer.renderToStaticMarkup(<BlueTemplate data={data} />)
-    );
-  } else {
-    console.log("request canceled - download delay");
-    console.log("only 1 request is allowed every 5 seconds");
-  }
 }
 
 export default ResumePreview;

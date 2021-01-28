@@ -11,9 +11,9 @@ const { setExampleState } = formSlice.actions;
 const ResumeCreator = () => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(setExampleState(exampleData));
-  }, [])
+  }, []);
 
   return (
     <div className="container">

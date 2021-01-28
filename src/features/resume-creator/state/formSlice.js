@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { downloadResume } from "../../../api/index";
 
 const initialState = {
   name: "",
@@ -9,7 +10,8 @@ const initialState = {
   experience: [],
   education: [],
   skills: {},
-}
+  downloadRequestInProgress: false,
+};
 
 const formSlice = createSlice({
   name: "form",
@@ -49,29 +51,56 @@ const formSlice = createSlice({
     },
 
     addSkill: (state, action) => {
-      if(state.skills[action.payload.sphere]){
-        state.skills[action.payload.sphere] = [...state.skills[action.payload.sphere], action.payload.skill]
+      if (state.skills[action.payload.sphere]) {
+        state.skills[action.payload.sphere] = [
+          ...state.skills[action.payload.sphere],
+          action.payload.skill,
+        ];
       } else {
-        state.skills[action.payload.sphere] = [action.payload.skill]
+        state.skills[action.payload.sphere] = [action.payload.skill];
       }
     },
     removeSkill: (state, action) => {
       const sphere = action.payload.sphere;
-      if(state.skills[sphere].length <= 1){
-        const {[sphere]:value, ...restSkills} = state.skills
-        state.skills = restSkills
+      if (state.skills[sphere].length <= 1) {
+        const { [sphere]: value, ...restSkills } = state.skills;
+        state.skills = restSkills;
       } else {
-        state.skills[sphere] = state.skills[sphere].filter((item)=>{
-          return item !== action.payload.skill
-        })
+        state.skills[sphere] = state.skills[sphere].filter((item) => {
+          return item !== action.payload.skill;
+        });
       }
     },
     setExampleState: (state, action) => {
-      for(let key in {...state}){
-        state[key] = action.payload[key]
+      for (let key in { ...state }) {
+        state[key] = action.payload[key];
       }
-    }
+    },
+    downloadResumeReq: (state, action) => {
+      state.downloadRequestInProgress = true;
+    },
+    downloadResumeSuccess: (state, action) => {
+      state.downloadRequestInProgress = false;
+    },
   },
 });
 
 export default formSlice;
+
+export const { downloadResumeReq, downloadResumeSuccess } = formSlice.actions;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export function pdfDownloadRequest(data) {
+  return async (dispatch) => {
+    dispatch(downloadResumeReq());
+    try {
+      const response = await downloadResume(data);
+      console.log("download request dispatched");
+      await sleep(1500);
+      dispatch(downloadResumeSuccess(response));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
