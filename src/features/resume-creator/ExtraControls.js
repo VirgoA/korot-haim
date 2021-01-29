@@ -11,7 +11,7 @@ import requestSlice from "./state/requestSlice";
 function ExtraControls(props) {
 
     const dispatch = useDispatch();
-
+    
     const { 
       sentDownloadRequest, 
       downloadRequestSucceeded,
@@ -28,7 +28,7 @@ function ExtraControls(props) {
           try {
     
             const res = await downloadResume(
-              ReactDOMServer.renderToStaticMarkup(<BlueTemplate data={formData}/>)
+              ReactDOMServer.renderToStaticMarkup(props.renderTemplate("blueTemplate"))
             )
     
             if(res.status === 200) {
