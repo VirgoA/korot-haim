@@ -19,9 +19,10 @@ const ResumeCreator = () => {
   }, [])
 
   const formData = useSelector((state) => state.form);
+  const settingData = useSelector((state) => state.setting);
 
-  const renderTemplate = (templateName) => {
-    switch (templateName) {
+  const renderTemplate = () => {
+    switch (settingData.template) {
       case "blueTemplate":
         return (<BlueTemplate data={formData}/>);
       case "testTemplate":

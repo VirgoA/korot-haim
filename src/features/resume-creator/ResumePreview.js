@@ -7,7 +7,7 @@ function ResumePreview(props) {
     <div className="resume-preview-container">
       <div className="resume-preview">
         <div id="resume-capture">
-          {props.renderTemplate("blueTemplate")}
+          {props.renderTemplate()}
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@ function ExtraControls(props) {
           try {
     
             const res = await downloadResume(
-              ReactDOMServer.renderToStaticMarkup(props.renderTemplate("blueTemplate"))
+              ReactDOMServer.renderToStaticMarkup(props.renderTemplate())
             )
     
             if(res.status === 200) {
