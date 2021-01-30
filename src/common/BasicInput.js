@@ -1,21 +1,22 @@
 import React from "react";
-import { withStyles } from '@material-ui/core/styles';
-import { TextField } from '@material-ui/core';
+import { withStyles } from "@material-ui/core/styles";
+import { TextField } from "@material-ui/core";
 
-function BasicInput(props){
+function BasicInput(props) {
   return (
-    <TextField 
+    <TextField
       error={props.error}
-      variant="outlined" 
+      variant="outlined"
+      value={props.value !== undefined ? props.value : ""}
       style={{
-        flex: 1
+        flex: 1,
       }}
-      label={props.name} 
-      onChange={(e)=>{
-        props.handleState(e.target.value)
+      label={props.name}
+      onChange={(e) => {
+        props.handleState(e.target.value);
       }}
     />
-  )
+  );
 }
 
 export default BasicInput;

@@ -2,23 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   downloadRequest: {
-    status: "idle"
-  }
-}
+    status: "idle",
+  },
+};
 
 const requestSlice = createSlice({
   name: "request",
   initialState: initialState,
   reducers: {
     sentDownloadRequest: (state) => {
-      state.downloadRequest.status = "loading"
+      state.downloadRequest.status = "loading";
     },
     downloadRequestSucceeded: (state) => {
-      state.downloadRequest.status = "succeeded"
+      state.downloadRequest.status = "succeeded";
     },
     downloadRequestFailed: (state) => {
-      state.downloadRequest.status = "failed"
-    },    
+      state.downloadRequest.status = "failed";
+    },
   },
 });
 
