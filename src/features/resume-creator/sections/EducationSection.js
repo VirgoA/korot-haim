@@ -27,12 +27,16 @@ function EducationSection(props) {
               <div key={index}>
                 <Chip
                   className="chip"
-                  onClick={() => {
-                    setEditItem(true);
-                    setItem(item);
-                    setShowForm(true);
-                    props.dispatcher(removeEducation(index));
-                  }}
+                  onClick={
+                    showForm === true
+                      ? null
+                      : () => {
+                          setEditItem(true);
+                          setShowForm(true);
+                          setItem(item);
+                          props.dispatcher(removeEducation(index));
+                        }
+                  }
                   onDelete={() => {
                     props.dispatcher(removeEducation(index));
                   }}
@@ -83,7 +87,6 @@ function AddEducationForm(props) {
       setDegree(props.item.degree);
       setStartDate(props.item.startDate);
       setEndDate(props.item.endDate);
-      setSummary(props.item.summary);
     }
   });
 
