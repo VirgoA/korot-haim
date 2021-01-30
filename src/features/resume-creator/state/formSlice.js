@@ -7,9 +7,10 @@ const initialState = {
   phoneNumber: "",
   professionalSummary: "",
   experience: [],
+  armyExperience: [],
   education: [],
   skills: {},
-}
+};
 
 const formSlice = createSlice({
   name: "form",
@@ -38,7 +39,14 @@ const formSlice = createSlice({
         return index !== action.payload;
       });
     },
-
+    addArmyExperience: (state, action) => {
+      state.armyExperience = [...state.armyExperience, action.payload];
+    },
+    removeArmyExperience: (state, action) => {
+      state.armyExperience = state.armyExperience.filter((item, index) => {
+        return index !== action.payload;
+      });
+    },
     addEducation: (state, action) => {
       state.education = [...state.education, action.payload];
     },
@@ -49,28 +57,31 @@ const formSlice = createSlice({
     },
 
     addSkill: (state, action) => {
-      if(state.skills[action.payload.sphere]){
-        state.skills[action.payload.sphere] = [...state.skills[action.payload.sphere], action.payload.skill]
+      if (state.skills[action.payload.sphere]) {
+        state.skills[action.payload.sphere] = [
+          ...state.skills[action.payload.sphere],
+          action.payload.skill,
+        ];
       } else {
-        state.skills[action.payload.sphere] = [action.payload.skill]
+        state.skills[action.payload.sphere] = [action.payload.skill];
       }
     },
     removeSkill: (state, action) => {
       const sphere = action.payload.sphere;
-      if(state.skills[sphere].length <= 1){
-        const {[sphere]:value, ...restSkills} = state.skills
-        state.skills = restSkills
+      if (state.skills[sphere].length <= 1) {
+        const { [sphere]: value, ...restSkills } = state.skills;
+        state.skills = restSkills;
       } else {
-        state.skills[sphere] = state.skills[sphere].filter((item)=>{
-          return item !== action.payload.skill
-        })
+        state.skills[sphere] = state.skills[sphere].filter((item) => {
+          return item !== action.payload.skill;
+        });
       }
     },
     setExampleState: (state, action) => {
-      for(let key in {...state}){
-        state[key] = action.payload[key]
+      for (let key in { ...state }) {
+        state[key] = action.payload[key];
       }
-    }
+    },
   },
 });
 
