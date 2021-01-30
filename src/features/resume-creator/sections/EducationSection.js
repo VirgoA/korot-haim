@@ -13,6 +13,14 @@ function EducationSection(props) {
   const [editItem, setEditItem] = useState(false);
   const [item, setItem] = useState(undefined);
 
+  const editChip = function (isFormOpen, chip, chipNumber) {
+    if (!isFormOpen) {
+      setEditItem(true);
+      setShowForm(true);
+      setItem(chip);
+      props.dispatcher(removeEducation(chipNumber));
+    }
+  };
   return (
     <div className="form-section">
       <span className="title">השכלה</span>
@@ -27,16 +35,7 @@ function EducationSection(props) {
               <div key={index}>
                 <Chip
                   className="chip"
-                  onClick={
-                    showForm === true
-                      ? null
-                      : () => {
-                          setEditItem(true);
-                          setShowForm(true);
-                          setItem(item);
-                          props.dispatcher(removeEducation(index));
-                        }
-                  }
+                  onClick={() => editChip(showForm, item, index)}
                   onDelete={() => {
                     props.dispatcher(removeEducation(index));
                   }}
