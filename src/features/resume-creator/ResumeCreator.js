@@ -7,14 +7,19 @@ import { useEffect } from "react";
 import exampleData from "../../utils/example_data.json";
 import ExtraControls from "./ExtraControls";
 import BlueTemplate from "./templates/BlueTemplate";
+import TestTemplate from "./templates/TestTemplate";
 import { useSelector } from "react-redux";
+import settingForm from "./state/settingSlice";
 
 const { setExampleState } = formSlice.actions;
+const { setTemplate } = settingForm.actions;
 
 const ResumeCreator = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    //test template
+    dispatch(setTemplate("testTemplate"));
     dispatch(setExampleState(exampleData));
   }, [])
 
@@ -26,7 +31,7 @@ const ResumeCreator = () => {
       case "blueTemplate":
         return (<BlueTemplate data={formData}/>);
       case "testTemplate":
-        return (<div>Test Template</div>)      
+        return (<TestTemplate data={formData}/>);
       default:
         break;
     }
