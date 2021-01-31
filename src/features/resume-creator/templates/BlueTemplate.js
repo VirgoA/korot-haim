@@ -11,6 +11,7 @@ function BlueTemplate(props) {
       name,
       phoneNumber,
       professionalSummary,
+      languages
     } = props.data;
 
     const renderSkills = (skills) => {
@@ -218,6 +219,19 @@ function BlueTemplate(props) {
                             </div>
                             {renderSkills(skills)}                            
                         </div>
+                    }
+                    {languages.length !== 0 && 
+                      <div className="resume-section">
+                        <div className="resume-section-head">
+                            <div className="head-decoration"></div>
+                            <div className="head-title">שפות</div>
+                        </div>
+                        <div className="resume-section-item">
+                            <div className="item-summary">
+                                {languages.join(' ,')}
+                            </div>             
+                        </div>    
+                      </div>
                     }
               </div>
           </div>
