@@ -140,6 +140,7 @@ const BlueTemplate = (props) => {
         
         .item-head{
             display: flex;
+            gap: 19px
         }
         
         .item-side{
@@ -147,13 +148,12 @@ const BlueTemplate = (props) => {
         }
         
         .item-side-ltr{
-            min-width: 115px;
+            min-width: 96px;
             text-align: left;
-            padding-left: 21px;
         }
         
         .item-title{
-        
+            
         }
         
         .item-summary{
