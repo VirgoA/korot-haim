@@ -1,9 +1,5 @@
 import React from "react";
 import { Button, SwipeableDrawer } from "@material-ui/core";
-//might delete later 
-import { List, Divider, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import "./navigationBar.css";
 
 function NavigationBar(props) {

@@ -1,5 +1,3 @@
-import { withStyles } from "@material-ui/core/styles";
-import { TextField } from "@material-ui/core";
 import { Editor } from "@tinymce/tinymce-react";
 
 const TextArea = (props) => {

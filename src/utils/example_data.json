@@ -27,6 +27,12 @@
         "title":"מתכנת"
       }
     ],
+    "armyExperience":[{        
+      "company":"לוחם",
+      "endDate":"2020",
+      "startDate":"2017",
+      "summary":"",
+      "title":"חיל התותחנים"}],
     "education": [
       {
         "degree":"פילוסופיה",

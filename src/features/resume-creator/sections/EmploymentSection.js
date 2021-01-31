@@ -11,6 +11,17 @@ const { addExperience, removeExperience } = formSlice.actions;
 
 function EmploymentSection(props) {
   const [showForm, setShowForm] = useState(false);
+  const [editItem, setEditItem] = useState(false);
+  const [item, setItem] = useState(undefined);
+
+  const editChip = function (isFormOpen, chip, chipNumber) {
+    if (!isFormOpen) {
+      setEditItem(true);
+      setShowForm(true);
+      setItem(chip);
+      props.dispatcher(removeExperience(chipNumber));
+    }
+  };
 
   return (
     <div className="form-section">
@@ -27,6 +38,7 @@ function EmploymentSection(props) {
               <div key={index}>
                 <Chip
                   className="chip"
+                  onClick={() => editChip(showForm, item, index)}
                   onDelete={() => {
                     props.dispatcher(removeExperience(index));
                   }}
@@ -46,7 +58,9 @@ function EmploymentSection(props) {
 
       {showForm === true ? (
         <AddEmploymentForm
-          setButton={setShowForm}
+          setFunctions={[setShowForm, setItem, setEditItem]}
+          edit={editItem}
+          item={item}
           handleState={(newExpirience) =>
             props.dispatcher(addExperience(newExpirience))
           }
@@ -67,6 +81,15 @@ function AddEmploymentForm(props) {
   const [titleError, setTitleError] = useState("");
   const [companyError, setCompanyError] = useState("");
   const [startDateError, setStartDateError] = useState("");
+
+  useEffect(() => {
+    if (props.edit) {
+      setCompany(props.item.company);
+      setTitle(props.item.title);
+      setStartDate(props.item.startDate);
+      setEndDate(props.item.endDate);
+    }
+  });
 
   const validateEmployment = () => {
     let titleErrorMsg = "";
@@ -96,7 +119,9 @@ function AddEmploymentForm(props) {
     let isValid = validateEmployment();
     if (isValid) {
       props.handleState({ title, company, startDate, endDate, summary });
-      props.setButton(false);
+      props.setFunctions[0](false);
+      props.setFunctions[1](null);
+      props.setFunctions[2](false);
     }
   };
 
@@ -105,12 +130,14 @@ function AddEmploymentForm(props) {
       <div className="row-inputs">
         <BasicInput
           name="חברה/מעסיק"
+          value={company}
           error={!!companyError}
           placeholder={companyError}
           handleState={setCompany}
         />
         <BasicInput
           name="שם תפקיד"
+          value={title}
           error={!!titleError}
           placeholder={titleError}
           handleState={setTitle}
@@ -119,10 +146,15 @@ function AddEmploymentForm(props) {
       <div className="row-inputs">
         <BasicInput
           name="תאריך תחילת תעסוקה"
+          value={startDate}
           error={!!startDateError}
           handleState={setStartDate}
         />
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setEndDate} />
+        <BasicInput
+          value={endDate}
+          name="תאריך סוף תעסוקה"
+          handleState={setEndDate}
+        />
       </div>
       <div className="row-inputs">
         <TextArea

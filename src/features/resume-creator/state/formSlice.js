@@ -8,6 +8,7 @@ const initialState = {
   phoneNumber: "",
   professionalSummary: "",
   experience: [],
+  armyExperience: [],
   education: [],
   skills: {},
 };
@@ -39,7 +40,14 @@ const formSlice = createSlice({
         return index !== action.payload;
       });
     },
-
+    addArmyExperience: (state, action) => {
+      state.armyExperience = [...state.armyExperience, action.payload];
+    },
+    removeArmyExperience: (state, action) => {
+      state.armyExperience = state.armyExperience.filter((item, index) => {
+        return index !== action.payload;
+      });
+    },
     addEducation: (state, action) => {
       state.education = [...state.education, action.payload];
     },

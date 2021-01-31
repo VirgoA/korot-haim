@@ -3,6 +3,7 @@ import React from "react";
 function BlueTemplate(props) {
   const {
     experience,
+    armyExperience,
     education,
     skills,
     email,
@@ -183,6 +184,20 @@ function BlueTemplate(props) {
               <div className="resume-section-main">
                 <div className="resume-section-title">השכלה</div>
                 {renderContent(education)}
+              </div>
+            </div>
+          )}
+          {armyExperience.length !== 0 && (
+            <div className="resume-section">
+              <div className="resume-section-side">
+                <div className="resume-side-decoration"></div>
+                <div className="resume-side-body">
+                  {renderDates(armyExperience)}
+                </div>
+              </div>
+              <div className="resume-section-main">
+                <div className="resume-section-title">שירות צבאי</div>
+                {renderContent(armyExperience)}
               </div>
             </div>
           )}

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import formSlice from "../state/formSlice";
+import React, { useEffect, useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
+import formSlice from "../state/formSlice";
 import { Button, Chip } from "@material-ui/core";
+
 import "./sections.css";
 
-const { addEducation, removeEducation } = formSlice.actions;
+const { addArmyExperience, removeArmyExperience } = formSlice.actions;
 
-function EducationSection(props) {
+function ArmySection(props) {
   const [showForm, setShowForm] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [item, setItem] = useState(undefined);
@@ -18,28 +19,28 @@ function EducationSection(props) {
       setEditItem(true);
       setShowForm(true);
       setItem(chip);
-      props.dispatcher(removeEducation(chipNumber));
+      props.dispatcher(removeArmyExperience(chipNumber));
     }
   };
+
   return (
     <div className="form-section">
-      <span className="title">השכלה</span>
+      <span className="title">שירות צבאי/לאומי</span>
       <span className="description">
-        בחלק זה תציינו את ההשכלה שלכם, היכן למדתם וכמה שנים
+        בחלק זה תציינו את הניסיון והתפקידים שעשיתם במהלך שירותכם הצבאי.
       </span>
-
-      {props.education.length !== 0 ? (
+      {props.armyExperience.length !== 0 ? (
         <div className="chipsGroup">
-          {props.education.map((item, index) => {
+          {props.armyExperience.map((item, index) => {
             return (
               <div key={index}>
                 <Chip
                   className="chip"
                   onClick={() => editChip(showForm, item, index)}
                   onDelete={() => {
-                    props.dispatcher(removeEducation(index));
+                    props.dispatcher(removeArmyExperience(index));
                   }}
-                  label={`${item.schoolName} - ${item.degree}`}
+                  label={`${item.company} - ${item.title}`}
                 />
               </div>
             );
@@ -48,18 +49,18 @@ function EducationSection(props) {
       ) : null}
 
       <SwitchButton
-        btnText="הוסף לימודים +"
+        btnText="הוסף תעסוקה +"
         currentState={showForm}
         switchStateFunc={setShowForm}
       />
 
       {showForm === true ? (
-        <AddEducationForm
+        <AddEmploymentForm
           setFunctions={[setShowForm, setItem, setEditItem]}
           edit={editItem}
           item={item}
-          handleState={(newEducation) =>
-            props.dispatcher(addEducation(newEducation))
+          handleState={(newExpirience) =>
+            props.dispatcher(addArmyExperience(newExpirience))
           }
         />
       ) : null}
@@ -67,62 +68,53 @@ function EducationSection(props) {
   );
 }
 
-function AddEducationForm(props) {
-  const [schoolName, setschoolName] = useState();
-  const [degree, setDegree] = useState();
+function AddEmploymentForm(props) {
+  const [company, setCompany] = useState("");
+  const [title, setTitle] = useState("");
 
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
   const [summary, setSummary] = useState();
 
-  const [degreeError, setDegreeError] = useState("");
-  const [schoolNameError, setSchoolNameError] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [companyError, setCompanyError] = useState("");
   const [startDateError, setStartDateError] = useState("");
 
   useEffect(() => {
     if (props.edit) {
-      setschoolName(props.item.schoolName);
-      setDegree(props.item.degree);
+      setCompany(props.item.company);
+      setTitle(props.item.title);
       setStartDate(props.item.startDate);
       setEndDate(props.item.endDate);
     }
   });
 
-  const validateEducation = () => {
-    let degreeErrorMsg = "";
-    degree ? (degreeErrorMsg = "") : (degreeErrorMsg = "יש להזין תיאור השלכה");
-    setDegreeError(degreeErrorMsg);
+  const validateEmployment = () => {
+    let titleErrorMsg = "";
+    title ? (titleErrorMsg = "") : (titleErrorMsg = "יש להזין תפקיד");
+    setTitleError(titleErrorMsg);
 
-    let schoolNameErrorMsg = "";
-    schoolName
-      ? (schoolNameErrorMsg = "")
-      : (schoolNameErrorMsg = "יש להזין שם מוסד");
-    setSchoolNameError(schoolNameErrorMsg);
+    let companyErrorMsg = "";
+    company ? (companyErrorMsg = "") : (companyErrorMsg = "יש להזין חיל");
+    setCompanyError(companyErrorMsg);
 
     let startDateErrorMsg = "";
     startDate
       ? (startDateErrorMsg = "")
-      : (startDateErrorMsg = "יש להזין תאריך תחילת לימודים");
+      : (startDateErrorMsg = "יש להזין תאריך תחילת השירות");
     setStartDateError(startDateErrorMsg);
 
-    if (schoolNameErrorMsg || degreeErrorMsg || startDateErrorMsg) {
+    if (companyErrorMsg || titleErrorMsg || startDateErrorMsg) {
       return false;
     } else {
       return true;
     }
   };
 
-  const addEducation = () => {
-    let isValid = validateEducation();
+  const addEmployment = () => {
+    let isValid = validateEmployment();
     if (isValid) {
-      props.handleState({
-        degree,
-        schoolName,
-        startDate,
-        endDate,
-        summary,
-      });
+      props.handleState({ title, company, startDate, endDate, summary });
       props.setFunctions[0](false);
       props.setFunctions[1](null);
       props.setFunctions[2](false);
@@ -133,43 +125,45 @@ function AddEducationForm(props) {
     <div className="addForm">
       <div className="row-inputs">
         <BasicInput
-          name="שם המוסד"
-          value={schoolName}
-          error={!!schoolNameError}
-          handleState={setschoolName}
+          name="שם תפקיד"
+          value={company}
+          error={!!companyError}
+          placeholder={companyError}
+          handleState={setCompany}
         />
         <BasicInput
-          name="תיאור ההשכלה"
-          value={degree}
-          error={!!degreeError}
-          handleState={setDegree}
+          name="שם החיל"
+          value={title}
+          error={!!titleError}
+          placeholder={titleError}
+          handleState={setTitle}
         />
       </div>
       <div className="row-inputs">
         <BasicInput
+          name="תאריך תחילת השירות"
           value={startDate}
-          name="תאריך תחילת לימודים"
           error={!!startDateError}
           handleState={setStartDate}
         />
         <BasicInput
           value={endDate}
-          name="תאריך סוף לימודים"
+          name="תאריך סוף השירות"
           handleState={setEndDate}
         />
       </div>
       <div className="row-inputs">
         <TextArea
-          onChange={(content) => {
-            setSummary(content);
+          onChange={(e) => {
+            setSummary(e.target.value);
           }}
         />
       </div>
-      <Button variant="outlined" color="primary" onClick={addEducation}>
+      <Button variant="outlined" color="primary" onClick={addEmployment}>
         הוספה
       </Button>
     </div>
   );
 }
 
-export default EducationSection;
+export default ArmySection;
