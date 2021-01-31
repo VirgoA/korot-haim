@@ -52,5 +52,6 @@
     "skills": {
       "צד לקוח": ["React", "Angular"],
       "צד שרת": ["Django", "Node.js"]
-    }
+    },
+    "languages": ["עברית", "אנגלית"]
 }

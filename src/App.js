@@ -1,10 +1,9 @@
 import "./app.css";
-import NavigationBar from "./features/resume-creator/NavigationBar";
-import ResumeCreator from "./features/resume-creator/ResumeCreator";
 import { useState, useEffect } from "react";
+import AppRouter from "./AppRouter";
+import { wakeupServer } from "./api/index";
 import whaleGif from "./resources/gifs/whale.gif";
 import FadeIn from "react-fade-in";
-import { wakeupServer } from "./api/index";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,11 +26,7 @@ function App() {
   } else {
     return (
       <FadeIn transitionDuration="2500" id="loading-gif">
-        <div className="app-container">
-          <NavigationBar />
-
-          <ResumeCreator />
-        </div>
+        <AppRouter/>
       </FadeIn>
     );
   }

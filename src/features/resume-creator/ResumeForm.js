@@ -1,5 +1,4 @@
 import "./resumeForm.css";
-
 import React from "react";
 import SummarySection from "./sections/SummarySection";
 import EmploymentSection from "./sections/EmploymentSection";
@@ -9,16 +8,20 @@ import PersonalInfoSection from "./sections/PersonalInfoSection";
 import EducationSection from "./sections/EducationSection";
 import SkillSection from "./sections/SkillSection";
 import ArmySection from "./sections/ArmySection";
+import LanguageSection from "./sections/LanguageSection";
 
 const ResumeForm = () => {
   const dispatch = useDispatch();
 
   const { setProfessionalSummary } = formSlice.actions;
 
-  const { experience, armyExperience, education, skills } = useSelector(
-    (state) => state.form
-  );
-  console.log(useSelector((state) => state));
+  const {
+    experience,
+    armyExperience,
+    education,
+    skills,
+    languages,
+  } = useSelector((state) => state.form);
 
   return (
     <form>
@@ -37,6 +40,8 @@ const ResumeForm = () => {
         <ArmySection dispatcher={dispatch} armyExperience={armyExperience} />
 
         <SkillSection dispatcher={dispatch} skills={skills} />
+
+        <LanguageSection dispatcher={dispatch} languages={languages} />
       </div>
     </form>
   );

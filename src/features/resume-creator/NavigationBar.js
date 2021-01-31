@@ -1,12 +1,16 @@
-import React from "react";
-import { Button, SwipeableDrawer } from "@material-ui/core";
 import "./navigationBar.css";
+import React, { useState, useCallback } from "react";
+import { Button, SwipeableDrawer } from "@material-ui/core";
+import { NavLink, useHistory } from 'react-router-dom';
 
-function NavigationBar(props) {
+const NavigationBar = (props) => {
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     open: false
   })
+
+  const history = useHistory();
+  const handleCallToAction = useCallback(() => history.push('/'), [history])
 
   const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -18,9 +22,9 @@ function NavigationBar(props) {
   
   const navMenu = () => (
     <div className="nav-menu">
-      <a href="../contact.html">צור קשר</a>
-      <a href="../faq.html">שאלות נפוצות</a>
-      <a href="../about.html">עלינו</a>
+      <NavLink to="/contact">צור קשר</NavLink>
+      <NavLink to="/faq">שאלות נפוצות</NavLink>
+      <NavLink to="/about">עלינו</NavLink>
     </div>
   )
 
@@ -30,7 +34,7 @@ function NavigationBar(props) {
       size="large"
       color="primary"
       id="action"
-      onClick={() => {}}
+      onClick={handleCallToAction}
     >
       הכן קורות חיים
     </Button>
@@ -43,7 +47,6 @@ function NavigationBar(props) {
       onKeyDown={toggleDrawer(false)}
     >
       {callToAction()}
-      {/* <Divider /> */}
       {navMenu()}
     </div>
   );

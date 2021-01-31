@@ -1,8 +1,7 @@
+import "./resumePreview.css";
 import React from "react";
 
-import "./resumePreview.css";
-
-function ResumePreview(props) {
+const ResumePreview = (props) => {
   return (
     <div className="resume-preview-container">
       <div className="resume-preview">
@@ -10,6 +9,6 @@ function ResumePreview(props) {
       </div>
     </div>
   );
-}
+};
 
 export default ResumePreview;

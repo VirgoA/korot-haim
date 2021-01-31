@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import "./sections.css";
+import React, { useState, useEffect } from "react";
+import { Button, Chip } from "@material-ui/core";
+import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
-import formSlice from "../state/formSlice";
-import { Button, Chip } from "@material-ui/core";
-
-import "./sections.css";
 
 const { addExperience, removeExperience } = formSlice.actions;
 
-function EmploymentSection(props) {
+const EmploymentSection = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [item, setItem] = useState(undefined);
@@ -31,7 +30,7 @@ function EmploymentSection(props) {
         התפקידים האחרונים שלכם קודם
       </span>
 
-      {props.experience.length !== 0 ? (
+      {props.experience.length !== 0 && (
         <div className="chipsGroup">
           {props.experience.map((item, index) => {
             return (
@@ -42,13 +41,13 @@ function EmploymentSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeExperience(index));
                   }}
-                  label={`${item.company} - ${item.title}`}
+                  label={`${item.title} - ${item.company}`}
                 />
               </div>
             );
           })}
         </div>
-      ) : null}
+      )}
 
       <SwitchButton
         btnText="הוסף תעסוקה +"
@@ -56,7 +55,7 @@ function EmploymentSection(props) {
         switchStateFunc={setShowForm}
       />
 
-      {showForm === true ? (
+      {showForm && (
         <AddEmploymentForm
           setFunctions={[setShowForm, setItem, setEditItem]}
           edit={editItem}
@@ -65,12 +64,12 @@ function EmploymentSection(props) {
             props.dispatcher(addExperience(newExpirience))
           }
         />
-      ) : null}
+      )}
     </div>
   );
-}
+};
 
-function AddEmploymentForm(props) {
+const AddEmploymentForm = (props) => {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
 
@@ -105,7 +104,7 @@ function AddEmploymentForm(props) {
     let startDateErrorMsg = "";
     startDate
       ? (startDateErrorMsg = "")
-      : (startDateErrorMsg = "יש להזין תאריך תחילת העסקה");
+      : (startDateErrorMsg = "יש להזין שנה לתחילת העסקה");
     setStartDateError(startDateErrorMsg);
 
     if (companyErrorMsg || titleErrorMsg || startDateErrorMsg) {
@@ -117,6 +116,7 @@ function AddEmploymentForm(props) {
 
   const addEmployment = () => {
     let isValid = validateEmployment();
+    console.log(isValid);
     if (isValid) {
       props.handleState({ title, company, startDate, endDate, summary });
       props.setFunctions[0](false);
@@ -163,11 +163,18 @@ function AddEmploymentForm(props) {
           }}
         />
       </div>
-      <Button variant="outlined" color="primary" onClick={addEmployment}>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => {
+          console.log("cliucked");
+          addEmployment();
+        }}
+      >
         הוספה
       </Button>
     </div>
   );
-}
+};
 
 export default EmploymentSection;

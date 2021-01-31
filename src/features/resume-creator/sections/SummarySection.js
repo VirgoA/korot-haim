@@ -1,7 +1,7 @@
 import React from "react";
 import TextArea from "../../../common/TextArea";
 
-function SummarySection(props) {
+const SummarySection = (props) => {
   return (
     <div className="form-section">
       <span className="title">סיכום מקצועי</span>

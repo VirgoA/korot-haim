@@ -11,3 +11,9 @@
   -webkit-border-radius: 30%;
   -o-border-radius: 30%;
 }
+
+@media (max-width: 780px) {
+  #loading-gif img {
+    width: 200px;
+  }   
+}

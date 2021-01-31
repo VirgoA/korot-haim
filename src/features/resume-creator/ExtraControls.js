@@ -1,14 +1,13 @@
-import React from "react";
 import "./extraControls.css";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Tooltip, CircularProgress } from "@material-ui/core";
-import { downloadResume } from "../../api";
 import ReactDOMServer from "react-dom/server";
+import { Button, Tooltip, CircularProgress } from "@material-ui/core";
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import BlueTemplate from "./templates/BlueTemplate";
 import requestSlice from "./state/requestSlice";
+import { downloadResume } from "../../api";
 
-function ExtraControls(props) {
+const ExtraControls = (props) => {
 
     const dispatch = useDispatch();
     

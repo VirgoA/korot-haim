@@ -4,8 +4,9 @@ import BasicInput from "../../../common/BasicInput";
 
 const { setName, setLastName, setEmail, setPhoneNumber } = formSlice.actions;
 
-function PersonalInfoSection(props) {
-  const dispatchFunc = function (actionType) {
+const PersonalInfoSection = (props) => {
+
+  const dispatchFunc = (actionType) => {
     return (inputValue) => {
       props.dispatcher(actionType(inputValue));
     };
