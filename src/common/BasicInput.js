@@ -1,9 +1,7 @@
 import React from "react";
-import { withStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 
-function BasicInput(props){
-  return (
+const BasicInput = (props) => (
     <TextField 
       error={props.error}
       variant="outlined" 
@@ -16,7 +14,7 @@ function BasicInput(props){
       }}
       inputProps={props.inputProps}
     />
-  )
-}
+)
+
 
 export default BasicInput;
