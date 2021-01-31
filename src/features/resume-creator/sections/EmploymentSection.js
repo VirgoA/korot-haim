@@ -30,7 +30,7 @@ function EmploymentSection(props) {
                   onDelete={() => {
                     props.dispatcher(removeExperience(index));
                   }}
-                  label={`${item.company} - ${item.title}`}
+                  label={`${item.title} - ${item.company}`}
                 />
               </div>
             );
@@ -102,15 +102,15 @@ function AddEmploymentForm(props) {
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" 
-          error={!!companyError} 
-          placeholder={companyError} 
-          handleState={setCompany} 
-        />
         <BasicInput name="שם תפקיד" 
           error={!!titleError} 
           placeholder={titleError} 
           handleState={setTitle} 
+        />        
+        <BasicInput name="חברה/מעסיק" 
+          error={!!companyError} 
+          placeholder={companyError} 
+          handleState={setCompany} 
         />
       </div>
       <div className="row-inputs">
