@@ -8,13 +8,14 @@ import formSlice from "./state/formSlice";
 import PersonalInfoSection from "./sections/PersonalInfoSection";
 import EducationSection from "./sections/EducationSection";
 import SkillSection from "./sections/SkillSection";
+import LanguageSection from "./sections/LanguageSection";
 
 const ResumeForm = () => {
   const dispatch = useDispatch();
 
   const { setProfessionalSummary } = formSlice.actions;
 
-  const { experience, education, skills } = useSelector((state) => state.form);
+  const { experience, education, skills, languages } = useSelector((state) => state.form);
   console.log(useSelector((state) => state));
 
   return (
@@ -32,6 +33,8 @@ const ResumeForm = () => {
         <EducationSection dispatcher={dispatch} education={education} />
 
         <SkillSection dispatcher={dispatch} skills={skills} />
+
+        <LanguageSection dispatcher={dispatch} languages={languages}/>
       </div>
     </form>
   );

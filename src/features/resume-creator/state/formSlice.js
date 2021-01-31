@@ -9,6 +9,7 @@ const initialState = {
   experience: [],
   education: [],
   skills: {},
+  languages: []
 }
 
 const formSlice = createSlice({
@@ -70,6 +71,14 @@ const formSlice = createSlice({
       for(let key in {...state}){
         state[key] = action.payload[key]
       }
+    },
+    addLanguage: (state, action) => {
+      state.languages = [...state.languages, action.payload];
+    },
+    removeLangauge: (state, action) => {
+      state.languages = state.languages.filter((item, index) => {
+        return index !== action.payload;
+      });
     }
   },
 });
