@@ -1,9 +1,9 @@
+import "./navigationBar.css";
 import React, { useState, useCallback } from "react";
 import { Button, SwipeableDrawer } from "@material-ui/core";
 import { NavLink, useHistory } from 'react-router-dom';
-import "./navigationBar.css";
 
-function NavigationBar(props) {
+const NavigationBar = (props) => {
 
   const [state, setState] = useState({
     open: false

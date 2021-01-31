@@ -1,7 +1,7 @@
-import React from "react";
 import "./resumePreview.css";
+import React from "react";
 
-function ResumePreview(props) {
+const ResumePreview = (props) => {
 
   return (
     <div className="resume-preview-container">

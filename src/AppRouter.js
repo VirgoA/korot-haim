@@ -1,10 +1,9 @@
-import React from 'react';
 import "./app.css";
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ResumeCreator from "./features/resume-creator/ResumeCreator";
 import NavigationBar from "./features/resume-creator/NavigationBar";
-import NotFoundPage from "./Pages/NotFoundPage";
-import Maintenance from "./Pages/Maintenance";
+import { NotFoundPage, Maintenance } from "./Pages";
 
 const AppRouter = () => (
   <BrowserRouter>

@@ -1,13 +1,13 @@
+import "./sections.css";
 import React, { useState } from "react";
+import { Button, Chip } from '@material-ui/core';
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
-import { Button, Chip } from '@material-ui/core';
-import "./sections.css";
 
 const { addSkill, removeSkill } = formSlice.actions;
 
-function SkillSection(props) {
+const SkillSection = (props) => {
   const [showForm, setShowForm] = useState(false);
 
   const renderChips = () => {
@@ -51,18 +51,18 @@ function SkillSection(props) {
         switchStateFunc={setShowForm}
       />
 
-      {showForm === true ? (
+      {showForm && (
         <AddSkillForm
           setButton={setShowForm}
           handleState={(newSkill) => props.dispatcher(addSkill(newSkill))}
         />
-      ) : null}
+      )}
 
     </div>
   );
 }
 
-function AddSkillForm(props) {
+const AddSkillForm = (props) => {
   const [sphere, setSphere] = useState("כללי");
   const [skill, setSkill] = useState();
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-function BlueTemplate(props) {
+const BlueTemplate = (props) => {
 
     const {
       experience,

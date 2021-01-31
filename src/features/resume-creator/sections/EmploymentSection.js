@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import "./sections.css";
+import React, { useState } from "react";
+import { Button, Chip } from "@material-ui/core";
+import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
-import formSlice from "../state/formSlice";
-import { Button, Chip } from "@material-ui/core";
-
-import "./sections.css";
 
 const { addExperience, removeExperience } = formSlice.actions;
 
-function EmploymentSection(props) {
+const EmploymentSection = (props) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -20,7 +19,7 @@ function EmploymentSection(props) {
         התפקידים האחרונים שלכם קודם
       </span>
 
-      {props.experience.length !== 0 ? (
+      {props.experience.length !== 0 && (
         <div className="chipsGroup">
           {props.experience.map((item, index) => {
             return (
@@ -36,7 +35,7 @@ function EmploymentSection(props) {
             );
           })}
         </div>
-      ) : null}
+      )}
 
       <SwitchButton
         btnText="הוסף תעסוקה +"
@@ -44,19 +43,19 @@ function EmploymentSection(props) {
         switchStateFunc={setShowForm}
       />
 
-      {showForm === true ? (
+      {showForm && (
         <AddEmploymentForm
           setButton={setShowForm}
           handleState={(newExpirience) =>
             props.dispatcher(addExperience(newExpirience))
           }
         />
-      ) : null}
+      )}
     </div>
   );
 }
 
-function AddEmploymentForm(props) {
+const AddEmploymentForm = (props) => {
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
 

@@ -1,5 +1,4 @@
 import "./resumeForm.css";
-
 import React from "react";
 import SummarySection from "./sections/SummarySection";
 import EmploymentSection from "./sections/EmploymentSection";
@@ -16,7 +15,6 @@ const ResumeForm = () => {
   const { setProfessionalSummary } = formSlice.actions;
 
   const { experience, education, skills, languages } = useSelector((state) => state.form);
-  console.log(useSelector((state) => state));
 
   return (
     <form>

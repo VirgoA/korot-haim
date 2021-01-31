@@ -1,7 +1,7 @@
-import React from "react";
 import './test.css';
+import React from "react";
 
-function TestTemplate(props) {
+const TestTemplate = (props) => {
 
     const {
       experience,

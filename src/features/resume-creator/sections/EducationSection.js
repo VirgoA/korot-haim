@@ -1,14 +1,14 @@
+import "./sections.css";
 import React, { useState } from "react";
+import { Button, Chip } from "@material-ui/core";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
-import { Button, Chip } from "@material-ui/core";
-import "./sections.css";
 
 const { addEducation, removeEducation } = formSlice.actions;
 
-function EducationSection(props) {
+const EducationSection = (props) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function EducationSection(props) {
         בחלק זה תציינו את ההשכלה שלכם, היכן למדתם וכמה שנים
       </span>
 
-      {props.education.length !== 0 ? (
+      {props.education.length !== 0 && (
         <div className="chipsGroup">
           {props.education.map((item, index) => {
             return (
@@ -34,7 +34,7 @@ function EducationSection(props) {
             )
           })}
         </div>
-      ) : null}
+      )}
 
       <SwitchButton
         btnText="הוסף לימודים +"
@@ -42,20 +42,20 @@ function EducationSection(props) {
         switchStateFunc={setShowForm}
       />
 
-      {showForm === true ? (
+      {showForm && (
         <AddEducationForm
           setButton={setShowForm}
           handleState={(newEducation) =>
             props.dispatcher(addEducation(newEducation))
           }
         />
-      ) : null}
+      )}
 
     </div>
   );
 }
 
-function AddEducationForm(props) {
+const AddEducationForm = (props) => {
   const [schoolName, setschoolName] = useState();
   const [degree, setDegree] = useState();
 

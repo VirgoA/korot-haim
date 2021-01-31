@@ -1,17 +1,9 @@
 import "./app.css";
-import NavigationBar from "./features/resume-creator/NavigationBar";
-import ResumeCreator from "./features/resume-creator/ResumeCreator";
 import { useState, useEffect } from "react";
+import AppRouter from "./AppRouter";
+import { wakeupServer } from "./api/index";
 import whaleGif from "./resources/gifs/whale.gif";
 import FadeIn from "react-fade-in";
-import { wakeupServer } from "./api/index";
-import AppRouter from "./AppRouter";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);

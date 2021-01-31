@@ -1,18 +1,14 @@
-import ResumePreview from "./ResumePreview";
 import "./resumeCreator.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import ResumePreview from "./ResumePreview";
 import ResumeForm from "./ResumeForm";
 import formSlice from "./state/formSlice";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import exampleData from "../../utils/example_data.json";
 import ExtraControls from "./ExtraControls";
-import BlueTemplate from "./templates/BlueTemplate";
-import TestTemplate from "./templates/TestTemplate";
-import { useSelector } from "react-redux";
-import settingForm from "./state/settingSlice";
+import { BlueTemplate, TestTemplate } from "./templates";
+import exampleData from "../../utils/example_data.json";
 
 const { setExampleState } = formSlice.actions;
-const { setTemplate } = settingForm.actions;
 
 const ResumeCreator = () => {
   const dispatch = useDispatch();

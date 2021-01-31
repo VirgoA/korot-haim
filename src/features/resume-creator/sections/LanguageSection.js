@@ -1,13 +1,13 @@
+import "./sections.css";
 import React, { useState } from "react";
+import { Button, Chip } from "@material-ui/core";
 import formSlice from "../state/formSlice";
 import BasicInput from "../../../common/BasicInput";
 import SwitchButton from "../../../common/SwitchButton";
-import { Button, Chip } from "@material-ui/core";
-import "./sections.css";
 
 const { addLanguage, removeLangauge } = formSlice.actions;
 
-function LanguageSection(props) {
+const LanguageSection = (props) => {
   const [showForm, setShowForm] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ function LanguageSection(props) {
 
       </span>
 
-      {props.languages.length !== 0 ? (
+      {props.languages.length !== 0 && (
         <div className="chipsGroup">
           {props.languages.map((language, index) => {
             return (
@@ -33,7 +33,7 @@ function LanguageSection(props) {
             )
           })}
         </div>
-      ) : null}
+      )}
 
       <SwitchButton
         btnText="הוסף שפה +"
@@ -41,20 +41,20 @@ function LanguageSection(props) {
         switchStateFunc={setShowForm}
       />
 
-      {showForm === true ? (
+      {showForm && (
         <AddLanguageForm
           setButton={setShowForm}
           handleState={(newLanguage) =>
             props.dispatcher(addLanguage(newLanguage))
           }
         />
-      ) : null}
+      )}
 
     </div>
   );
 }
 
-function AddLanguageForm(props) {
+const AddLanguageForm = (props) => {
   const [language, setLanguage] = useState();
 
   const [languageError, setLanguageError] = useState('');
