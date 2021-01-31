@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { Button, SwipeableDrawer } from "@material-ui/core";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import "./navigationBar.css";
 
 function NavigationBar(props) {
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     open: false
   })
+
+  const history = useHistory();
+  const handleCallToAction = useCallback(() => history.push('/'), [history])
 
   const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -31,7 +34,7 @@ function NavigationBar(props) {
       size="large"
       color="primary"
       id="action"
-      onClick={() => {}}
+      onClick={handleCallToAction}
     >
       הכן קורות חיים
     </Button>
