@@ -79,7 +79,7 @@ function AddEducationForm(props) {
     setSchoolNameError(schoolNameErrorMsg)
 
     let startDateErrorMsg = ""
-    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת לימודים"
+    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין שנה לתחילת לימודים"
     setStartDateError(startDateErrorMsg)
 
     if(schoolNameErrorMsg || degreeErrorMsg || startDateErrorMsg){
@@ -107,12 +107,29 @@ function AddEducationForm(props) {
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="שם המוסד" error={!!schoolNameError} handleState={setschoolName} />
-        <BasicInput name="תיאור ההשכלה" error={!!degreeError} handleState={setDegree} />
+        <BasicInput 
+          name="שם המוסד" 
+          error={!!schoolNameError} 
+          handleState={setschoolName} 
+        />
+        <BasicInput 
+          name="תיאור ההשכלה" 
+          error={!!degreeError} 
+          handleState={setDegree} 
+        />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת לימודים" error={!!startDateError} handleState={setStartDate} />
-        <BasicInput name="תאריך סוף לימודים" handleState={setEndDate} />
+        <BasicInput 
+          name="שנת תחילת הלימודים" 
+          error={!!startDateError}
+          inputProps={{ maxLength: 4 }}  
+          handleState={setStartDate} 
+        />
+        <BasicInput 
+          name="שנת סיום הלימודים"
+          inputProps={{ maxLength: 4 }}  
+          handleState={setEndDate} 
+        />
       </div>
       <div className="row-inputs">
         <TextArea

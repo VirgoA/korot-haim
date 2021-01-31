@@ -80,7 +80,7 @@ function AddEmploymentForm(props) {
     setCompanyError(companyErrorMsg)
 
     let startDateErrorMsg = ""
-    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין תאריך תחילת העסקה"
+    startDate ? startDateErrorMsg = "" : startDateErrorMsg = "יש להזין שנה לתחילת העסקה"
     setStartDateError(startDateErrorMsg)
 
     if(companyErrorMsg || titleErrorMsg || startDateErrorMsg){
@@ -102,12 +102,29 @@ function AddEmploymentForm(props) {
   return (
     <div className="addForm">
       <div className="row-inputs">
-        <BasicInput name="חברה/מעסיק" error={!!companyError} placeholder={companyError} handleState={setCompany} />
-        <BasicInput name="שם תפקיד" error={!!titleError} placeholder={titleError} handleState={setTitle} />
+        <BasicInput name="חברה/מעסיק" 
+          error={!!companyError} 
+          placeholder={companyError} 
+          handleState={setCompany} 
+        />
+        <BasicInput name="שם תפקיד" 
+          error={!!titleError} 
+          placeholder={titleError} 
+          handleState={setTitle} 
+        />
       </div>
       <div className="row-inputs">
-        <BasicInput name="תאריך תחילת תעסוקה" error={!!startDateError} handleState={setStartDate} />
-        <BasicInput name="תאריך סוף תעסוקה" handleState={setEndDate} />
+        <BasicInput 
+          name="שנת תחילת העסקה" 
+          error={!!startDateError}
+          inputProps={{ maxLength: 4 }} 
+          handleState={setStartDate} 
+        />
+        <BasicInput 
+          name="שנת סיום העסקה" 
+          inputProps={{ maxLength: 4 }}
+          handleState={setEndDate} 
+        />
       </div>
       <div className="row-inputs">
         <TextArea

@@ -14,6 +14,7 @@ function BasicInput(props){
       onChange={(e)=>{
         props.handleState(e.target.value)
       }}
+      inputProps={props.inputProps}
     />
   )
 }
