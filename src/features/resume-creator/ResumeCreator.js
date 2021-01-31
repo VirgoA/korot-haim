@@ -18,8 +18,6 @@ const ResumeCreator = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    //test template
-    dispatch(setTemplate("testTemplate"));
     dispatch(setExampleState(exampleData));
   }, [])
 

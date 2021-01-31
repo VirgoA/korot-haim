@@ -13,49 +13,54 @@ function BlueTemplate(props) {
       professionalSummary,
     } = props.data;
 
-    const renderDates = (arr) => (
-        arr.map((exp, index)=>(
-            <div key={index} className="resume-side-content">
-                {`${exp.startDate} - ${exp.endDate || "היום"}`}
-            </div>
-            )
-        )
-    )
-
-    const renderContent = (arr) => (
-        arr.map((content, index) => (
-            <div key={index} className="resume-section-content">
-                {`${content.schoolName || content.company} - ${content.degree || content.title}`}
-            </div>
-        ))
-    )
-
-    const renderSpheres = () => (
-        Object.keys(skills).map((skill, index) => (
-            <div key={index} className="resume-side-content">
-                {skill}
-            </div>
-        ))
-    )
-
-    const renderSkills = () => {
+    const renderSkills = (skills) => {
         let skillsToRender = []
+        let spheres = []
         for(const sphere in skills){
+            spheres.push(sphere);
             skillsToRender.push(skills[sphere]);
         }
 
         return (
-            <div>
+            <div className="skills-container">
                 {
-                    skillsToRender.map((arr, index)=>(
-                        <div key={index} className="resume-section-content">
-                            {arr.join(' ,')}
+                    skillsToRender.map((arr, index) => (
+                        <div className="resume-section-item" key={index}>
+                            <div className="item-head">
+                                <div className="item-side-ltr">
+                                    {spheres[index]}
+                                </div> 
+                                <div className="item-title">
+                                    {arr.join(' ,')}
+                                </div>
+                            </div>            
                         </div>
-                    ))
+                    ))                    
                 }
             </div>
         )
     }
+
+    const renderSectionItems = (items) => (
+        items.map((item, index)=>(
+            <div className="resume-section-item" key={index}>
+                <div className="item-head">
+                    <div className="item-side-ltr">
+                        {`${item.startDate} - ${item.endDate || "היום"}`}
+                    </div> 
+                    <div className="item-title">
+                        <strong>{item.degree || item.title} </strong>
+                        - {item.schoolName || item.company}  
+                    </div>
+                </div>
+                {item.summary && 
+                    <div className="item-summary">
+                        {item.summary}
+                    </div>                
+                }
+            </div>                
+        ))
+    )
 
     const css = `
         .A4 {
@@ -72,67 +77,90 @@ function BlueTemplate(props) {
             overflow-y: scroll;
             box-sizing: border-box;
         }
-
+        
         .resume-container{
             display: flex;
             flex-direction: column;
             padding: 60px 20px;
         }
-
+        
         .resume-head{
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 50px;
         }
-
+        
         .resume-body{
             display: flex;
             flex-direction: column;
         }
-
+        
         .resume-info-name{
             font-size: 3rem;
             font-weight: bold;
         }
-
+        
         .resume-info-contact{
             color: darkgray;
         }
-
+        
         .resume-contact-email{
             min-width: 150px;
         }
-
+        
         .resume-section{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             margin-bottom: 25px;
         }
-
-        .resume-section-side{
+        
+        .resume-section-head{
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100px;
-            margin-left: 20px;
+            flex-direction: row;
+            margin-bottom: 5px;
         }
-
-        .resume-side-decoration{
+        
+        .head-decoration{
             margin-top: 11px;
-            border-top: 5px solid #1e88e5;
-            /* background-color: #1e88e5; */
+            border-top: 5px solid #1e88e5;  
+            width: 95px;  
         }
-
-        .resume-side-content{
-            text-align: left;
-        }
-
-        .resume-section-title{
+        
+        .head-title{
             color: #64b5f6;
             font-size: 22px;
+            margin-right: 20px;
+        }
+        
+        .resume-section-item{
+            margin-bottom: 10px;
+        }
+        
+        .item-head{
+            display: flex;
+        }
+        
+        .item-side{
+            min-width: 115px;
+        }
+        
+        .item-side-ltr{
+            min-width: 115px;
+            text-align: left;
+            padding-left: 21px;
+        }
+        
+        .item-title{
+        
+        }
+        
+        .item-summary{
+            margin-right: 114px;
+            margin-top: 5px;
         }
     `
+
     return (
       <div className="A4">
           <style>
@@ -153,72 +181,44 @@ function BlueTemplate(props) {
                   </div>
               </div>
               <div className="resume-body">
-                  {professionalSummary && 
-                    <div className="resume-section">
-                        <div className="resume-section-side">
-                          <div className="resume-side-decoration"></div>
-                          <div className="resume-side-body">
-                              <div className="resume-side-content"></div>
+                    {professionalSummary && 
+                      <div className="resume-section">
+                          <div className="resume-section-head">
+                              <div className="head-decoration"></div>
+                              <div className="head-title">תמצית</div>
                           </div>
-                        </div>
-                        <div className="resume-section-main">
-                          <div className="resume-section-title">
-                              תמצית
-                          </div>
-                          <div className="resume-section-content">
-                            {professionalSummary}
-                          </div>
-                        </div>
-                    </div>
-                  }
-                  {experience.length !== 0 && 
-                    <div className="resume-section">
-                      <div className="resume-section-side">
-                          <div className="resume-side-decoration"></div>
-                          <div className="resume-side-body">
-                              {renderDates(experience)}
+                          <div className="item-summary">
+                              {professionalSummary}
                           </div>
                       </div>
-                      <div className="resume-section-main">
-                          <div className="resume-section-title">
-                              ניסיון
+                    }
+                    {experience.length !== 0 && 
+                      <div className="resume-section">
+                          <div className="resume-section-head">
+                              <div className="head-decoration"></div>
+                              <div className="head-title">ניסיון</div>
                           </div>
-                          {renderContent(experience)}
+                          {renderSectionItems(experience)}
                       </div>
-                    </div>
-                  }
-                  {education.length !== 0 &&
-                    <div className="resume-section">
-                        <div className="resume-section-side">
-                          <div className="resume-side-decoration"></div>
-                          <div className="resume-side-body">
-                            {renderDates(education)}
+                    }
+                    {education.length !== 0 && 
+                      <div className="resume-section">
+                          <div className="resume-section-head">
+                              <div className="head-decoration"></div>
+                              <div className="head-title">השכלה</div>
                           </div>
-                        </div>
-                        <div className="resume-section-main">
-                            <div className="resume-section-title">
-                                השכלה
+                          {renderSectionItems(education)}
+                      </div>
+                    }
+                    {Object.keys(skills).length !== 0 &&
+                        <div className="resume-section">
+                            <div className="resume-section-head">
+                                <div className="head-decoration"></div>
+                                <div className="head-title">מיומנויות</div>
                             </div>
-                            {renderContent(education)}
+                            {renderSkills(skills)}                            
                         </div>
-                    </div>
-                  }
-                  {Object.keys(skills).length !== 0 &&
-                    <div className="resume-section">
-                    <div className="resume-section-side">
-                      <div className="resume-side-decoration"></div>
-                      <div className="resume-side-body">
-                          {renderSpheres()}
-                      </div>
-                    </div>
-                    <div className="resume-section-main">
-                        <div className="resume-section-title">
-                            מיומנויות
-                        </div>
-                        {renderSkills()}
-                    </div>
-                    </div>
-                  }
+                    }
               </div>
           </div>
       </div>
