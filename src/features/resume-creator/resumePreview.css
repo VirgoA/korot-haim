@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../../fonts/Rubik-Regular.ttf") format("truetype");
+}
+
+.resume-preview-container{
+  flex: 2;
+  overflow-y: scroll;
+}
+
+.resume-preview{
+  padding: 48px 48px 48px 48px;
+  background: linear-gradient(0deg, #64b5f6, #1e88e5);
+}
+
+#resume-capture{
+  padding: none;
+  max-width: 21cm;
+  max-height: 29.7cm;
+  box-shadow: 5px 5px 5px black;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-radius: 10px;
+}
+
+@media (max-width: 1370px) {
+  .resume-preview-container{
+    flex: 3
+  }
+}
+
+@media (max-width: 1250px) {
+  .resume-preview-container{
+    flex: 4
+  }
+}
+
+@media (max-width:1170px) { 
+
+  .resume-preview-container{
+      display: none;
+  }  
+}

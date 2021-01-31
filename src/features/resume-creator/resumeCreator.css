@@ -1,7 +1,7 @@
 .container{
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    height: calc(100% - 70px);
 }
 
 .resume-control{
@@ -26,10 +26,29 @@
     color: #98a1b3;
 }
 
-.resume-preview{
-    flex: 1;
-    padding: 48px;
-    /* background: #1e88e5; */
-    background: linear-gradient(0deg, #64b5f6, #1e88e5);
-    max-height: 100vh;
+@media (max-width: 1250px) {
+    .resume-control{
+        padding: 12px;
+    }
+}
+
+@media (max-width: 1170px) {
+    .container{
+        justify-content: center;
+    }
+    .resume-control{
+        padding: 48px;
+    }
+}
+
+@media (max-width: 780px) {
+    .resume-control{
+        padding: 24px;
+    }    
+}
+
+@media (max-width:320px){ 
+    .resume-control{
+        padding: 12px;
+    }
 }

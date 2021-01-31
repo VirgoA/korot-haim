@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+  <a href="#"><img src="https://i.imgur.com/OTrk1eX.png" alt="KorotHaim" width="800"></a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">A powerful tool for building a hebrew resume that gets you hired.</h4>
 
-## Available Scripts
+<div align="center">This amazing project was Built with ❤︎ by
+  <a href="https://github.com/virgoA">Tal</a> and
+  <a href="https://github.com/vinoDev">
+    Oleg
+  </a> to provide simple & free solution for resume creation in hebrew.
+</div>
+</br>
 
-In the project directory, you can run:
+<p align="center">
+place holder badges from another project.</br>
+  <a href="https://badge.fury.io/js/electron-markdownify">
+    <img src="https://badge.fury.io/js/electron-markdownify.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
+  <a href="https://saythanks.io/to/amitmerchant1990">
+      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
+  </a>
+  <a href="https://www.paypal.me/AmitMerchant">
+    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+  </a>
+</p>
 
-### `yarn start`
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#">Website</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![screenshot](https://s2.gifyu.com/images/korothaim-1.gif)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Key Features
 
-### `yarn test`
+- LivePreview - Make changes, See changes
+  - Instantly see what your korothaim document will look like in PDF as you create them.
+- A Resume Layout That Stands Out
+  - Our resume layout optimizer makes sure all your content is aligned and organized so your resume looks like a work of art.
+- Mobile support - Responsive Website
+  - Our web application can run smoothly on any device, allowing users to create a beatiful resume in hebrew no matter which device they are on.
+- Efficient
+  - By using React elements for our resume preview we manage to save unnecessary requests to the server, reducing loading time and making real live preview happen!
+  - This resuls in a better user experience compared to other resume creation services online.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How To Use
 
-### `yarn build`
+Visit our advance web app and start filling out your data in the required forms. Then to create the resume simply click the download button to download the pdf version of your resume generated using our sick API.
+![screenshot](https://s2.gifyu.com/images/korothaim-1d996998c1aac867a.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[MIT](https://tldrlegal.com/license/mit-license)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `yarn eject`
+Please take a look at our [contributing](#) guidelines if you're interested in helping
+</br>
+We encourage you to pitch in and join the team!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> GitHub [@virgoA](https://github.com/virgoA) &nbsp;&middot;&nbsp;
+> GitHub [@vinoDev](https://github.com/VinoDev) &nbsp;&middot;&nbsp;

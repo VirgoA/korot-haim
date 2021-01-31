@@ -1,17 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { downloadResume } from "../../../api/index";
+
+const initialState = {
+  name: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  professionalSummary: "",
+  experience: [],
+  armyExperience: [],
+  education: [],
+  skills: {},
+  languages: [],
+};
 
 const formSlice = createSlice({
   name: "form",
-  initialState: {
-    name: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    professionalSummary: "",
-    experience: [],
-    education: [],
-    links: [],
-  },
+  initialState: initialState,
   reducers: {
     setName: (state, action) => {
       state.name = action.payload;
@@ -36,7 +41,14 @@ const formSlice = createSlice({
         return index !== action.payload;
       });
     },
-
+    addArmyExperience: (state, action) => {
+      state.armyExperience = [...state.armyExperience, action.payload];
+    },
+    removeArmyExperience: (state, action) => {
+      state.armyExperience = state.armyExperience.filter((item, index) => {
+        return index !== action.payload;
+      });
+    },
     addEducation: (state, action) => {
       state.education = [...state.education, action.payload];
     },
@@ -46,11 +58,37 @@ const formSlice = createSlice({
       });
     },
 
-    addLink: (state, action) => {
-      state.links = [...state.links, action.payload];
+    addSkill: (state, action) => {
+      if (state.skills[action.payload.sphere]) {
+        state.skills[action.payload.sphere] = [
+          ...state.skills[action.payload.sphere],
+          action.payload.skill,
+        ];
+      } else {
+        state.skills[action.payload.sphere] = [action.payload.skill];
+      }
     },
-    removeLink: (state, action) => {
-      state.links = state.links.filter((item, index) => {
+    removeSkill: (state, action) => {
+      const sphere = action.payload.sphere;
+      if (state.skills[sphere].length <= 1) {
+        const { [sphere]: value, ...restSkills } = state.skills;
+        state.skills = restSkills;
+      } else {
+        state.skills[sphere] = state.skills[sphere].filter((item) => {
+          return item !== action.payload.skill;
+        });
+      }
+    },
+    setExampleState: (state, action) => {
+      for (let key in { ...state }) {
+        state[key] = action.payload[key];
+      }
+    },
+    addLanguage: (state, action) => {
+      state.languages = [...state.languages, action.payload];
+    },
+    removeLangauge: (state, action) => {
+      state.languages = state.languages.filter((item, index) => {
         return index !== action.payload;
       });
     },

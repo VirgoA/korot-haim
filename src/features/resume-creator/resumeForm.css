@@ -7,9 +7,28 @@
 .row-inputs{
     display: flex;
     margin-bottom: 24px;
-    gap: 36px
+    gap: 24px
 }
 
 form{
 
+}
+
+@media (max-width: 1370px) {
+    .row-inputs{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1170px) {
+    .row-inputs{
+        flex-direction: row;
+    }
+}
+
+@media (max-width:600px)  { 
+    .row-inputs{
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
 }

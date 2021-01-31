@@ -1,8 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 
-function SwitchButton(props) {
-  return (
+const SwitchButton = (props) => (
     <div>
       <Button 
         color="primary"
@@ -13,7 +12,6 @@ function SwitchButton(props) {
         {props.btnText}
       </Button>
     </div>
-  )
-}
+)
 
 export default SwitchButton;

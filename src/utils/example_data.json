@@ -1,0 +1,57 @@
+{
+    "name": "ישראל",
+    "lastName": "ישראלי",
+    "email": "israel@israeli.co.il",
+    "phoneNumber": "0501234567",
+    "professionalSummary": "הנני בעל נסיון וידע רב, בעל יכולות של דיוק, סבלנות, ותודעת שירות גבוה.",
+    "experience": [
+      {
+        "company":"שופרסל",
+        "endDate":"2002",
+        "startDate":"1998",
+        "summary":"",
+        "title":"מוכר"
+      },
+      {
+        "company":"סלקום",
+        "endDate":"2007",
+        "startDate":"2002",
+        "summary":"",
+        "title":"מנהל"
+      },
+      {
+        "company":"גוגל",
+        "endDate":"2020",
+        "startDate":"2008",
+        "summary":"",
+        "title":"מתכנת"
+      }
+    ],
+    "armyExperience":[{        
+      "company":"לוחם",
+      "endDate":"2020",
+      "startDate":"2017",
+      "summary":"",
+      "title":"חיל התותחנים"}],
+    "education": [
+      {
+        "degree":"פילוסופיה",
+        "endDate":"2001",
+        "startDate":"1998",
+        "summary":"",
+        "schoolName":"בר אילן"
+      },
+      {
+        "degree":"מדעי המחשב",
+        "endDate":"2008",
+        "startDate":"2004",
+        "summary":"",
+        "schoolName":"הפתוחה"
+      }
+    ],
+    "skills": {
+      "צד לקוח": ["React", "Angular"],
+      "צד שרת": ["Django", "Node.js"]
+    },
+    "languages": ["עברית", "אנגלית"]
+}

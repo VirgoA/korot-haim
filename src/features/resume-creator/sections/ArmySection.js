@@ -1,14 +1,15 @@
-import "./sections.css";
-import React, { useState, useEffect } from "react";
-import { Button, Chip } from "@material-ui/core";
-import formSlice from "../state/formSlice";
+import React, { useEffect, useState } from "react";
 import BasicInput from "../../../common/BasicInput";
 import TextArea from "../../../common/TextArea";
 import SwitchButton from "../../../common/SwitchButton";
+import formSlice from "../state/formSlice";
+import { Button, Chip } from "@material-ui/core";
 
-const { addExperience, removeExperience } = formSlice.actions;
+import "./sections.css";
 
-const EmploymentSection = (props) => {
+const { addArmyExperience, removeArmyExperience } = formSlice.actions;
+
+function ArmySection(props) {
   const [showForm, setShowForm] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [item, setItem] = useState(undefined);
@@ -18,36 +19,34 @@ const EmploymentSection = (props) => {
       setEditItem(true);
       setShowForm(true);
       setItem(chip);
-      props.dispatcher(removeExperience(chipNumber));
+      props.dispatcher(removeArmyExperience(chipNumber));
     }
   };
 
   return (
     <div className="form-section">
-      <span className="title">ניסיון תעסוקתי</span>
+      <span className="title">שירות צבאי/לאומי</span>
       <span className="description">
-        תוסיפו לפחות 3 שנות ניסיון רלוונטיות ותאריכים בחלק זה. תציינו את
-        התפקידים האחרונים שלכם קודם
+        בחלק זה תציינו את הניסיון והתפקידים שעשיתם במהלך שירותכם הצבאי.
       </span>
-
-      {props.experience.length !== 0 && (
+      {props.armyExperience.length !== 0 ? (
         <div className="chipsGroup">
-          {props.experience.map((item, index) => {
+          {props.armyExperience.map((item, index) => {
             return (
               <div key={index}>
                 <Chip
                   className="chip"
                   onClick={() => editChip(showForm, item, index)}
                   onDelete={() => {
-                    props.dispatcher(removeExperience(index));
+                    props.dispatcher(removeArmyExperience(index));
                   }}
-                  label={`${item.title} - ${item.company}`}
+                  label={`${item.company} - ${item.title}`}
                 />
               </div>
             );
           })}
         </div>
-      )}
+      ) : null}
 
       <SwitchButton
         btnText="הוסף תעסוקה +"
@@ -55,7 +54,7 @@ const EmploymentSection = (props) => {
         switchStateFunc={setShowForm}
       />
 
-      {showForm && (
+      {showForm === true ? (
         <AddEmploymentForm
           setForm={setShowForm}
           setItem={setItem}
@@ -63,15 +62,15 @@ const EmploymentSection = (props) => {
           edit={editItem}
           item={item}
           handleState={(newExpirience) =>
-            props.dispatcher(addExperience(newExpirience))
+            props.dispatcher(addArmyExperience(newExpirience))
           }
         />
-      )}
+      ) : null}
     </div>
   );
-};
+}
 
-const AddEmploymentForm = (props) => {
+function AddEmploymentForm(props) {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
 
@@ -98,15 +97,13 @@ const AddEmploymentForm = (props) => {
     setTitleError(titleErrorMsg);
 
     let companyErrorMsg = "";
-    company
-      ? (companyErrorMsg = "")
-      : (companyErrorMsg = "יש להזין חברה/מעסיק");
+    company ? (companyErrorMsg = "") : (companyErrorMsg = "יש להזין חיל");
     setCompanyError(companyErrorMsg);
 
     let startDateErrorMsg = "";
     startDate
       ? (startDateErrorMsg = "")
-      : (startDateErrorMsg = "יש להזין שנה לתחילת העסקה");
+      : (startDateErrorMsg = "יש להזין תאריך תחילת השירות");
     setStartDateError(startDateErrorMsg);
 
     if (companyErrorMsg || titleErrorMsg || startDateErrorMsg) {
@@ -118,7 +115,6 @@ const AddEmploymentForm = (props) => {
 
   const addEmployment = () => {
     let isValid = validateEmployment();
-    console.log(isValid);
     if (isValid) {
       props.handleState({ title, company, startDate, endDate, summary });
       props.setForm(false);
@@ -131,14 +127,14 @@ const AddEmploymentForm = (props) => {
     <div className="addForm">
       <div className="row-inputs">
         <BasicInput
-          name="חברה/מעסיק"
+          name="שם תפקיד"
           value={company}
           error={!!companyError}
           placeholder={companyError}
           handleState={setCompany}
         />
         <BasicInput
-          name="שם תפקיד"
+          name="שם החיל"
           value={title}
           error={!!titleError}
           placeholder={titleError}
@@ -147,36 +143,29 @@ const AddEmploymentForm = (props) => {
       </div>
       <div className="row-inputs">
         <BasicInput
-          name="תאריך תחילת תעסוקה"
+          name="תאריך תחילת השירות"
           value={startDate}
           error={!!startDateError}
           handleState={setStartDate}
         />
         <BasicInput
           value={endDate}
-          name="תאריך סוף תעסוקה"
+          name="תאריך סוף השירות"
           handleState={setEndDate}
         />
       </div>
       <div className="row-inputs">
         <TextArea
-          onChange={(content) => {
-            setSummary(content);
+          onChange={(e) => {
+            setSummary(e.target.value);
           }}
         />
       </div>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={() => {
-          console.log("cliucked");
-          addEmployment();
-        }}
-      >
+      <Button variant="outlined" color="primary" onClick={addEmployment}>
         הוספה
       </Button>
     </div>
   );
-};
+}
 
-export default EmploymentSection;
+export default ArmySection;

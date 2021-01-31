@@ -1,15 +1,17 @@
 import React from "react";
-import TextArea from "../../../common/TextArea"
+import TextArea from "../../../common/TextArea";
 
-function SummarySection(props) {
+const SummarySection = (props) => {
   return (
     <div className="form-section">
       <span className="title">סיכום מקצועי</span>
-      <span className="description">תרשמו 2-3 משפטים ברורים לגבי הניסיון הכללי שלכם</span>
+      <span className="description">
+        תרשמו 2-3 משפטים ברורים לגבי הניסיון הכללי שלכם
+      </span>
       <div className="row-inputs">
         <TextArea
-          onChange={(e) => {
-            props.dispatcher(props.reducer(e.target.value));
+          onChange={(content) => {
+            props.dispatcher(props.reducer(content));
           }}
         />
       </div>

@@ -1,0 +1,15 @@
+.extra-controls{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+#download-btn{
+    align-content: center;
+    font-weight: bold;
+    font-size: 22px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  }
