@@ -5,6 +5,13 @@ import { useState, useEffect } from "react";
 import whaleGif from "./resources/gifs/whale.gif";
 import FadeIn from "react-fade-in";
 import { wakeupServer } from "./api/index";
+import AppRouter from "./AppRouter";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,11 +34,7 @@ function App() {
   } else {
     return (
       <FadeIn transitionDuration="2500" id="loading-gif">
-        <div className="app-container">
-          <NavigationBar />
-
-          <ResumeCreator />
-        </div>
+        <AppRouter/>
       </FadeIn>
     );
   }

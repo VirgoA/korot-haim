@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, SwipeableDrawer } from "@material-ui/core";
+import { NavLink } from 'react-router-dom';
 import "./navigationBar.css";
 
 function NavigationBar(props) {
@@ -18,9 +19,9 @@ function NavigationBar(props) {
   
   const navMenu = () => (
     <div className="nav-menu">
-      <a href="../contact.html">צור קשר</a>
-      <a href="../faq.html">שאלות נפוצות</a>
-      <a href="../about.html">עלינו</a>
+      <NavLink to="/contact">צור קשר</NavLink>
+      <NavLink to="/faq">שאלות נפוצות</NavLink>
+      <NavLink to="/about">עלינו</NavLink>
     </div>
   )
 
@@ -43,7 +44,6 @@ function NavigationBar(props) {
       onKeyDown={toggleDrawer(false)}
     >
       {callToAction()}
-      {/* <Divider /> */}
       {navMenu()}
     </div>
   );
