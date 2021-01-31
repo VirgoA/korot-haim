@@ -10,7 +10,7 @@ const NavigationBar = (props) => {
   })
 
   const history = useHistory();
-  const handleCallToAction = useCallback(() => history.push('/'), [history])
+  const handleCallToAction = useCallback(() => history.push('/korot-haim'), [history])
 
   const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

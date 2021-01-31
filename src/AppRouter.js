@@ -10,7 +10,7 @@ const AppRouter = () => (
     <div className="app-container">
       <NavigationBar />
       <Switch>
-        <Route path="/" component={ResumeCreator} exact={true} />
+        <Route path="/korot-haim" component={ResumeCreator} exact={true} />
         <Route path="/contact" component={Maintenance} />
         <Route path="/faq" component={Maintenance} />
         <Route path="/about" component={Maintenance} />

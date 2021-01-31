@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => (
   <div>
-   👷🏼‍♂️ העמוד בשיפוצים  - <Link to="/">חזרה לקורות חיים</Link>
+   👷🏼‍♂️ העמוד בשיפוצים  - <Link to="/korot-haim">חזרה לקורות חיים</Link>
   </div>
 );
 
