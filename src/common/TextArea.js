@@ -21,7 +21,7 @@ const TextArea = (props) => {
           "insertdatetime media table paste code help",
         ],
         toolbar:
-          "undo redo | formatselect | bold italic backcolor | \
+          "undo redo | formatselect bullist| bold italic backcolor | \
         alignleft aligncenter alignright alignjustify",
       }}
       onEditorChange={props.onChange}
