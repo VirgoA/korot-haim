@@ -56,7 +56,9 @@ function ArmySection(props) {
 
       {showForm === true ? (
         <AddEmploymentForm
-          setFunctions={[setShowForm, setItem, setEditItem]}
+          setForm={setShowForm}
+          setItem={setItem}
+          setEdit={setEditItem}
           edit={editItem}
           item={item}
           handleState={(newExpirience) =>
@@ -115,9 +117,9 @@ function AddEmploymentForm(props) {
     let isValid = validateEmployment();
     if (isValid) {
       props.handleState({ title, company, startDate, endDate, summary });
-      props.setFunctions[0](false);
-      props.setFunctions[1](null);
-      props.setFunctions[2](false);
+      props.setForm(false);
+      props.setItem(null);
+      props.setEdit(false);
     }
   };
 

@@ -55,7 +55,9 @@ const EducationSection = (props) => {
 
       {showForm && (
         <AddEducationForm
-          setFunctions={[setShowForm, setItem, setEditItem]}
+          setForm={setShowForm}
+          setItem={setItem}
+          setEdit={setEditItem}
           edit={editItem}
           item={item}
           handleState={(newEducation) =>
@@ -123,9 +125,9 @@ const AddEducationForm = (props) => {
         endDate,
         summary,
       });
-      props.setFunctions[0](false);
-      props.setFunctions[1](null);
-      props.setFunctions[2](false);
+      props.setForm(false);
+      props.setItem(null);
+      props.setEdit(false);
     }
   };
 
